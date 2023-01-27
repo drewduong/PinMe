@@ -11,7 +11,7 @@ const UserBoards = () => {
   const history = useHistory()
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user)
   const boards = useSelector(state => Object.values(state.boards.userBoards))
   console.log('Current user boards (useSelector):', boards)
 
@@ -29,10 +29,12 @@ const UserBoards = () => {
     <div className='boards-container'>
       {boards.map(board => (
         <div key={board.id}>
+          <h1>{user.username}'s Boards</h1>
           <div className='boards-item'>
-            <NavLink to={`/boards/${board.id}`} />
             <div>
-              <img className='boards-image' src={board.board_image} alt='No Preview' />
+              <NavLink to={`/boards/${board.id}`}>
+                <img className='boards-image' src={board.board_image} alt='No Preview' />
+              </NavLink>
             </div>
             <h2>{board.name}</h2>
           </div>

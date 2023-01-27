@@ -19,7 +19,7 @@ def get_user_boards():
 
 @board_routes.route('/new', methods=['POST'])
 # Double check if needed
-# @login_required
+@login_required
 def create_board():
     form = BoardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -37,7 +37,7 @@ def create_board():
 
 @board_routes.route('/<int:id>', methods=['PUT'])
 # Double check if needed
-# @login_required
+@login_required
 def update_board(id):
     board = Board.query.get(id)
 
@@ -54,7 +54,7 @@ def update_board(id):
 
 @board_routes.route('/<int:id>', methods=['DELETE'])
 # Double check if needed
-# @login_required
+@login_required
 def delete_board(id):
     board = Board.query.get(id)
 
