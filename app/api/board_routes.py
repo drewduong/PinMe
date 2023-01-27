@@ -8,12 +8,13 @@ from .auth_routes import validation_errors_to_error_messages
 board_routes = Blueprint('boards', __name__)
 
 
-@board_routes.route('/<int:id>', methods=['GET'])
+@board_routes.route('/current', methods=['GET'])
 # Double check if needed
 # @login_required
-def boards():
-    boards = Board.query.get(id)
-    return boards.to_dict(), 200
+def get_user_boards():
+    boards = Board.query.filter(current_user.id == Board.user_id).all()
+    print('**Query result from users boards**', boards)
+    return {'boards': [board.to_dict() for board in boards]}, 200
 
 
 @board_routes.route('/new', methods=['POST'])
