@@ -26,7 +26,19 @@ const UserBoards = () => {
   if (!boards) return (<h3>Currently no boards</h3>)
 
   return isLoaded && (
-    'testing'
+    <div className='boards-container'>
+      {boards.map(board => (
+        <div key={board.id}>
+          <div className='boards-item'>
+            <NavLink to={`/boards/${board.id}`} />
+            <div>
+              <img className='boards-image' src={board.board_image} alt='No Preview' />
+            </div>
+            <h2>{board.name}</h2>
+          </div>
+        </div>
+      ))}
+    </div>
   )
 }
 
