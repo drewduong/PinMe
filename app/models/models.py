@@ -70,9 +70,8 @@ class Board(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "pin_image": self.pin_image,
+            "board_image": self.board_image,
             "user_id": self.user_id,
-            "board_id": self.board_id,
             "user": self.user.to_dict()
         }
 
