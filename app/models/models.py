@@ -64,7 +64,6 @@ class Board(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
 
     user = db.relationship('User', back_populates='boards')
-    # Double check plural 'board' or 'boards'
     pins = db.relationship('Pin', back_populates='board')
 
     def to_dict(self):

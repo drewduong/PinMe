@@ -9,14 +9,16 @@ board_routes = Blueprint('boards', __name__)
 
 
 @board_routes.route('/<int:id>', methods=['GET'])
-@login_required
+# Double check if needed
+# @login_required
 def boards():
     boards = Board.query.get(id)
     return boards.to_dict(), 200
 
 
 @board_routes.route('/new', methods=['POST'])
-@login_required
+# Double check if needed
+# @login_required
 def create_board():
     form = BoardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -33,6 +35,8 @@ def create_board():
 
 
 @board_routes.route('/<int:id>', methods=['PUT'])
+# Double check if needed
+# @login_required
 def update_board(id):
     board = Board.query.get(id)
 
@@ -48,6 +52,8 @@ def update_board(id):
 
 
 @board_routes.route('/<int:id>', methods=['DELETE'])
+# Double check if needed
+# @login_required
 def delete_board(id):
     board = Board.query.get(id)
 
