@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 // Import remaining components
 import UserBoards from './components/UserBoards/index'
+import CreateBoardForm from './components/CreateBoardForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route path='/boards' exact={true}>
           <UserBoards />
+        </Route>
+        <Route path='/boards/new' exact={true}>
+          <CreateBoardForm />
         </Route>
       </Switch>
     </BrowserRouter>

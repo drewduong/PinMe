@@ -27,6 +27,7 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
+      <NavLink to={'/boards/new'}>Create New Board</NavLink>
       {boards.map(board => (
         <div key={board.id}>
           <h1>{user.username}'s Boards</h1>

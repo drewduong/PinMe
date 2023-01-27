@@ -25,8 +25,12 @@ def create_board():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        new_board = Board()
-        form.populate_obj(new_board)
+        new_board = Board(
+            name=form.data['name'],
+            board_image=form.data['board_image'],
+            user_id=current_user.id
+        )
+        print('New board data input (route)', new_board)
 
         db.session.add(new_board)
         db.session.commit()

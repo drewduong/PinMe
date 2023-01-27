@@ -5,7 +5,6 @@ from app.models import db, User, Board
 
 
 class BoardForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
-    board_image = StringField("Board Preview Image",
-                              validators=[DataRequired()])
-    user_id = IntegerField("User Id", validators=[DataRequired()])
+    name = StringField("Name")
+    board_image = StringField("Board Preview Image")
+    user_id = IntegerField("User Id")
