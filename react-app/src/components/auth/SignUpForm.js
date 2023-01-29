@@ -12,14 +12,19 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const error = []
+
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
+    if (!email.includes('@')) error.push('Valid email is required')
+    if (password !== repeatPassword) error.push('Confirm password field must be the same as the password field')
+    if (error.length) return setErrors(error)
+
+    const data = await dispatch(signUp(username, email, password));
+    if (data) {
+      setErrors(data)
     }
+    return data
   };
 
   const updateUsername = (e) => {
