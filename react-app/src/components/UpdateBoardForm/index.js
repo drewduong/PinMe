@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createBoardThunk } from '../../store/boards';
-import './CreateBoardForm.css';
+import { useHistory, useParams } from 'react-router-dom';
+import { updateBoardThunk } from '../../store/boards';
+import './UpdateBoardForm.css';
 
-const CreateBoardForm = () => {
+const UpdateBoardForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { boardId } = useParams()
 
   const user = useSelector(state => state.session.user)
+  const board = useSelector(state => state.boards[+boardId])
+  // console.log('Current user board (useSelector):', board)
 
-  const [name, setName] = useState("")
-  const [boardImage, setBoardImage] = useState("")
+  const [name, setName] = useState(board.name)
+  const [boardImage, setBoardImage] = useState(board.board_image)
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const [validationErrors, setValidationErrors] = useState([])
@@ -29,27 +32,31 @@ const CreateBoardForm = () => {
     setValidationErrors(errors)
   }, [name, boardImage])
 
+
   const onSubmit = async (e) => {
     e.preventDefault()
     setHasSubmitted(true)
 
     if (!validationErrors.length) {
-      const board = {
-        name: name,
-        board_image: boardImage,
-        user_id: user.id
-      }
+      board.name = name
+      board.board_image = boardImage
 
-      dispatch(createBoardThunk(board))
-      history.push('/boards')
+      // return console.log('board: ', board)
+      dispatch(updateBoardThunk(board, boardId))
+
+      // console.log('Create a board (onSubmit)):', newBoard)
+      // history.push(`/boards/${newBoard.id}`)
+      history.push(`/boards/${boardId}`)
     }
   }
+
+  if (!board) return (<div>Board Not Found</div>)
 
   return (
     <div className="boarding-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
         <div className="boarding-item">
-          <h2>Create Board</h2>
+          <h2>Update Board</h2>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (
               <li key={idx}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</li>
@@ -67,11 +74,11 @@ const CreateBoardForm = () => {
             onChange={(e) => setBoardImage(e.target.value)}
             placeholder='Image URL'
           />
-          <button type="submit">Create</button>
+          <button type="submit">Update</button>
         </div>
       </form>
     </div>
   )
 }
 
-export default CreateBoardForm
+export default UpdateBoardForm

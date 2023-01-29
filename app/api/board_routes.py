@@ -8,6 +8,12 @@ from .auth_routes import validation_errors_to_error_messages
 board_routes = Blueprint('boards', __name__)
 
 
+@board_routes.route('/<int:id>')
+def get_board(id):
+    board = Board.query.get(id)
+    return board.to_dict(), 200
+
+
 @board_routes.route('/current', methods=['GET'])
 # Double check if needed
 # @login_required
@@ -64,4 +70,4 @@ def delete_board(id):
 
     db.session.delete(board)
     db.session.commit()
-    return 'Successfully Deleted'
+    return jsonify('Successfully Deleted')

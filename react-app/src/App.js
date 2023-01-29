@@ -10,7 +10,9 @@ import User from './components/User';
 // Import remaining components
 import UserBoards from './components/UserBoards/index'
 import CreateBoardForm from './components/CreateBoardForm';
+import UpdateBoardForm from './components/UpdateBoardForm'
 import { authenticate } from './store/session';
+import BoardDetails from './components/BoardDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +53,12 @@ function App() {
         </Route>
         <Route path='/boards/new' exact={true}>
           <CreateBoardForm />
+        </Route>
+        <Route path='/boards/:boardId' exact={true}>
+          <BoardDetails />
+        </Route>
+        <Route path='/boards/:boardId/edit' exact={true}>
+          <UpdateBoardForm />
         </Route>
       </Switch>
     </BrowserRouter>
