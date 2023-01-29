@@ -10,6 +10,15 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // const onLogin = async (e) => {
+  //   e.preventDefault();
+  //   const data = await dispatch(login(email, password));
+  //   if (data) {
+  //     setErrors(data);
+  //   }
+  // };
+
+  // Handling login modal logic
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
