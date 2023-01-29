@@ -1,4 +1,4 @@
-.boarding-container {
+.signup-container {
   display: flex;
   justify-content: center;
   height: auto;
@@ -6,20 +6,20 @@
   /* border: 1px solid red; */
 }
 
-.boarding-item {
+.signup-item {
   width: 400px;
   border-radius: 10px;
   /* border: 1px solid green; */
 }
 
-.boarding-item h2 {
+.signup-item h2 {
   display: flex;
   justify-content: center;
   padding: 1rem;
   border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
-.boarding-item input {
+.signup-item input {
   height: 35px;
   width: 394px;
   text-indent: 1rem;
@@ -28,7 +28,7 @@
   border-color: rgb(211, 211, 211, 0.4)
 }
 
-.boarding-item button {
+.signup-item button {
   color: white;
   font-weight: 600;
   height: 40px;
@@ -39,7 +39,7 @@
   border: none;
 }
 
-.boarding-item button:hover {
+.signup-item button:hover {
   cursor: pointer;
 }
 

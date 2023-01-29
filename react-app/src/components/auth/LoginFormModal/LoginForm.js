@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
+import './LoginForm.css'
 
 const LoginForm = ({ setShowModal }) => {
   const [errors, setErrors] = useState([]);
@@ -26,6 +27,9 @@ const LoginForm = ({ setShowModal }) => {
     if (error.length) return setErrors(error)
 
     const data = await dispatch(login(email, password));
+    // Check how to add
+    // setShowModal(true)
+
     if (data) {
       setErrors(data);
     }
@@ -50,37 +54,34 @@ const LoginForm = ({ setShowModal }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-      <div>
-        <button id="Demo" type='submit' onClick={demoUser}>Demo</button>
-      </div>
-    </form>
+    <div className='login-container'>
+      <form onSubmit={onLogin}>
+        <div className='login-item'>
+          <h2>Login</h2>
+          <ul className='errors'>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </ul>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+          <button type="submit">Login</button>
+          <button type="submit" onClick={demoUser}>Demo</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
