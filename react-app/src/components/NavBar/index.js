@@ -15,7 +15,7 @@ const NavBar = () => {
       </li> */}
       <li>
         <NavLink to='/discover' exact={true} activeClassName='active'>
-          <img className='logo' src='https://imgur.com/a/oLcAlo7' alt='logo' />
+          <img className='logo' src='https://i.pinimg.com/originals/1b/76/01/1b7601e035a83c13c208b4ec905ee6d9.png' alt='logo' />
         </NavLink>
       </li>
       <div className='right-nav'>

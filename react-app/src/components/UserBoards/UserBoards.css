@@ -11,7 +11,7 @@
 }
 
 .new-board-button {
-  font-size: larger;
+  font-size: 1.5rem;
   background: none;
   border: none;
 }
@@ -32,8 +32,8 @@
 
 .boards-item {
   /* box-sizing: border-box; */
-  width: 18vw;
-  height: 14vw;
+  width: 16vw;
+  height: 12vw;
   padding: 0 1rem 8rem 1rem;
   /* background-color: yellow; */
   /* border: 2px solid black; */
