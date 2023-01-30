@@ -1,49 +1,60 @@
-.boarding-container {
+/* border box keeps divs within divs from extending outside of container */
+
+.boards-container {
   display: flex;
-  justify-content: center;
-  height: auto;
-  width: auto;
-  /* border: 1px solid red; */
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 2rem 2rem;
+  border: 2px solid red
 }
 
-.boarding-item {
-  width: 400px;
-  border-radius: 10px;
-  /* border: 1px solid green; */
+.boards-item {
+  /* box-sizing: border-box; */
+  width: 18vw;
+  height: 14vw;
+  padding: 0 2rem 8rem 2rem;
+  /* background-color: yellow; */
+  border: 2px solid black;
 }
 
-.boarding-item h2 {
+
+.boards-image {
+  box-sizing: border-box;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 6%;
+  /* border: 2px solid black; */
+}
+
+/* ---------BOARD DETAILS-------*/
+
+.boards-description {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border-bottom: rgb(230, 230, 230) 1px solid;
+  flex-direction: column;
+  margin-top: 5%;
+  width: 100%;
+  justify-content: space-between;
+  border: 2px solid greenyellow;
 }
 
-.boarding-item input {
-  height: 35px;
-  width: 394px;
-  text-indent: 1rem;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border-color: rgb(211, 211, 211, 0.4)
+/*Adjust so when shrinking, each div within left div remains as a row for the left div */
+.boards-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  line-height: 25px;
+  /* border: 2px solid RED; */
 }
 
-.boarding-item button {
-  color: white;
+.boards-right {
+  /* border: 2px solid purple; */
+}
+
+.boards-name {
   font-weight: 600;
-  height: 40px;
-  width: 401px;
-  background-color: rgb(255, 44, 44);
-  border-radius: 8px;
-  border: none;
 }
 
-.boarding-item button:hover {
-  cursor: pointer;
-}
-
-.errors {
-  list-style-type: none;
-  line-height: 23px;
-  color: rgb(255, 44, 44);
+.boards-price {
+  font-weight: 600;
 }

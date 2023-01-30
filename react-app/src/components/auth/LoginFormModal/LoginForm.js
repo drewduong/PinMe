@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import './LoginForm.css'
 
 const LoginForm = ({ setShowModal }) => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,6 +29,7 @@ const LoginForm = ({ setShowModal }) => {
     if (error.length) return setErrors(error)
 
     const data = await dispatch(login(email, password));
+    history.push('/discover')
     // Check how to add
     // setShowModal(true)
 
@@ -39,6 +42,7 @@ const LoginForm = ({ setShowModal }) => {
   const demoUser = async (e) => {
     e.preventDefault();
     await dispatch(login("demo@aa.io", "password"))
+      .then(() => history.push('/discover'))
   }
 
   const updateEmail = (e) => {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getUserBoardsThunk } from '../../store/boards';
-// Import delete board thunk
 import { NavLink } from 'react-router-dom';
 import './UserBoards.css';
 
@@ -13,7 +12,7 @@ const UserBoards = () => {
 
   const user = useSelector(state => state.session.user)
   const boards = useSelector(state => Object.values(state.boards))
-  // console.log('Current user boards (useSelector):', boards)
+  console.log('Current user boards (useSelector):', boards)
 
   /* Passive data: dispatch within useEffect
   Active data, dispatch within onSubmit */
@@ -27,17 +26,21 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
-      <NavLink to={'/boards/new'}>Create New Board</NavLink>
+      {/* <div>
+        <NavLink to={'/boards/new'}>Create New Board</NavLink>
+      </div> */}
       {boards.map(board => (
-        <div key={board.id}>
-          <h1>{user.username}'s Boards</h1>
-          <div className='boards-item'>
-            <div>
-              <NavLink to={`/boards/${board.id}`}>
-                <img className='boards-image' src={board.board_image} alt='No Preview' />
-              </NavLink>
+        <div className='boards-item'>
+          <NavLink to={`/boards/${board.id}`}>
+            <img className='boards-image' src={board.board_image} alt='No Preview' />
+          </NavLink>
+          <div className='boards-description'>
+            <div className='boards-name'>
+              {board.name}
             </div>
-            <h2>{board.name}</h2>
+            <div className='boards-total-pins'>
+              {/* Insert total pins */} Number of pins
+            </div>
           </div>
         </div>
       ))}

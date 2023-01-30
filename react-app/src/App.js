@@ -46,7 +46,10 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>Not Logged In Homescreen</h1>
+        </Route>
+        <Route path='/discover' exact={true} >
+          <h1>Logged In Homescreen</h1>
         </Route>
         <Route path='/boards' exact={true}>
           <UserBoards />

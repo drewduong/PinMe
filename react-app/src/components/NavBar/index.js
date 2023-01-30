@@ -29,7 +29,7 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to='/boards' exact={true} activeClassName='active'>
-          Boards
+          Boards, Don't Click When Not Logged In
         </NavLink>
       </li>
       <li>
