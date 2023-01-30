@@ -8,7 +8,7 @@ const AllPins = () => {
   const dispatch = useDispatch()
 
   const pins = useSelector(state => Object.values(state.pins))
-  console.log('Get all pins state (useSelector)', pins)
+  // console.log('Get all pins state (useSelector)', pins)
 
   useEffect(() => {
     dispatch(getPinsThunk())
@@ -17,11 +17,11 @@ const AllPins = () => {
   if (!pins) return (<h1>No pins found</h1>)
 
   return (
-    <div className='pins-container'>
+    <div className='discover-container'>
       {pins.map(pin => (
-        <div className='pins-item'>
+        <div className='discover-item'>
           <NavLink to={`/pins/${pin.id}`}>
-            <img className='pins-image' src={pin.pin_image} alt='No Preview' />
+            <img className='discover-image' src={pin.pin_image} alt='No Preview' />
           </NavLink>
         </div>
       ))}
