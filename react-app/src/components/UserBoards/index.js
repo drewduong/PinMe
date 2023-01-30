@@ -28,7 +28,7 @@ const UserBoards = () => {
     <div className='boards-container'>
       <div className='boards-new'>
         <button className='new-board-button'>
-          <NavLink to={'/boards/new'}><i class="fa-solid fa-plus"></i></NavLink>
+          <NavLink className='new-board-link' to={'/boards/new'}><i class="fa-solid fa-plus"></i></NavLink>
         </button>
       </div>
       {boards.map(board => (

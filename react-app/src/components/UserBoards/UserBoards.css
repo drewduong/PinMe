@@ -6,6 +6,10 @@
   /* border: 2px solid green; */
 }
 
+.new-board-link {
+  color: black;
+}
+
 .new-board-button {
   font-size: larger;
   background: none;
