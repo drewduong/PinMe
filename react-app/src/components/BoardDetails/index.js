@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-// Import get pins thunk
-// import { getBoardThunk } from '../../store/boards';
+import { getPinsThunk } from '../../store/pins';
 import { deleteBoardThunk } from '../../store/boards';
 import { NavLink } from 'react-router-dom';
 import './BoardDetails.css';
@@ -10,24 +9,45 @@ import './BoardDetails.css';
 const BoardDetails = () => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const [isLoaded, setIsLoaded] = useState(false)
   const { boardId } = useParams()
-  // const [isLoaded, setIsLoaded] = useState(false)
 
   const board = useSelector(state => state.boards[+boardId])
   // console.log('Board details', board)
+  const allPins = useSelector(state => Object.values(state.pins))
+  const pins = allPins.filter(pin => pin.board_id === board.id)
+  // console.log('All pins in database', allPins)
+  // console.log('Pins associated with current board id', pins)
 
   useEffect(() => {
-    // dispatch(getBoardThunk(+boardId))
-    // .then(() => setIsLoaded(true))
+    dispatch(getPinsThunk())
+      .then(() => setIsLoaded(true))
   }, [dispatch, boardId])
 
-  return (
-    <div>
-      <div>
-        <NavLink to={`/boards/${boardId}/edit`}>
-          Edit
-        </NavLink>
+
+
+  return isLoaded && (
+    <div className='board-container'>
+      <div className='board-top-div'>
+
+        <h2 className='board-name'>{board.name}</h2>
+
+        <span>
+          <NavLink className='edit-board-button' to={`/boards/${boardId}/edit`}>
+            <i class="fa-solid fa-ellipsis"></i>
+          </NavLink>
+        </span>
       </div>
+      <div className='board-total-pins'>
+        <h4>{pins.length} Pins</h4>
+      </div>
+      {pins.map(pin => (
+        <div className='pins-item'>
+          <NavLink to={`/pins/${pin.id}`}>
+            <img className='pins-image' src={pin.pin_image} alt='No Preview' />
+          </NavLink>
+        </div>
+      ))}
       <div>
         <button onClick={async () => {
           const deletedBoard = await dispatch(deleteBoardThunk(boardId))

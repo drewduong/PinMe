@@ -1,0 +1,72 @@
+/* border box keeps divs within divs from extending outside of container */
+
+.board-top-div {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.board-top-div h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.board-name {
+  display: flex;
+  justify-content: center;
+}
+
+.board-total-pins {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.boards-new {
+  width: 100%;
+  padding-bottom: 1.5rem;
+  /* border: 2px solid green; */
+}
+
+.new-board-link {
+  color: black;
+}
+
+.new-board-button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+}
+
+.new-board-button:hover {
+  cursor: pointer
+}
+
+/* ---------BOARD CONTAINER-------*/
+
+.board-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 2rem 1rem;
+  /* border: 2px solid red */
+}
+
+.pins-item {
+  /* box-sizing: border-box; */
+  width: 16vw;
+  height: 12vw;
+  padding: 0 1rem 8rem 1rem;
+  /* background-color: yellow; */
+  /* border: 2px solid black; */
+}
+
+
+.pins-image {
+  box-sizing: border-box;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 6%;
+  /* border: 2px solid black; */
+}
