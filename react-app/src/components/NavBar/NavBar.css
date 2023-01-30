@@ -11,6 +11,10 @@
   /* border: 2px solid black; */
 }
 
+.left-nav {
+  border: 2px solid black;
+}
+
 .right-nav {
   display: flex;
   justify-content: space-between;

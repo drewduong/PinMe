@@ -54,7 +54,7 @@ function App() {
         <ProtectedRoute path='/boards' exact={true}>
           <UserBoards />
         </ProtectedRoute>
-        <ProtectedRoute path='/boards/new' exact={true}>
+        <ProtectedRoute path='/boards/create' exact={true}>
           <CreateBoardForm />
         </ProtectedRoute>
         <ProtectedRoute path='/boards/:boardId' exact={true}>
