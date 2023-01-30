@@ -55,7 +55,7 @@ const deletePinAction = (pinId) => {
 /*----------THUNK ACTION CREATORS----------*/
 
 export const getPinsThunk = () => async (dispatch) => {
-  const response = await fetch('/api/pins')
+  const response = await fetch('/api/pins/')
 
   if (response.ok) {
     const data = await response.json()

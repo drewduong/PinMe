@@ -8,10 +8,10 @@ from .auth_routes import validation_errors_to_error_messages
 pin_routes = Blueprint('pins', __name__)
 
 
-@pin_routes.route('/')
+@pin_routes.route('/', methods=['GET'])
 def get_pins():
-    pin = Pin.query.all()
-    return pin.to_dict(), 200
+    pins = Pin.query.all()
+    return {'pins': [pin.to_dict() for pin in pins]}, 200
 
 
 @pin_routes.route('/current', methods=['GET'])
@@ -23,7 +23,7 @@ def get_board_pins():
     return {'pins': [pin.to_dict() for pin in pins]}, 200
 
 
-@pin_routes.route('/new', methods=['POST'])
+@pin_routes.route('/create', methods=['POST'])
 # Double check if needed
 @login_required
 def create_pin():

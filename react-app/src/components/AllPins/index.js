@@ -18,11 +18,6 @@ const AllPins = () => {
 
   return (
     <div className='pins-container'>
-      <div className='pins-new'>
-        <button className='new-pin-button'>
-          <NavLink className='new-pin-link' to={'/pins/create'}><i class="fa-solid fa-plus"></i></NavLink>
-        </button>
-      </div>
       {pins.map(pin => (
         <div className='pins-item'>
           <NavLink to={`/pins/${pin.id}`}>

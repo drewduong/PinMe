@@ -11,8 +11,9 @@ import User from './components/User';
 import UserBoards from './components/UserBoards/index'
 import CreateBoardForm from './components/CreateBoardForm';
 import UpdateBoardForm from './components/UpdateBoardForm'
-import { authenticate } from './store/session';
 import BoardDetails from './components/BoardDetails';
+import AllPins from './components/AllPins';
+import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,7 +50,7 @@ function App() {
           <h1>Not Logged In Homescreen</h1>
         </Route>
         <ProtectedRoute path='/discover' exact={true} >
-          <h1>Logged In Homescreen</h1>
+          <AllPins />
         </ProtectedRoute>
         <ProtectedRoute path='/boards' exact={true}>
           <UserBoards />
