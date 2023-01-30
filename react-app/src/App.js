@@ -48,21 +48,21 @@ function App() {
         <Route path='/' exact={true} >
           <h1>Not Logged In Homescreen</h1>
         </Route>
-        <Route path='/discover' exact={true} >
+        <ProtectedRoute path='/discover' exact={true} >
           <h1>Logged In Homescreen</h1>
-        </Route>
-        <Route path='/boards' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/boards' exact={true}>
           <UserBoards />
-        </Route>
-        <Route path='/boards/new' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/boards/new' exact={true}>
           <CreateBoardForm />
-        </Route>
-        <Route path='/boards/:boardId' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/boards/:boardId' exact={true}>
           <BoardDetails />
-        </Route>
-        <Route path='/boards/:boardId/edit' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/boards/:boardId/edit' exact={true}>
           <UpdateBoardForm />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
