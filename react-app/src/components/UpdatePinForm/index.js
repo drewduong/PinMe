@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createPinThunk } from '../../store/pins';
-import './CreatePinForm.css';
+import { useHistory, useParams } from 'react-router-dom';
+import { updatePinThunk } from '../../store/pins';
+import './UpdatePinForm.css';
 
-const CreatePinForm = () => {
+const UpdatePinForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { pinId } = useParams()
 
   const user = useSelector(state => state.session.user)
+  const pin = useSelector(state => state.pins[+pinId])
+  // console.log('Current pin details (useSelector):', board)
 
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [pinImage, setPinImage] = useState("")
-  const [boardId, setBoardId] = useState("")
+  const [boardId, setBoardId] = useState(pin.board_id)
+  const [title, setTitle] = useState(pin.title)
+  const [description, setDescription] = useState(pin.description)
+  const [pinImage, setPinImage] = useState(pin.pin_image)
   const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const [validationErrors, setValidationErrors] = useState([])
@@ -39,16 +42,13 @@ const CreatePinForm = () => {
     setHasSubmitted(true)
 
     if (!validationErrors.length) {
-      const pin = {
-        title: title,
-        description: description,
-        pin_image: pinImage,
-        board_id: boardId,
-        user_id: user.id
-      }
+      pin.board_id = boardId
+      pin.title = title
+      pin.description = description
+      pin.pin_image = pinImage
 
-      dispatch(createPinThunk(pin))
-      history.push('/discover')
+      dispatch(updatePinThunk(pin, pinId))
+      history.push(`/pins/${pinId}`)
     }
   }
 
@@ -56,7 +56,7 @@ const CreatePinForm = () => {
     <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
         <div className="pinning-item">
-          <h2>Create Pin</h2>
+          <h2>Update Pin</h2>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (
               <li key={idx}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</li>
@@ -86,11 +86,11 @@ const CreatePinForm = () => {
             onChange={(e) => setPinImage(e.target.value)}
             placeholder='Preview image url'
           />
-          <button type="submit">Create</button>
+          <button type="submit">Update</button>
         </div>
       </form>
     </div>
   )
 }
 
-export default CreatePinForm
+export default UpdatePinForm

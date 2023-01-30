@@ -72,7 +72,7 @@ const UpdateBoardForm = () => {
             type="url"
             value={boardImage}
             onChange={(e) => setBoardImage(e.target.value)}
-            placeholder='Image URL'
+            placeholder='Preview Image URL'
           />
           <button type="submit">Update</button>
         </div>
