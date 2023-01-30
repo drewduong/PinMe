@@ -59,13 +59,13 @@ const CreateBoardForm = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder='Name'
+            placeholder='Add your board name'
           />
           <input
             type="url"
             value={boardImage}
             onChange={(e) => setBoardImage(e.target.value)}
-            placeholder='Image URL'
+            placeholder='Add your preview image url'
           />
           <button type="submit">Create</button>
         </div>
