@@ -6,6 +6,16 @@
   /* border: 2px solid green; */
 }
 
+.new-board-button {
+  font-size: larger;
+  background: none;
+  border: none;
+}
+
+.new-board-button:hover {
+  cursor: pointer
+}
+
 /* ---------BOARD CONTAINER-------*/
 
 .boards-container {

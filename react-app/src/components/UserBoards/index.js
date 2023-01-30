@@ -27,7 +27,9 @@ const UserBoards = () => {
   return isLoaded && (
     <div className='boards-container'>
       <div className='boards-new'>
-        <NavLink to={'/boards/new'}>Create New Board</NavLink>
+        <button className='new-board-button'>
+          <NavLink to={'/boards/new'}><i class="fa-solid fa-plus"></i></NavLink>
+        </button>
       </div>
       {boards.map(board => (
         <div className='boards-item'>
