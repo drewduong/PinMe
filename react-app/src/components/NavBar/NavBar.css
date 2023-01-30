@@ -12,7 +12,13 @@
 }
 
 .left-nav {
-  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  width: 8vw;
+  padding: 0 1rem;
+  /* border: 2px solid black; */
 }
 
 .right-nav {
@@ -32,6 +38,11 @@
 }
 
 .home-button {
+  color: rgb(128, 128, 128);
+  font-size: 1.5rem;
+}
+
+.new-pin-button {
   color: rgb(128, 128, 128);
   font-size: 1.5rem;
 }

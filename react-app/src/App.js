@@ -13,6 +13,7 @@ import CreateBoardForm from './components/CreateBoardForm';
 import UpdateBoardForm from './components/UpdateBoardForm'
 import BoardDetails from './components/BoardDetails';
 import AllPins from './components/AllPins';
+import CreatePinForm from './components/CreatePinForm'
 import { authenticate } from './store/session';
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/boards/:boardId/edit' exact={true}>
           <UpdateBoardForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/pins/create' exact={true}>
+          <CreatePinForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -24,13 +24,15 @@ const CreatePinForm = () => {
   useEffect(() => {
     const errors = []
 
+    if (!boardId) errors.push("Board id is required")
     if (!title) errors.push("Title of board is required")
     if (title.length > 30) errors.push("Title must be less than 30 characters")
+    if (!description) errors.push("Pin description is required")
+    if (description.length > 255) errors.push("Pin description must be less than 255 characters")
     if (!pinImage) errors.push("Image url is required")
-    if (!boardId) errors.push("Board Id is required")
 
     setValidationErrors(errors)
-  }, [title, pinImage, boardId])
+  }, [boardId, title, description, pinImage])
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -51,9 +53,9 @@ const CreatePinForm = () => {
   }
 
   return (
-    <div className="boarding-container">
+    <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
-        <div className="boarding-item">
+        <div className="pinning-item">
           <h2>Create Pin</h2>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (

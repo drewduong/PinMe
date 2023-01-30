@@ -21,7 +21,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink className='new-pin-button' to='/pins/create' exact={true} activeClassName='active'>
-            <i class="fa-solid fa-pinball"></i>
+            <i class="fa-solid fa-thumbtack"></i>
           </NavLink>
         </li>
       </div>

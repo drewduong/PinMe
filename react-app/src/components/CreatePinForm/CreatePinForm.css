@@ -1,0 +1,50 @@
+.pinning-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: auto;
+  /* border: 1px solid red; */
+}
+
+.pinning-item {
+  width: 400px;
+  border-radius: 10px;
+  /* border: 1px solid green; */
+}
+
+.pinning-item h2 {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: rgb(230, 230, 230) 1px solid;
+}
+
+.pinning-item input {
+  height: 35px;
+  width: 394px;
+  text-indent: 1rem;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-color: rgb(211, 211, 211, 0.4)
+}
+
+.pinning-item button {
+  color: white;
+  font-weight: 600;
+  height: 40px;
+  width: 401px;
+  margin-bottom: 15px;
+  background-color: rgb(255, 44, 44);
+  border-radius: 8px;
+  border: none;
+}
+
+.pinning-item button:hover {
+  cursor: pointer;
+}
+
+.errors {
+  list-style-type: none;
+  line-height: 23px;
+  color: rgb(255, 44, 44);
+}
