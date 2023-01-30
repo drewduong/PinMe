@@ -1,20 +1,28 @@
 /* border box keeps divs within divs from extending outside of container */
 
+.boards-new {
+  width: 100%;
+  padding-bottom: 1.5rem;
+  /* border: 2px solid green; */
+}
+
+/* ---------BOARD CONTAINER-------*/
+
 .boards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 2rem 2rem;
-  border: 2px solid red
+  margin: 2rem 1rem;
+  /* border: 2px solid red */
 }
 
 .boards-item {
   /* box-sizing: border-box; */
   width: 18vw;
   height: 14vw;
-  padding: 0 2rem 8rem 2rem;
+  padding: 0 1rem 8rem 1rem;
   /* background-color: yellow; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 
@@ -33,28 +41,17 @@
   display: flex;
   flex-direction: column;
   margin-top: 5%;
+  line-height: 28px;
   width: 100%;
   justify-content: space-between;
-  border: 2px solid greenyellow;
-}
-
-/*Adjust so when shrinking, each div within left div remains as a row for the left div */
-.boards-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  line-height: 25px;
-  /* border: 2px solid RED; */
-}
-
-.boards-right {
-  /* border: 2px solid purple; */
+  /* border: 2px solid greenyellow; */
 }
 
 .boards-name {
+  font-size: larger;
   font-weight: 600;
 }
 
-.boards-price {
-  font-weight: 600;
+.boards-total-pins {
+  font-size: smaller;
 }

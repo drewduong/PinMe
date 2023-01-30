@@ -26,9 +26,9 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
-      {/* <div>
+      <div className='boards-new'>
         <NavLink to={'/boards/new'}>Create New Board</NavLink>
-      </div> */}
+      </div>
       {boards.map(board => (
         <div className='boards-item'>
           <NavLink to={`/boards/${board.id}`}>
