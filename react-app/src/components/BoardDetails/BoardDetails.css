@@ -2,13 +2,12 @@
 
 .board-top-div {
   display: flex;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.board-top-div h2 {
-  display: flex;
   justify-content: center;
+  /* align-content: center; */
+  /* align-items: center; */
+  width: 100%;
+  padding-bottom: 3rem;
+  /* border: solid black */
 }
 
 .board-name {
@@ -18,8 +17,25 @@
 
 .board-total-pins {
   display: flex;
+  justify-content: space-between;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.edit-board-button {
+  color: black;
+  font-size: larger;
+}
+
+.delete-board-button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: larger;
+}
+
+.delete-board-button:hover {
+  cursor: pointer;
 }
 
 .boards-new {

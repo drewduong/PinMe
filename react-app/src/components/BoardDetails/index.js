@@ -15,7 +15,7 @@ const BoardDetails = () => {
   const board = useSelector(state => state.boards[+boardId])
   // console.log('Board details', board)
   const allPins = useSelector(state => Object.values(state.pins))
-  const pins = allPins.filter(pin => pin.board_id === board.id)
+  const pins = allPins.filter(pin => pin?.board_id === board?.id)
   // console.log('All pins in database', allPins)
   // console.log('Pins associated with current board id', pins)
 
@@ -25,35 +25,38 @@ const BoardDetails = () => {
   }, [dispatch, boardId])
 
 
+  if (!pins) return null
 
   return isLoaded && (
     <div className='board-container'>
       <div className='board-top-div'>
-
-        <h2 className='board-name'>{board.name}</h2>
-
-        <span>
-          <NavLink className='edit-board-button' to={`/boards/${boardId}/edit`}>
-            <i class="fa-solid fa-ellipsis"></i>
-          </NavLink>
-        </span>
+        <h1 className='board-name'>{board?.name}</h1>
       </div>
       <div className='board-total-pins'>
-        <h4>{pins.length} Pins</h4>
+        {/* <h4>{pins?.length} Pins</h4> */}
+        <NavLink className='edit-board-button' to={`/boards/${boardId}/edit`}>
+          <i class="fa-solid fa-ellipsis"></i>
+        </NavLink>
+
+        <button className='delete-board-button' onClick={async () => {
+          const deletedBoard = await dispatch(deleteBoardThunk(boardId))
+          if (deletedBoard) history.push('/boards')
+        }}><i class="fa-solid fa-trash-can"></i></button>
+
       </div>
       {pins.map(pin => (
         <div className='pins-item'>
           <NavLink to={`/pins/${pin.id}`}>
-            <img className='pins-image' src={pin.pin_image} alt='No Preview' />
+            <img className='pins-image' src={pin?.pin_image} alt='No Preview' />
           </NavLink>
         </div>
       ))}
-      <div>
+      {/* <div>
         <button onClick={async () => {
           const deletedBoard = await dispatch(deleteBoardThunk(boardId))
           if (deletedBoard) history.push('/boards')
         }}>Delete</button>
-      </div>
+      </div> */}
     </div>
   )
 }
