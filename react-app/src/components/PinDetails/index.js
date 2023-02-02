@@ -36,10 +36,10 @@ const BoardDetails = () => {
           }}><i class="fa-solid fa-trash-can"></i></button>
         </div>
         <div className='pin-second-div'>
-          <h2>{pin.title}</h2>
+          <h2>{pin?.title}</h2>
         </div>
         <div className='pin-third-div'>
-          <h4>{pin.description}</h4>
+          <h4>{pin?.description}</h4>
         </div>
       </div>
     </div>
