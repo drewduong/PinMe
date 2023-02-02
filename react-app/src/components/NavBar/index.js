@@ -1,10 +1,13 @@
 
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 
+
 const NavBar = () => {
+  const user = useSelector(state => state.session.user)
   return (
     // <nav>
     <ul className='nav-bar-container'>
@@ -34,16 +37,16 @@ const NavBar = () => {
       </div>
       <div className='right-nav'>
         <li>
-          <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>
+          {user ? (null) : (<NavLink className='login-button' to='/login' exact={true} activeClassName='active'>
             {/* <i class="fa-solid fa-user"></i> */}
             Login
-          </NavLink>
+          </NavLink>)}
         </li>
         <li>
-          <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>
+          {user ? (null) : (<NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>
             {/* <i class="fa-solid fa-user-plus"></i> */}
             Sign Up
-          </NavLink>
+          </NavLink>)}
         </li>
         {/* <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
