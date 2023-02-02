@@ -73,12 +73,14 @@ const CreatePinForm = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder='Title'
+            maxLength="30"
           />
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder='Tell everyone what your pin is about'
+            maxLength="255"
           />
           <input
             type="url"

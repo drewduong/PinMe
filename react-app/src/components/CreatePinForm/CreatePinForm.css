@@ -25,7 +25,12 @@
   text-indent: 1rem;
   margin-bottom: 15px;
   border-radius: 8px;
-  border-color: rgb(211, 211, 211, 0.4)
+  border-color: rgb(211, 211, 211, 0.4);
+  text-indent: 1rem;
+  word-break: break-all;
+  overflow-wrap: scroll;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .pinning-item button {

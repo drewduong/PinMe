@@ -47,8 +47,8 @@ const UpdatePinForm = () => {
       pin.description = description
       pin.pin_image = pinImage
 
-      dispatch(updatePinThunk(pin, pinId))
-      history.push(`/pins/${pinId}`)
+      const updatedPin = await dispatch(updatePinThunk(pin, pinId))
+      if (updatedPin) history.push(`/pins/${pinId}`)
     }
   }
 
@@ -73,12 +73,14 @@ const UpdatePinForm = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder='Title'
+            maxLength="30"
           />
           <input
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder='Tell everyone what your pin is about'
+            maxLength="255"
           />
           <input
             type="url"

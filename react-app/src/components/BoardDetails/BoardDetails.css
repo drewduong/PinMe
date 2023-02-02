@@ -6,16 +6,19 @@
   /* align-content: center; */
   /* align-items: center; */
   width: 100%;
-  padding-bottom: 3rem;
+  padding: 0;
   /* border: solid black */
 }
 
-.board-name {
+.board-second-div {
   display: flex;
   justify-content: center;
+  width: 100%;
+  padding: 0;
 }
 
-.board-total-pins {
+
+.board-fourth-div {
   display: flex;
   justify-content: space-between;
   width: 100%;

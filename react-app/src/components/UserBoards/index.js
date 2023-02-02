@@ -41,7 +41,7 @@ const UserBoards = () => {
               {board.name}
             </div>
             <div className='boards-total-pins'>
-              {/* Insert total pins */} Number of pins
+              {/* Insert total pins Number of pins */}
             </div>
           </div>
         </div>

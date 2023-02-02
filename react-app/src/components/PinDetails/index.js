@@ -12,8 +12,11 @@ const BoardDetails = () => {
   const { pinId } = useParams()
   const [isLoaded, setIsLoaded] = useState(false)
 
+  const user = useSelector(state => state.session.user)
+  console.log('User details', user)
   const pin = useSelector(state => state.pins[+pinId])
-  // console.log('Board details', pin)
+  console.log('Pin details', pin)
+  const isPinOwner = user?.id === pin?.user.id
 
   useEffect(() => {
     dispatch(getPinsThunk(+pinId))
@@ -27,13 +30,14 @@ const BoardDetails = () => {
       {/* </div> */}
       <div className='pin-description'>
         <div className='pin-first-div'>
-          <NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
+          {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
             <i class="fa-solid fa-ellipsis"></i>
-          </NavLink>
-          <button className='delete-board-button' onClick={async () => {
+          </NavLink>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to edit</h4>)}
+
+          {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
             const deletedPin = await dispatch(deletePinThunk(pinId))
             if (deletedPin) history.push('/discover')
-          }}><i class="fa-solid fa-trash-can"></i></button>
+          }}><i class="fa-solid fa-trash-can"></i></button>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to delete</h4>)}
         </div>
         <div className='pin-second-div'>
           <h2>{pin?.title}</h2>
