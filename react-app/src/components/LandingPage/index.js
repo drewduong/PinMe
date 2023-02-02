@@ -10,11 +10,18 @@ const LandingPage = () => {
   const user = useSelector(state => state.session.user)
 
   return (
-    <div className="boarding-container">
-      <div className="boarding-item">
-        <h1>Search for an Idea.</h1>
-        <div>What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</div>
-        <NavLink className='explore-button' to={'/login'}>Explore PinMe</NavLink>
+    <div className="landing-container">
+      <div className="landing-left-div">
+        <div className='landing-image-div'>
+          <img className='landing-image' src='https://i.imgur.com/vs116YR.png' alt='No Preview' />
+        </div>
+      </div>
+      <div className="landing-right-div">
+        <div className='landing-text-div'>
+          <h1 className='landing-text-title'>Search for an idea</h1>
+          What do you want to try next? Think of something you’re into—like “quick easy recipes”—and see what you find
+          <NavLink className='explore-button' to={'/login'}>Explore</NavLink>
+        </div>
       </div>
     </div>
   )
