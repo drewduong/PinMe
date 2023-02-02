@@ -51,12 +51,58 @@ def seed_pins():
         board_id=6
     )
 
+    pin7 = Pin(
+        title='Clothing Pin',
+        description='Clothing description',
+        pin_image='https://i.pinimg.com/736x/10/27/2c/10272c6d3d696b3c9dffcfd803476d63.jpg',
+        user_id=1,
+        board_id=1
+    )
+
+    pin8 = Pin(
+        title='Female Outfit Pin',
+        description='Outfit description',
+        pin_image='https://i.pinimg.com/originals/8a/4f/88/8a4f8843b06bc24f4f1ca00f1f3c9c24.jpg',
+        user_id=1,
+        board_id=1
+    )
+
+    pin9 = Pin(
+        title='Different Outfit Pin',
+        description='Outfit description',
+        pin_image='https://i.pinimg.com/736x/21/8f/5d/218f5da39241008ba9efb59d9a869dbb.jpg',
+        user_id=1,
+        board_id=1
+    )
+
+    pin10 = Pin(
+        title='Urban Outfit Pin',
+        description='Urban Outfit description',
+        pin_image='https://i.pinimg.com/originals/14/31/93/143193120507c5c79005619d51b82060.jpg',
+        user_id=1,
+        board_id=1
+    )
+
+    pin11 = Pin(
+        title='Cheap Outfit For Females',
+        description='Cheap Outfit Idea',
+        pin_image='https://i.pinimg.com/564x/d5/68/31/d56831477f756fa0cbe24cacd9b2c8c9.jpg',
+        user_id=1,
+        board_id=1
+    )
+
     db.session.add(pin1)
     db.session.add(pin2)
     db.session.add(pin3)
     db.session.add(pin4)
     db.session.add(pin5)
     db.session.add(pin6)
+    db.session.add(pin7)
+    db.session.add(pin8)
+    db.session.add(pin9)
+    db.session.add(pin10)
+    db.session.add(pin11)
+
     db.session.commit()
 
     print('Seeded Pins')
