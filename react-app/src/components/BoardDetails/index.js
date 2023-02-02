@@ -6,6 +6,8 @@ import { deleteBoardThunk } from '../../store/boards';
 import { NavLink } from 'react-router-dom';
 import './BoardDetails.css';
 
+const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
+
 const BoardDetails = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -47,7 +49,13 @@ const BoardDetails = () => {
       {pins.map(pin => (
         <div className='pins-item'>
           <NavLink to={`/pins/${pin.id}`}>
-            <img className='pins-image' src={pin?.pin_image} alt='No Preview' />
+            <img className='pins-image'
+              onError={e => {
+                if (e.target.src !== defaultImage) {
+                  e.target.src = defaultImage
+                }
+              }}
+              src={pin?.pin_image} alt='No Preview' />
           </NavLink>
         </div>
       ))}

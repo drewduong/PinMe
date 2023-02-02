@@ -6,6 +6,8 @@ import { deletePinThunk } from '../../store/pins';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
+const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
+
 const BoardDetails = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -27,7 +29,13 @@ const BoardDetails = () => {
     <div className='pin-outter-container'>
       <div className='pin-top-container'>
         {/* <div className='pin-left-div'> */}
-        <img className='pin-image' src={pin?.pin_image} alt='None' />
+        <img className='pin-image'
+          onError={e => {
+            if (e.target.src !== defaultImage) {
+              e.target.src = defaultImage
+            }
+          }}
+          src={pin?.pin_image} alt='None' />
         {/* </div> */}
         <div className='pin-description'>
           <div className='pin-first-div'>

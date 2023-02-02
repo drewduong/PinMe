@@ -5,6 +5,8 @@ import { getUserBoardsThunk } from '../../store/boards';
 import { NavLink } from 'react-router-dom';
 import './UserBoards.css';
 
+const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
+
 const UserBoards = () => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -34,7 +36,13 @@ const UserBoards = () => {
       {boards.map(board => (
         <div className='boards-item'>
           <NavLink to={`/boards/${board.id}`}>
-            <img className='boards-image' src={board.board_image} alt='No Preview' />
+            <img className='boards-image'
+              onError={e => {
+                if (e.target.src !== defaultImage) {
+                  e.target.src = defaultImage
+                }
+              }}
+              src={board.board_image} alt='No Preview' />
           </NavLink>
           <div className='boards-description'>
             <div className='boards-name'>

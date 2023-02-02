@@ -4,7 +4,7 @@ import { getPinsThunk } from '../../store/pins';
 import { NavLink } from 'react-router-dom';
 import './AllPins.css';
 
-let defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
+const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
 const AllPins = () => {
   const dispatch = useDispatch()
@@ -26,11 +26,11 @@ const AllPins = () => {
           <NavLink to={`/pins/${pin.id}`}>
             <img className='discover-image'
               onError={e => {
-                if (e.target.pin_image !== defaultImage) {
-                  e.target.pin_image = defaultImage
+                if (e.target.src !== defaultImage) {
+                  e.target.src = defaultImage
                 }
               }}
-              src={pin.pin_image} alt='No Preview' />
+              src={`${pin.pin_image}`} alt='No Preview' />
           </NavLink>
         </div>
       ))}
