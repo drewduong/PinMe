@@ -67,7 +67,7 @@ const BoardDetails = () => {
           <a className='github' href='https://github.com/drewduong'>
             <img className='project-image' src='https://logodownload.org/wp-content/uploads/2019/08/github-logo.png' alt='No Preview' />
           </a>
-          <a className='stackoverflow' href='https://stackunderflow.onrender.com/'>
+          <a className='stackoverflow' href='https://stack-underflow-x2ou.onrender.com/	'>
             <img className='project-image' src='https://i.pinimg.com/736x/36/30/9f/36309f22e4c16447b085400be01bbc1e.jpg' alt='No Preview' />
           </a>
         </div>
