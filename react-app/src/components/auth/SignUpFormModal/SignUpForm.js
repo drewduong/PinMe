@@ -56,7 +56,7 @@ const SignUpForm = () => {
           <h2>Sign Up</h2>
           <ul className='errors'>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div key={ind}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</div>
             ))}
           </ul>
           <input

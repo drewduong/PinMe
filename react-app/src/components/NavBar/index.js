@@ -20,20 +20,29 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink className='home-button' to='/discover' exact={true} activeClassName='active'>
+            {/* <i class="fa-solid fa-thumbtack"></i> */}
+            Home
+          </NavLink>
+        </li>
+        <li>
           <NavLink className='new-pin-button' to='/pins/create' exact={true} activeClassName='active'>
-            <i class="fa-solid fa-thumbtack"></i>
+            {/* <i class="fa-solid fa-thumbtack"></i> */}
+            Create
           </NavLink>
         </li>
       </div>
       <div className='right-nav'>
         <li>
           <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>
-            <i class="fa-solid fa-user"></i>
+            {/* <i class="fa-solid fa-user"></i> */}
+            Login
           </NavLink>
         </li>
         <li>
           <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>
-            <i class="fa-solid fa-user-plus"></i>
+            {/* <i class="fa-solid fa-user-plus"></i> */}
+            Sign Up
           </NavLink>
         </li>
         {/* <li>
@@ -42,7 +51,9 @@ const NavBar = () => {
           </NavLink>
         </li> */}
         <li>
-          <NavLink className='boards-button' to='/boards' exact={true} activeClassName='active'><i class="fa-solid fa-clipboard"></i>
+          <NavLink className='boards-button' to='/boards' exact={true} activeClassName='active'>
+            {/* <i class="fa-solid fa-clipboard"></i> */}
+            Boards
           </NavLink>
         </li>
         <li>
