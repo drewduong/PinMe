@@ -33,6 +33,7 @@ const UpdatePinForm = () => {
     if (!description) errors.push("Pin description is required")
     if (description.length > 255) errors.push("Pin description must be less than 255 characters")
     if (!pinImage) errors.push("Image url is required")
+    if (!pinImage.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Valid image url is required')
 
     setValidationErrors(errors)
   }, [boardId, title, description, pinImage])

@@ -28,6 +28,7 @@ const UpdateBoardForm = () => {
     if (!name) errors.push("Name of board is required")
     if (name.length > 30) errors.push("Name must be less than 30 characters")
     if (!boardImage) errors.push("Image url is required")
+    if (!boardImage.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Valid image url is required')
 
     setValidationErrors(errors)
   }, [name, boardImage])
