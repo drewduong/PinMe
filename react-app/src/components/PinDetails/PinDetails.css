@@ -1,4 +1,6 @@
-.pin-container {
+/*---------TOP CONTAINER-----------*/
+
+.pin-top-container {
   display: flex;
   justify-content: center;
   /* width: 50%; */
@@ -62,4 +64,27 @@
   /* border: 1px solid black; */
 }
 
-.pin-fourth-div {}
+/*---------BOTTOM CONTAINER-----------*/
+
+.pin-bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 4rem;
+  /* border: 1px solid black */
+}
+
+.project-item {
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 1px solid black */
+}
+
+.project-image {
+  height: 70%;
+  width: 15vw;
+  border-radius: 12px;
+}

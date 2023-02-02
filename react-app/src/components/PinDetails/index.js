@@ -24,26 +24,44 @@ const BoardDetails = () => {
   }, [dispatch, pinId])
 
   return isLoaded && (
-    <div className='pin-container'>
-      {/* <div className='pin-left-div'> */}
-      <img className='pin-image' src={pin?.pin_image} alt='None' />
-      {/* </div> */}
-      <div className='pin-description'>
-        <div className='pin-first-div'>
-          {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
-            <i class="fa-solid fa-ellipsis"></i>
-          </NavLink>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to edit</h4>)}
+    <div className='pin-outter-container'>
+      <div className='pin-top-container'>
+        {/* <div className='pin-left-div'> */}
+        <img className='pin-image' src={pin?.pin_image} alt='None' />
+        {/* </div> */}
+        <div className='pin-description'>
+          <div className='pin-first-div'>
+            {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
+              <i class="fa-solid fa-ellipsis"></i>
+            </NavLink>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to edit</h4>)}
 
-          {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
-            const deletedPin = await dispatch(deletePinThunk(pinId))
-            if (deletedPin) history.push('/discover')
-          }}><i class="fa-solid fa-trash-can"></i></button>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to delete</h4>)}
+            {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
+              const deletedPin = await dispatch(deletePinThunk(pinId))
+              if (deletedPin) history.push('/discover')
+            }}><i class="fa-solid fa-trash-can"></i></button>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to delete</h4>)}
+          </div>
+          <div className='pin-second-div'>
+            <h2>{pin?.title}</h2>
+          </div>
+          <div className='pin-third-div'>
+            <h4>{pin?.description}</h4>
+          </div>
         </div>
-        <div className='pin-second-div'>
-          <h2>{pin?.title}</h2>
+      </div>
+      <div className='pin-bottom-container'>
+        <div className='pin-bottom-first-div'>
+          <h2>More Projects Like This</h2>
         </div>
-        <div className='pin-third-div'>
-          <h4>{pin?.description}</h4>
+        <div className='project-item'>
+          <a className='airbnb' href='https://beautifuldestinations.onrender.com/'>
+            <img className='project-image' src='https://webdesignledger.com/wp-content/uploads/2015/09/00-featured-airbnb-pink-logomark.jpg' alt='No Preview' />
+          </a>
+          <a className='github' href='https://github.com/drewduong'>
+            <img className='project-image' src='https://logodownload.org/wp-content/uploads/2019/08/github-logo.png' alt='No Preview' />
+          </a>
+          <a className='stackoverflow' href='https://stackunderflow.onrender.com/'>
+            <img className='project-image' src='https://i.pinimg.com/736x/36/30/9f/36309f22e4c16447b085400be01bbc1e.jpg' alt='No Preview' />
+          </a>
         </div>
       </div>
     </div>
