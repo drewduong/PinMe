@@ -16,6 +16,7 @@ import AllPins from './components/AllPins';
 import CreatePinForm from './components/CreatePinForm'
 import PinDetails from './components/PinDetails'
 import UpdatePinForm from './components/UpdatePinForm'
+import LandingPage from './components/LandingPage'
 import { authenticate } from './store/session';
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>Not Logged In Homescreen</h1>
+          <LandingPage />
         </Route>
         <ProtectedRoute path='/discover' exact={true} >
           <AllPins />

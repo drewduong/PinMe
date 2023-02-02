@@ -10,6 +10,15 @@
   /* border: 2px solid red */
 }
 
+.discover-top-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  /* border: 2px solid black; */
+}
+
 .discover-item {
   /* box-sizing: border-box; */
   width: 16vw;

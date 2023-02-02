@@ -18,6 +18,7 @@ const AllPins = () => {
 
   return (
     <div className='discover-container'>
+      <div className='discover-top-div'><h3>Interact With User Pins By Clicking Below</h3></div>
       {pins.map(pin => (
         <div className='discover-item'>
           <NavLink to={`/pins/${pin.id}`}>

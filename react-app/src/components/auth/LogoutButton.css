@@ -4,3 +4,7 @@
   font-size: 1.5rem;
   color: rgb(128, 128, 128);
 }
+
+.logout-button:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+.pin-container {
+  display: flex;
+  /* border: 2px solid black; */
+  margin: 2rem 20rem;
+  border-radius: 10px;
+}
+
+.pin-image {
+  height: 100%;
+  width: 30vw;
+  border-radius: 5%;
+  /* border: 2px solid black; */
+}
+
+.pin-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* border: 1px solid red */
+}
+
+.pin-first-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-direction: row; */
+  /* border: 1px solid green */
+}
+
+.pin-second-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.pin-third-div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
