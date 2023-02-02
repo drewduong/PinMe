@@ -8,8 +8,10 @@
   height: 8vh;
   padding: 0;
   margin: 0;
+  position: sticky;
+  top: 0;
   /* border: 2px solid black; */
-  border-bottom: rgb(230, 230, 230) 1px solid;
+  /* border-bottom: rgb(230, 230, 230) 1px solid; */
 }
 
 .left-nav {
