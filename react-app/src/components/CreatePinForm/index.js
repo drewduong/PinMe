@@ -55,7 +55,7 @@ const CreatePinForm = () => {
         board_id: boardId,
         user_id: user.id
       }
-      console.log('pin info: ', pin)
+      // console.log('pin info: ', pin)
 
       dispatch(createPinThunk(pin))
       history.push('/discover')
