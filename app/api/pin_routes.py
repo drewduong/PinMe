@@ -19,7 +19,7 @@ def get_pins():
 # @login_required
 def get_board_pins():
     pins = Pin.query.filter(current_user.id == Pin.user_id).all()
-    print('*****Query result***** from users pins**', pins)
+    # print('*****Query result***** from users pins**', pins)
     return {'pins': [pin.to_dict() for pin in pins]}, 200
 
 
@@ -38,7 +38,7 @@ def create_pin():
             user_id=current_user.id,
             board_id=form.data['board_id']
         )
-        print('New pin data input (route)', new_pin)
+        # print('New pin data input (route)', new_pin)
 
         db.session.add(new_pin)
         db.session.commit()

@@ -19,6 +19,16 @@
   border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
+.pinning-item select {
+  height: 35px;
+  width: 394px;
+  text-indent: 1rem;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-color: rgb(211, 211, 211, 0.4);
+  text-indent: 1rem;
+}
+
 .pinning-item input {
   height: 35px;
   width: 394px;

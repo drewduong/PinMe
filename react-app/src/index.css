@@ -7,3 +7,8 @@
 html {
   background-color: #FAF9F6;
 }
+
+body {
+  padding: 0;
+  margin: 0;
+}

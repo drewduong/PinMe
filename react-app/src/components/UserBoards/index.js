@@ -14,7 +14,7 @@ const UserBoards = () => {
 
   const user = useSelector(state => state.session.user)
   const boards = useSelector(state => Object.values(state.boards))
-  console.log('Current user boards (useSelector):', boards)
+  // console.log('Current user boards (useSelector):', boards)
 
   /* Passive data: dispatch within useEffect
   Active data, dispatch within onSubmit */

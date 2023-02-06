@@ -21,4 +21,4 @@ class PinForm(FlaskForm):
     description = StringField("Description", validators=[DataRequired()])
     pin_image = StringField("Pin Preview Image", validators=[DataRequired()])
     user_id = IntegerField("User Id", validators=[DataRequired()])
-    board_id = IntegerField("Board Id", validators=[DataRequired()])
+    board_id = IntegerField("Board Id")

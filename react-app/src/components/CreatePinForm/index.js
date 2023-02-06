@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createPinThunk } from '../../store/pins';
+import { getUserBoardsThunk } from '../../store/boards'
 import './CreatePinForm.css';
 
 const CreatePinForm = () => {
@@ -9,22 +10,29 @@ const CreatePinForm = () => {
   const dispatch = useDispatch()
 
   const user = useSelector(state => state.session.user)
+  const boards = useSelector(state => Object.values(state.boards))
+  // console.log('Current user boards (useSelector): ', boards)
 
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [pinImage, setPinImage] = useState("")
-  const [boardId, setBoardId] = useState("")
+  const [boardId, setBoardId] = useState(boards[0]?.id)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-
+  const [isLoaded, setIsLoaded] = useState(false)
   const [validationErrors, setValidationErrors] = useState([])
 
   /* Passive data: dispatch within useEffect
      Active data, dispatch within onSubmit */
 
   useEffect(() => {
+    dispatch(getUserBoardsThunk())
+      .then(() => setIsLoaded(true))
+  }, [dispatch])
+
+  useEffect(() => {
     const errors = []
 
-    if (!boardId) errors.push("Board id is required")
+    // if (!boardId) errors.push("Board id is required")
     if (!title) errors.push("Title of board is required")
     if (title.length > 30) errors.push("Title must be less than 30 characters")
     if (!description) errors.push("Pin description is required")
@@ -47,13 +55,16 @@ const CreatePinForm = () => {
         board_id: boardId,
         user_id: user.id
       }
+      console.log('pin info: ', pin)
 
       dispatch(createPinThunk(pin))
       history.push('/discover')
     }
   }
 
-  return (
+  if (!boards) return (<h3>Currently no boards</h3>)
+
+  return isLoaded && (
     <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
         <div className="pinning-item">
@@ -63,12 +74,20 @@ const CreatePinForm = () => {
               <li key={idx}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</li>
             ))}
           </ul>
-          <input
+          {/* <input
             type="text"
             value={boardId}
             onChange={(e) => setBoardId(e.target.value)}
             placeholder='Board Id'
-          />
+          /> */}
+          <select className='select'
+            onChange={e => setBoardId(e.target.value)}
+            value={boardId}
+          >
+            {boards.map(board => (
+              <option key={board.id} value={board.id}>{board.name}</option>
+            ))}
+          </select>
           <input
             type="text"
             value={title}
