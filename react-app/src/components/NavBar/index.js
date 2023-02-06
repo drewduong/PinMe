@@ -54,6 +54,17 @@ const NavBar = () => {
           </NavLink>
         </li> */}
         <li>
+          <a className='github-button' href='https://github.com/drewduong'>
+            Github
+          </a>
+        </li>
+        <li>
+          <a className='linkedin-button' href='https://www.linkedin.com/in/andrewrduong'>
+            LinkedIn
+          </a>
+        </li>
+
+        <li>
           <NavLink className='boards-button' to='/boards' exact={true} activeClassName='active'>
             {/* <i class="fa-solid fa-clipboard"></i> */}
             Boards

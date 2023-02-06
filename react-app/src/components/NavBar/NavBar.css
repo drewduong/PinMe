@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-content: space-between;
   align-items: center;
-  width: 13%;
+  width: 15%;
   padding: 0 1rem;
   /* border: 2px solid black; */
 }
@@ -32,7 +32,7 @@
   padding: 0 1rem;
   /* background-color: rgb(196, 226, 227); */
   /* border: 2px solid black; */
-  width: 15%;
+  width: 25%;
 }
 
 .logo {
@@ -63,6 +63,20 @@
 }
 
 .signup-button {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.github-button {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.linkedin-button {
   color: black;
   text-decoration: none;
   font-weight: 600;
