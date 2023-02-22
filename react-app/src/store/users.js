@@ -37,7 +37,7 @@ export const updateProfileThunk = (user, userId) => async (dispatch) => {
 
 const initialState = {}
 
-const profileReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PROFILE: {
       const newState = { ...state }
@@ -51,4 +51,4 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export default profileReducer
+export default userReducer
