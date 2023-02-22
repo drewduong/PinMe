@@ -23,3 +23,24 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>')
+@login_required
+def update_profile(id):
+    """
+    Updating user profile details
+    """
+    form = UpdateProfile()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        user = User.query.get(id)
+        user.first_name = form.data['first_name']
+        user.last_name = form.data['last_name']
+        user.about = form.data['about']
+
+        db.session.commit()
+
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
