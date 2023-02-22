@@ -29,8 +29,13 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
-      <div className='user-info'>
+      <div className='user-username'>
         @{user.username}
+      </div>
+      <div className='user-profile'>
+        <button className='edit-user-profile-button'>
+          <NavLink className='edit-user-navlink' to={'/profile/edit'}>Edit Profile</NavLink>
+        </button>
       </div>
       <div className='boards-new'>
         <button className='new-board-button'>

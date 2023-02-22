@@ -21,7 +21,14 @@
 }
 
 /* ---------USER PROFILE-------*/
-.user-info {
+.user-username {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.user-profile {
   display: flex;
   justify-content: center;
   width: 100%;
