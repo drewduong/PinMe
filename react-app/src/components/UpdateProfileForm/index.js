@@ -7,104 +7,85 @@ import './UpdateProfileForm.css';
 const UpdateProfileForm = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const { pinId } = useParams()
+  const { userId } = useParams()
 
   const user = useSelector(state => state.session.user)
-  const boards = useSelector(state => Object.values(state.boards))
-  const pin = useSelector(state => state.pins[+pinId])
+  // const boards = useSelector(state => Object.values(state.boards))
+  // const pin = useSelector(state => state.pins[+pinId])
   // console.log('Current pin details (useSelector):', board)
 
-  const [boardId, setBoardId] = useState(pin.board_id)
-  const [title, setTitle] = useState(pin.title)
-  const [description, setDescription] = useState(pin.description)
-  const [pinImage, setPinImage] = useState(pin.pin_image)
+  const [firstName, setFirstName] = useState(user.first_name || '')
+  const [lastName, setLastName] = useState(user.last_name || '')
+  const [about, setAbout] = useState(user.about || '')
+  // const [isLoaded, setIsLoaded] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
   const [validationErrors, setValidationErrors] = useState([])
 
   /* Passive data: dispatch within useEffect
      Active data, dispatch within onSubmit */
 
 
-  useEffect(() => {
-    dispatch(getUserBoardsThunk())
-      .then(() => setIsLoaded(true))
-  }, [dispatch])
+  // useEffect(() => {
+  // dispatch(updateProfileThunk())
+  // .then(() => setIsLoaded(true))
+  // }, [dispatch])
 
   useEffect(() => {
     const errors = []
 
-    // if (!boardId) errors.push("Board id is required")
-    if (!title) errors.push("Title of board is required")
-    if (title.length > 30) errors.push("Title must be less than 30 characters")
-    if (!description) errors.push("Pin description is required")
-    if (description.length > 255) errors.push("Pin description must be less than 255 characters")
-    if (!pinImage) errors.push("Image url is required")
-    if (!pinImage.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Valid image url is required')
+    if (firstName.length > 30) errors.push("First name must be less than 30 characters")
+    if (lastName.length > 30) errors.push("First name must be less than 30 characters")
+    if (about.length > 255) errors.push("About me section must be less than 255 characters")
 
     setValidationErrors(errors)
-  }, [boardId, title, description, pinImage])
+  }, [firstName, lastName, about])
 
   const onSubmit = async (e) => {
     e.preventDefault()
     setHasSubmitted(true)
 
     if (!validationErrors.length) {
-      pin.board_id = boardId
-      pin.title = title
-      pin.description = description
-      pin.pin_image = pinImage
+      user.first_name = firstName
+      user.last_name = lastName
+      user.about = about
 
-      const updatedPin = await dispatch(updatePinThunk(pin, pinId))
-      if (updatedPin) history.push(`/pins/${pinId}`)
+      const updatedProfile = await dispatch(updateProfileThunk(user, userId))
+      if (updatedProfile) history.push(`/profile`)
     }
   }
 
-  if (!boards) return (<h3>Currently no boards</h3>)
+  if (!user) return (<h3>Currently no user logged in</h3>)
 
-  return isLoaded && (
-    <div className="pinning-container">
+  return (
+    <div className="profile-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
-        <div className="pinning-item">
-          <h2>Update Pin</h2>
+        <div className="profile-item">
+          <h2>Public profile</h2>
+          <h4>People visiting your profile will see the following info</h4>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (
               <li key={idx}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</li>
             ))}
           </ul>
-          {/* <input
-            type="text"
-            value={boardId}
-            onChange={(e) => setBoardId(e.target.value)}
-            placeholder='Board Id'
-          /> */}
-          <select className='select'
-            onChange={e => setBoardId(e.target.value)}
-            value={boardId}
-          >
-            {boards.map(board => (
-              <option key={board.id} value={board.id}>{board.name}</option>
-            ))}
-          </select>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder='Title'
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder='First Name'
             maxLength="30"
           />
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder='Tell everyone what your pin is about'
-            maxLength="255"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder='Last Name'
+            maxLength="30"
           />
           <input
-            type="url"
-            value={pinImage}
-            onChange={(e) => setPinImage(e.target.value)}
-            placeholder='Preview image url'
+            type="text"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+            placeholder='About Me'
           />
           <button type="submit">Update</button>
         </div>
@@ -113,4 +94,4 @@ const UpdateProfileForm = () => {
   )
 }
 
-export default UpdatePinForm
+export default UpdateProfileForm

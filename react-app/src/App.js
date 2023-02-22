@@ -16,6 +16,7 @@ import AllPins from './components/AllPins';
 import CreatePinForm from './components/CreatePinForm'
 import PinDetails from './components/PinDetails'
 import UpdatePinForm from './components/UpdatePinForm'
+import UpdateProfileForm from './components/UpdateProfileForm';
 import LandingPage from './components/LandingPage'
 import { authenticate } from './store/session';
 
@@ -56,7 +57,7 @@ function App() {
         <ProtectedRoute path='/discover' exact={true} >
           <AllPins />
         </ProtectedRoute>
-        <ProtectedRoute path='/boards' exact={true}>
+        <ProtectedRoute path='/profile' exact={true}>
           <UserBoards />
         </ProtectedRoute>
         <ProtectedRoute path='/boards/create' exact={true}>
@@ -76,6 +77,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/pins/:pinId/edit' exact={true}>
           <UpdatePinForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/edit' exact={true}>
+          <UpdateProfileForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
