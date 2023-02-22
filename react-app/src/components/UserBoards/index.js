@@ -13,6 +13,7 @@ const UserBoards = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
+  console.log('Current user state (useSelector):', user)
   const boards = useSelector(state => Object.values(state.boards))
   // console.log('Current user boards (useSelector):', boards)
 
@@ -28,6 +29,9 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
+      <div className='user-info'>
+        @{user.username}
+      </div>
       <div className='boards-new'>
         <button className='new-board-button'>
           <NavLink className='new-board-link' to={'/boards/create'}><i class="fa-solid fa-plus"></i></NavLink>

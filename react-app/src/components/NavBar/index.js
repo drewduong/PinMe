@@ -67,7 +67,7 @@ const NavBar = () => {
         <li>
           <NavLink className='boards-button' to='/boards' exact={true} activeClassName='active'>
             {/* <i class="fa-solid fa-clipboard"></i> */}
-            Boards
+            Profile
           </NavLink>
         </li>
         <li>

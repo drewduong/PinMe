@@ -20,6 +20,14 @@
   cursor: pointer
 }
 
+/* ---------USER PROFILE-------*/
+.user-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
 /* ---------BOARD CONTAINER-------*/
 
 .boards-container {
@@ -27,7 +35,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 2rem 1rem;
-  /* border: 2px solid red */
+  border: 2px solid red
 }
 
 .boards-item {
