@@ -71,7 +71,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <LogoutButton />
+          {user ? (<LogoutButton />) : (null)}
         </li>
       </div>
     </ul>
