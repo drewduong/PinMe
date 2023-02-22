@@ -29,8 +29,14 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
+      <div className='user-name'>
+        <h1>{user.first_name} {user.last_name}</h1>
+      </div>
       <div className='user-username'>
         @{user.username}
+      </div>
+      <div className='user-about'>
+        {user.about}
       </div>
       <div className='user-profile'>
         <button className='edit-user-profile-button'>

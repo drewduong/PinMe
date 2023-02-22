@@ -21,7 +21,21 @@
 }
 
 /* ---------USER PROFILE-------*/
+.user-name {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
 .user-username {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.user-about {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -34,6 +48,8 @@
   width: 100%;
   /* border: 1px solid black; */
 }
+
+
 
 /* ---------BOARD CONTAINER-------*/
 
