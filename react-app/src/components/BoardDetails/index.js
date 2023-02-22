@@ -34,7 +34,7 @@ const BoardDetails = () => {
       <div className='board-top-div'>
         <h1 className='board-name'>{board?.name}</h1>
       </div>
-      <div className='board-third-div'><h4>{pins?.length} Pins, Board ID: {board?.id}</h4></div>
+      <div className='board-third-div'><h4>{pins?.length} Pins</h4></div>
       <div className='board-fourth-div'>
         <NavLink className='edit-board-button' to={`/boards/${boardId}/edit`}>
           <i class="fa-solid fa-ellipsis"></i>
