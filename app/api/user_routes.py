@@ -1,6 +1,9 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
+from ..forms import ProfileForm
+from .auth_routes import validation_errors_to_error_messages
+
 
 user_routes = Blueprint('users', __name__)
 
@@ -31,11 +34,12 @@ def update_profile(id):
     """
     Updating user profile details
     """
-    form = UpdateProfile()
+    user = User.query.get(id)
+
+    form = ProfileForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        user = User.query.get(id)
         user.first_name = form.data['first_name']
         user.last_name = form.data['last_name']
         user.about = form.data['about']

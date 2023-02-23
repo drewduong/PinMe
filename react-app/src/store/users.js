@@ -7,6 +7,7 @@ const UPDATE_PROFILE = 'boards/UPDATE_PROFILE'
 
 // Update profile - payload contains updated user details and userId
 const updateProfileAction = (user) => {
+  console.log("Update a user profile (action):", user)
   return {
     type: UPDATE_PROFILE,
     user
@@ -16,8 +17,8 @@ const updateProfileAction = (user) => {
 /*----------THUNK ACTION CREATORS----------*/
 
 export const updateProfileThunk = (user, userId) => async (dispatch) => {
-  // console.log("Update a user input payload (thunk):", userId)
-  const response = await fetch(`/api/users/${userId}`, {
+  console.log("Update a user input payload (thunk):", userId)
+  const response = await fetch(`/api/users/${Number(userId)}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -27,7 +28,7 @@ export const updateProfileThunk = (user, userId) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json()
-    // console.log("Update a user profile backend data (thunk)", data)
+    console.log("Update a user profile backend data (thunk)", data)
     dispatch(updateProfileAction(data))
     return data
   }
@@ -42,7 +43,7 @@ const userReducer = (state = initialState, action) => {
     case UPDATE_PROFILE: {
       const newState = { ...state }
       newState[action.user.id] = action.user
-      // console.log('Update user (reducer)', newState)
+      console.log('Update user (reducer)', newState)
       return newState
     }
     default:

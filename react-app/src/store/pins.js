@@ -10,7 +10,7 @@ const DELETE_PIN = 'pins/DELETE_PIN'
 
 // Get all pins
 const getPinsAction = (pins) => {
-  console.log('Get all pins (action)', pins)
+  // console.log('Get all pins (action)', pins)
   return {
     type: GET_PINS,
     pins
@@ -59,7 +59,7 @@ export const getPinsThunk = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json()
-    console.log('Get all pins (thunk)', data)
+    // console.log('Get all pins (thunk)', data)
     dispatch(getPinsAction(data))
     return data
   }

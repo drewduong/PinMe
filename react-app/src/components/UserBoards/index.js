@@ -13,7 +13,7 @@ const UserBoards = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
-  console.log('Current user state (useSelector):', user)
+  // console.log('Current user state (useSelector):', user)
   const boards = useSelector(state => Object.values(state.boards))
   // console.log('Current user boards (useSelector):', boards)
 

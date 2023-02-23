@@ -15,7 +15,6 @@ def get_board(id):
 
 
 @board_routes.route('/current', methods=['GET'])
-# Double check if needed
 # @login_required
 def get_user_boards():
     boards = Board.query.filter(current_user.id == Board.user_id).all()
@@ -24,7 +23,6 @@ def get_user_boards():
 
 
 @board_routes.route('/new', methods=['POST'])
-# Double check if needed
 @login_required
 def create_board():
     form = BoardForm()
@@ -46,7 +44,6 @@ def create_board():
 
 
 @board_routes.route('/<int:id>', methods=['PUT'])
-# Double check if needed
 @login_required
 def update_board(id):
     board = Board.query.get(id)
@@ -57,13 +54,13 @@ def update_board(id):
     if form.validate_on_submit():
         board.name = form.data['name']
         board.board_image = form.data['board_image']
+
         db.session.commit()
         return board.to_dict(), 201
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @board_routes.route('/<int:id>', methods=['DELETE'])
-# Double check if needed
 @login_required
 def delete_board(id):
     board = Board.query.get(id)

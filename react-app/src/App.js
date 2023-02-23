@@ -57,7 +57,7 @@ function App() {
         <ProtectedRoute path='/discover' exact={true} >
           <AllPins />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile' exact={true}>
+        <ProtectedRoute path='/profile/:userId' exact={true}>
           <UserBoards />
         </ProtectedRoute>
         <ProtectedRoute path='/boards/create' exact={true}>
@@ -78,7 +78,7 @@ function App() {
         <ProtectedRoute path='/pins/:pinId/edit' exact={true}>
           <UpdatePinForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile/edit' exact={true}>
+        <ProtectedRoute path='/profile/:userId/edit' exact={true}>
           <UpdateProfileForm />
         </ProtectedRoute>
       </Switch>
