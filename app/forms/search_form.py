@@ -2,5 +2,5 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 
 
-class SavePinForm(FlaskForm):
+class SearchForm(FlaskForm):
     filter = StringField("Filter")

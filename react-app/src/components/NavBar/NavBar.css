@@ -24,6 +24,19 @@
   /* border: 2px solid black; */
 }
 
+.center-nav {
+  /* display: flex;
+  align-items: center; */
+  /* width: 50vw; */
+  background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.639);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  /* height: 3vw; */
+}
+
 .right-nav {
   display: flex;
   justify-content: space-between;
