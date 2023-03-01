@@ -40,7 +40,7 @@ const UserBoards = () => {
       </div>
       <div className='user-profile'>
         <button className='edit-user-profile-button'>
-          <NavLink className='edit-user-navlink' to={'/profile/edit'}>Edit Profile</NavLink>
+          <NavLink className='edit-user-navlink' to={`/users/${user.id}/edit`}>Edit Profile</NavLink>
         </button>
       </div>
       <div className='boards-new'>

@@ -50,7 +50,7 @@ const UpdateProfileForm = () => {
       user.about = about
 
       const updatedProfile = await dispatch(updateProfileThunk(user, userId))
-      if (updatedProfile) history.push(`/profile`)
+      if (updatedProfile) history.push(`/users/${user.id}`)
     }
   }
 
@@ -71,21 +71,21 @@ const UpdateProfileForm = () => {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder='First Name'
+            placeholder='First name'
             maxLength="30"
           />
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder='Last Name'
+            placeholder='Last name'
             maxLength="30"
           />
           <input
             type="text"
             value={about}
             onChange={(e) => setAbout(e.target.value)}
-            placeholder='About Me'
+            placeholder='About me'
           />
           <button type="submit">Update</button>
         </div>
