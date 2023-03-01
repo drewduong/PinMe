@@ -32,6 +32,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 0.5rem;
   /* border: 1px solid black; */
 }
 
@@ -39,6 +40,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 0.5rem;
   /* border: 1px solid black; */
 }
 
@@ -46,7 +48,21 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 0.5rem;
   /* border: 1px solid black; */
+}
+
+.edit-user-profile-button {
+  border: none;
+  height: 3vw;
+  width: 8vw;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.edit-user-navlink {
+  text-decoration: none;
+  color: black;
 }
 
 
@@ -58,7 +74,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 2rem 1rem;
-  border: 2px solid red
+  /* border: 2px solid red */
 }
 
 .boards-item {
