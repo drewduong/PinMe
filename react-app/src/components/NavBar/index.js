@@ -68,9 +68,9 @@ const NavBar = () => {
           </a>
         </li>
         <li>
-          <NavLink className='boards-button' to={`/users/${user?.id}`} exact={true} activeClassName='active'>
-            Profile
-          </NavLink>
+          {user ? (<NavLink className='profile-button' to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+            <i id='profile' class="fa-solid fa-user"></i>
+          </NavLink>) : (null)}
         </li>
         <li>
           {user ? (<LogoutButton />) : (null)}
