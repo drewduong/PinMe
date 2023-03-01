@@ -45,20 +45,23 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
+          <User /> */}
+        {/* </ProtectedRoute> */}
         <Route path='/' exact={true} >
           <LandingPage />
         </Route>
         <ProtectedRoute path='/discover' exact={true} >
           <AllPins />
         </ProtectedRoute>
-        <ProtectedRoute path='/profile/:userId' exact={true}>
+        <ProtectedRoute path='/users/:userId' exact={true}>
           <UserBoards />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/edit' exact={true}>
+          <UpdateProfileForm />
         </ProtectedRoute>
         <ProtectedRoute path='/boards/create' exact={true}>
           <CreateBoardForm />
@@ -77,9 +80,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/pins/:pinId/edit' exact={true}>
           <UpdatePinForm />
-        </ProtectedRoute>
-        <ProtectedRoute path='/profile/:userId/edit' exact={true}>
-          <UpdateProfileForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
