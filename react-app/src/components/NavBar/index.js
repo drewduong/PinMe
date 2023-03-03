@@ -37,7 +37,7 @@ const NavBar = () => {
         </li>
       </div>
       <div className='center-nav'>
-        <Search />
+        {user ? (<Search />) : (null)}
       </div>
       <div className='right-nav'>
         <li>

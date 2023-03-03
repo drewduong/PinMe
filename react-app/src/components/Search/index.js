@@ -22,7 +22,7 @@ const Search = () => {
           type="text"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          placeholder='Search pins'
+          placeholder='Search'
           maxLength="30"
         />
       </form>
