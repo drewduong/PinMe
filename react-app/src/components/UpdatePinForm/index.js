@@ -10,7 +10,7 @@ const UpdatePinForm = () => {
   const dispatch = useDispatch()
   const { pinId } = useParams()
 
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const boards = useSelector(state => Object.values(state.boards))
   const pin = useSelector(state => state.pins[+pinId])
   // console.log('Current pin details (useSelector):', board)

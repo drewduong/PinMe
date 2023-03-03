@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './LandingPage.css';
 
 const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
 const LandingPage = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-
-  const user = useSelector(state => state.session.user)
 
   return (
     <div className="landing-container">

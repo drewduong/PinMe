@@ -57,6 +57,7 @@ def update_board(id):
 
         db.session.commit()
         return board.to_dict(), 201
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

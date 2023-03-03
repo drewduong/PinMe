@@ -17,14 +17,6 @@ const getPinsAction = (pins) => {
   }
 }
 
-// Get board's pins
-// const getBoardPinsAction = (pins) => {
-// console.log('Get all board's pins (action)', pins)
-//   return {
-//     type: GET_BOARD_PINS,
-//     pins
-//   }
-// }
 
 // Create a pin
 const createPinAction = (pin) => {
@@ -54,8 +46,26 @@ const deletePinAction = (pinId) => {
 
 /*----------THUNK ACTION CREATORS----------*/
 
-export const getPinsThunk = () => async (dispatch) => {
-  const response = await fetch('/api/pins/')
+// export const getPinsThunk = () => async (dispatch) => {
+//   const response = await fetch('/api/pins/')
+
+//   if (response.ok) {
+//     const data = await response.json()
+//     // console.log('Get all pins (thunk)', data)
+//     dispatch(getPinsAction(data))
+//     return data
+//   }
+// }
+
+
+export const getPinsThunk = (filter = '') => async (dispatch) => {
+  const response = await fetch('/api/pins/', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ filter })
+  })
 
   if (response.ok) {
     const data = await response.json()
@@ -65,15 +75,6 @@ export const getPinsThunk = () => async (dispatch) => {
   }
 }
 
-// export const getBoardPinsThunk = () => async (dispatch) => {
-//   const response = await fetch('/api/pins/current')
-//   if (response.ok) {
-//     const data = await response.json()
-//     // console.log("Get board's pins backend data (thunk):", data)
-//     dispatch(getBoardPinsAction(data))
-//     return data
-//   }
-// }
 
 export const createPinThunk = (pin) => async (dispatch) => {
   // console.log("Create a pin user input payload (thunk):", pin)

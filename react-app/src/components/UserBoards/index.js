@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getUserBoardsThunk } from '../../store/boards';
 import { NavLink } from 'react-router-dom';
 import './UserBoards.css';
@@ -9,7 +8,6 @@ const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
 const UserBoards = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
