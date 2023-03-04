@@ -103,11 +103,12 @@
 }
 
 #search-box {
-  border-radius: 10px;
-  background-color: rgba(231, 231, 231);
-  border: none;
   height: 28px;
   width: 100%;
+  text-indent: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(231, 231, 231);
 }
 
 #search-box:focus-visible {

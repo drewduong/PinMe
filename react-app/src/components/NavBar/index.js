@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import Search from '../Search';
 import './NavBar.css'
 
 
 const NavBar = () => {
+  const location = useLocation()
   const user = useSelector(state => state.session.user)
   return (
     // <nav>
@@ -37,7 +38,7 @@ const NavBar = () => {
         </li>
       </div>
       <div className='center-nav'>
-        {user ? (<Search />) : (null)}
+        {user && location.pathname === '/discover' ? (<Search />) : (null)}
       </div>
       <div className='right-nav'>
         <li>
