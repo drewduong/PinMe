@@ -17,36 +17,23 @@
 .left-nav {
   display: flex;
   justify-content: space-between;
-  align-content: space-between;
   align-items: center;
   width: 15%;
   padding: 0 1rem;
   /* border: 2px solid black; */
 }
 
-.center-nav {
-  /* display: flex;
-  align-items: center; */
-  /* width: 50vw; */
-  background-color: white;
-  border: 1px solid rgba(128, 128, 128, 0.639);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  /* width: 50%; */
-  /* height: 3vw; */
-}
-
 .right-nav {
   display: flex;
   justify-content: space-between;
-  align-content: space-between;
   align-items: center;
   padding: 0 1rem;
   /* background-color: rgb(196, 226, 227); */
   /* border: 2px solid black; */
   width: 25%;
 }
+
+/*-----Navbar Buttons-----*/
 
 .logo {
   width: 40px;
@@ -106,4 +93,25 @@
   border-radius: 14px;
   width: 2vw;
   height: 2vw;
+}
+
+/*-----Search-----*/
+.search {
+  display: flex;
+  align-items: center;
+  width: 60vw;
+}
+
+#search-box {
+  border-radius: 10px;
+  background-color: rgba(231, 231, 231);
+  border: none;
+  height: 28px;
+  width: 100%;
+}
+
+#search-box:focus-visible {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

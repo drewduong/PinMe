@@ -15,13 +15,14 @@ const Search = () => {
   }
 
   return (
-    <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
+    <form className='search' onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
       <input
-        type="text"
+        id='search-box'
+        type='text'
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         placeholder='Search'
-        maxLength="30"
+        maxLength='30'
       />
     </form>
   )
