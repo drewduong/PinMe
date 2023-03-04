@@ -46,18 +46,6 @@ const deletePinAction = (pinId) => {
 
 /*----------THUNK ACTION CREATORS----------*/
 
-// export const getPinsThunk = () => async (dispatch) => {
-//   const response = await fetch('/api/pins/')
-
-//   if (response.ok) {
-//     const data = await response.json()
-//     // console.log('Get all pins (thunk)', data)
-//     dispatch(getPinsAction(data))
-//     return data
-//   }
-// }
-
-
 export const getPinsThunk = (filter = '') => async (dispatch) => {
   const response = await fetch('/api/pins/', {
     method: 'PUT',
@@ -74,7 +62,6 @@ export const getPinsThunk = (filter = '') => async (dispatch) => {
     return data
   }
 }
-
 
 export const createPinThunk = (pin) => async (dispatch) => {
   // console.log("Create a pin user input payload (thunk):", pin)
@@ -131,20 +118,12 @@ const initialState = {}
 const pinReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PINS: {
-      const newState = { ...state }
+      const newState = {}
       action.pins.pins.forEach(pin => {
         newState[pin.id] = pin
       })
       return newState
     }
-    // case GET_BOARD_PINS: {
-    //   const newState = { ...state }
-    //   action.pins.pins.forEach(pin => {
-    //     newState[pin.id] = pin
-    //   })
-    // console.log('All user boards (reducer):', newState)
-    //   return newState
-    // }
     case CREATE_PIN: {
       const newState = { ...state }
       newState[action.pin.id] = action.pin

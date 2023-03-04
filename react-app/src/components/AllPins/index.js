@@ -21,7 +21,7 @@ const AllPins = () => {
   return (
     <div className='discover-container'>
       {pins.map(pin => (
-        <div className='discover-item'>
+        <div key={pin.id} className='discover-item'>
           <NavLink to={`/pins/${pin.id}`}>
             <img className='discover-image'
               onError={e => {
