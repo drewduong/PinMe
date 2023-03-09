@@ -9,11 +9,15 @@ def add_prefix_for_prod(attr):
     else:
         return attr
 
-# follows = db.Table(
-#     "follows",
-#     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
-#     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
-# )
+
+followers = db.Table(
+    "followers",
+    db.Column("follower_id", db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("followed_id", db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), primary_key=True),
+    schema=SCHEMA if environment == "production" else ''
+)
 
 
 class User(db.Model, UserMixin):
@@ -32,6 +36,14 @@ class User(db.Model, UserMixin):
 
     boards = db.relationship('Board', back_populates='user')
     pins = db.relationship('Pin', back_populates='user')
+    # Primaryjoin describes the join between the left table and the junction table, aka "Find all rows in the followers table where follower_id is ____"
+    # Secondaryjoin describes the join between the junction table and the right table, aka "Find all rows in the followers table where followed_id is ____"
+    # When querying using user.followers, it will find them using the primaryjoin to query the followers table for all rows where followed_id == user.id
+    # When querying using user.followed, it will find them using the secondaryjoin to query the followers table for all rows where follower_id == user.id
+    followers = db.relationship(
+        # Check to see if lazy = 'dynamic' is needed
+        # 'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), back_populates='followers')
+        'User', secondary=followers, back_populates='followers')
 
     @property
     def password(self):
@@ -57,7 +69,6 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'about': self.about,
-            # Add pins and board
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins]
         }
