@@ -43,7 +43,7 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         # Check to see if lazy = 'dynamic' is needed
         # 'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), back_populates='followers')
-        'User', secondary=followers, back_populates='followers')
+        'User', secondary=followers, back_populates='following')
 
     @property
     def password(self):
@@ -70,7 +70,10 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'about': self.about,
             'boards': [board.name for board in self.boards],
-            'pins': [pin.title for pin in self.pins]
+            'pins': [pin.title for pin in self.pins],
+            # Added following and followers
+            'following': [user.following for user in self.users],
+            'followers': [user.followers for user in self.users]
         }
 
 
