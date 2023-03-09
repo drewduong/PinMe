@@ -9,6 +9,12 @@ def add_prefix_for_prod(attr):
     else:
         return attr
 
+# follows = db.Table(
+#     "follows",
+#     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
+#     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
+# )
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
