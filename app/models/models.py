@@ -16,7 +16,6 @@ follows = db.Table(
         add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("followed_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), primary_key=True),
-    schema=SCHEMA if environment == "production" else ''
 )
 
 
@@ -70,8 +69,8 @@ class User(db.Model, UserMixin):
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
             # Added following and followers
-            'following': [user.following for user in self.users],
-            'followers': [user.followers for user in self.users]
+            # 'following': [user.following for user in self.users],
+            'followers': [user.followers for user in self.followers]
         }
 
 
