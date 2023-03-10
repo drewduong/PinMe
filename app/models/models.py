@@ -69,7 +69,7 @@ class User(db.Model, UserMixin):
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
             # Added following and followers
-            # 'following': [user.following for user in self.users],
+            'following': [user.following for user in self.followers],
             'followers': [user.followers for user in self.followers]
         }
 
