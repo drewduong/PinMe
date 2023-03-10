@@ -15,9 +15,9 @@ const BoardDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
-  console.log('User details', user)
+  // console.log('User details', user)
   const pin = useSelector(state => state.pins[+pinId])
-  console.log('Pin details', pin)
+  // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
 
   useEffect(() => {

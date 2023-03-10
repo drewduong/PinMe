@@ -25,6 +25,8 @@ def get_pins():
 
     if form.validate_on_submit():
         pins = Pin.query.all()
+        print(
+            "All pins queried to check why lower() isn't an attribute:", pins)
         pins = list(
             filter(lambda pin: form.data['filter'].lower() in pin.title.lower(), pins))
         return {'pins': [pin.to_dict() for pin in pins]}, 200
