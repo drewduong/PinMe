@@ -42,6 +42,14 @@
 
 .pin-second-div {
   display: flex;
+  width: 100%;
+  /* margin-top: 1rem; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pin-third-div {
+  display: flex;
   justify-content: center;
   width: 100%;
   word-break: break-all;
@@ -52,7 +60,7 @@
   /* border: 1px solid red; */
 }
 
-.pin-third-div {
+.pin-fourth-div {
   display: flex;
   justify-content: center;
   width: 100%;
