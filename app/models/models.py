@@ -10,8 +10,8 @@ def add_prefix_for_prod(attr):
         return attr
 
 
-followers = db.Table(
-    "followers",
+follows = db.Table(
+    "follows",
     db.Column("follower_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("followed_id", db.Integer, db.ForeignKey(
@@ -41,9 +41,7 @@ class User(db.Model, UserMixin):
     # When querying using user.followers, it will find them using the primaryjoin to query the followers table for all rows where followed_id == user.id
     # When querying using user.followed, it will find them using the secondaryjoin to query the followers table for all rows where follower_id == user.id
     followers = db.relationship(
-        # Check to see if lazy = 'dynamic' is needed
-        # 'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), back_populates='followers')
-        'User', secondary=followers, back_populates='following')
+        'User', secondary=follows, primaryjoin=(follows.c.follower_id == id), secondaryjoin=(follows.c.followed_id == id), backref=db.backref('following', lazy='dynamic'), lazy='dynamic')
 
     @property
     def password(self):
