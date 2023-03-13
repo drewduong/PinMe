@@ -50,7 +50,11 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-div'>
             <h4>{pin?.user.username}</h4>
-            <button className='follow-button' >Follow</button>
+            <button className='follow-button' onClick={async (e) => {
+              e.preventDefault()
+              // await dispatch(user.id)
+
+            }}>Follow</button>
           </div>
           <div className='pin-third-div'>
             <h2>{pin?.title}</h2>
