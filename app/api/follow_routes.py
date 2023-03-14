@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User, db
 from ..forms import FollowForm
 from .auth_routes import validation_errors_to_error_messages
@@ -8,43 +8,42 @@ from .auth_routes import validation_errors_to_error_messages
 follow_routes = Blueprint('follows', __name__)
 
 
-@user_routes.route('/')
+@follow_routes.route('/current', methods=['GET'])
 @login_required
-def users():
+def get_user_followers():
     """
-    Query for all users and returns them in a list of user dictionaries
+    Query for all followers and returns them in a list of followers dictionaries
     """
-    users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    followers = User.query.filter(current_user.id == User.followed_id).all()
+    return {'followers': [follower.to_dict() for follower in followers]}, 200
 
 
-@user_routes.route('/<int:id>')
+@follow_routes.route('/<int:id>', methods=['POST'])
 @login_required
-def user(id):
+def create_following():
     """
-    Query for a user by id and returns that user in a dictionary
+    Initiate following a user
     """
-    user = User.query.get(id)
-    return user.to_dict()
-
-
-@user_routes.route('/<int:id>', methods=['PUT'])
-@login_required
-def update_profile(id):
-    """
-    Updating user profile details
-    """
-    user = User.query.get(id)
-
-    form = ProfileForm()
+    form = FollowForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        user.first_name = form.data['first_name']
-        user.last_name = form.data['last_name']
-        user.about = form.data['about']
+        new_follower = User()
+        form.populate_obj(new_follower)
+        new_follower.userId = current_user.id
 
+        db.session.add(new_follower)
         db.session.commit()
 
-        return user.to_dict()
+        return new_follower.to_dict(), 201
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@follow_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def remove_follower(id):
+    follower = User.query.get(id)
+
+    db.session.delete(follower)
+    db.session.commit()
+    return jsonify('Successfully Deleted')
