@@ -1,8 +1,8 @@
 /*----------ACTION TYPES----------*/
 
-const GET_USER_FOLLOWERS = 'follows/GET_USER_FOLLOWERS'
-const FOLLOW = 'follows/FOLLOW'
-const UNFOLLOW = 'follows/UNFOLLOW'
+const GET_USER_FOLLOWERS = 'followers/GET_USER_FOLLOWERS'
+const FOLLOW = 'followers/FOLLOW'
+const UNFOLLOW = 'followers/UNFOLLOW'
 
 
 /*----------ACTION CREATORS----------*/
@@ -75,12 +75,12 @@ export const unfollowThunk = (followerId) => async (dispatch) => {
 
 const initialState = {}
 
-const userReducer = (state = initialState, action) => {
+const followerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_FOLLOWERS: {
       const newState = { ...state }
-      action.users.followers.forEach(user => {
-        newState[user.id] = user
+      action.users.followers.forEach(follower => {
+        newState[follower.id] = follower
       })
       return newState
     }
@@ -100,4 +100,4 @@ const userReducer = (state = initialState, action) => {
 }
 
 
-export default userReducer
+export default followerReducer
