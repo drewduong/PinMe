@@ -35,7 +35,7 @@ const unfollowAction = (follower) => {
 /*----------THUNK ACTION CREATORS----------*/
 
 export const getUserFollowersThunk = () => async (dispatch) => {
-  const response = await fetch('/api/users/current')
+  const response = await fetch('/api/followers/current')
   if (response.ok) {
     const data = await response.json()
     dispatch(getUserFollowersAction(data))
@@ -43,8 +43,8 @@ export const getUserFollowersThunk = () => async (dispatch) => {
   }
 }
 
-export const followThunk = (follower, followerId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${followerId}/follow`, {
+export const followThunk = (follower) => async (dispatch) => {
+  const response = await fetch(`/api/followers/new}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ export const followThunk = (follower, followerId) => async (dispatch) => {
 }
 
 export const unfollowThunk = (followerId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${followerId}`, {
+  const response = await fetch(`/api/followers/${followerId}`, {
     method: 'DELETE'
   })
 
@@ -79,7 +79,7 @@ const followerReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_FOLLOWERS: {
       const newState = { ...state }
-      action.users.followers.forEach(follower => {
+      action.followers.followers.forEach(follower => {
         newState[follower.id] = follower
       })
       return newState

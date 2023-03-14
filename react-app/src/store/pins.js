@@ -45,15 +45,8 @@ const deletePinAction = (pinId) => {
 }
 
 /*----------THUNK ACTION CREATORS----------*/
-
-export const getPinsThunk = (filter = '') => async (dispatch) => {
-  const response = await fetch('/api/pins/', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ filter })
-  })
+export const getPinsThunk = () => async (dispatch) => {
+  const response = await fetch('/api/pins/')
 
   if (response.ok) {
     const data = await response.json()
@@ -62,6 +55,23 @@ export const getPinsThunk = (filter = '') => async (dispatch) => {
     return data
   }
 }
+
+// export const getPinsThunk = (filter = '') => async (dispatch) => {
+//   const response = await fetch('/api/pins/', {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ filter })
+//   })
+
+//   if (response.ok) {
+//     const data = await response.json()
+//     // console.log('Get all pins (thunk)', data)
+//     dispatch(getPinsAction(data))
+//     return data
+//   }
+// }
 
 export const createPinThunk = (pin) => async (dispatch) => {
   // console.log("Create a pin user input payload (thunk):", pin)
