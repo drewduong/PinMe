@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.models import User, db
-from ..forms import FollowForm
+from ..forms import FollowerForm
 from .auth_routes import validation_errors_to_error_messages
 
 
-follow_routes = Blueprint('follows', __name__)
+follower_routes = Blueprint('followers', __name__)
 
 
 @follow_routes.route('/current', methods=['GET'])
@@ -24,7 +24,7 @@ def create_following():
     """
     Initiate following a user
     """
-    form = FollowForm()
+    form = FollowerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
