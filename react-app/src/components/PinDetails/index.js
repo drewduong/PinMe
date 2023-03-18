@@ -18,8 +18,10 @@ const PinDetails = () => {
   const user = useSelector(state => state.session.user)
   // console.log('User details', user)
   const pin = useSelector(state => state.pins[+pinId])
-  console.log('Pin details', pin)
+  // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
+  const pinOwner = pin?.user.id
+
 
 
   useEffect(() => {
@@ -54,7 +56,8 @@ const PinDetails = () => {
             <h4>{pin?.user.username}</h4>
             <button className='follow-button' onClick={async (e) => {
               e.preventDefault()
-              const followed = await dispatch(followThunk())
+
+              const followed = await dispatch(followThunk(pinOwner))
               if (followed) history.push('/discover')
             }}>Follow</button>
           </div>

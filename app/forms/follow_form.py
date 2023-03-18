@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired, ValidationError
 from app.models import db, User, Pin
 
 
-class FollowerForm(FlaskForm):
+class FollowForm(FlaskForm):
     user_id = IntegerField("User Id", validators=[DataRequired()])

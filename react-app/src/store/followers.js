@@ -35,7 +35,7 @@ const unfollowAction = (follower) => {
 /*----------THUNK ACTION CREATORS----------*/
 
 export const getUserFollowersThunk = () => async (dispatch) => {
-  const response = await fetch('/api/followers/current')
+  const response = await fetch('/api/follows/current')
   if (response.ok) {
     const data = await response.json()
     dispatch(getUserFollowersAction(data))
@@ -43,13 +43,16 @@ export const getUserFollowersThunk = () => async (dispatch) => {
   }
 }
 
-export const followThunk = (follower) => async (dispatch) => {
-  const response = await fetch(`/api/followers/new}`, {
+export const followThunk = (pinOwner) => async (dispatch) => {
+  // console.log('pin owner: ', pinOwner)
+  const url = `/api/follows/users/${pinOwner}`
+  // console.log('url: ', url)
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(follower)
+    body: JSON.stringify(pinOwner)
   })
   if (response.ok) {
     const data = await response.json()
@@ -59,7 +62,7 @@ export const followThunk = (follower) => async (dispatch) => {
 }
 
 export const unfollowThunk = (followerId) => async (dispatch) => {
-  const response = await fetch(`/api/followers/${followerId}`, {
+  const response = await fetch(`/api/follows/${followerId}`, {
     method: 'DELETE'
   })
 

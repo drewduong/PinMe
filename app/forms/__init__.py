@@ -5,4 +5,4 @@ from .pin_form import PinForm
 from .savepin_form import SavePinForm
 from .profile_form import ProfileForm
 from .search_form import SearchForm
-from .follower_form import FollowerForm
+from .follow_form import FollowForm
