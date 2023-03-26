@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getPinsThunk } from '../../store/pins';
 import { deletePinThunk } from '../../store/pins';
-import { followThunk } from '../../store/users';
+import { followThunk, unfollowThunk } from '../../store/users';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
@@ -16,10 +16,12 @@ const PinDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
+  const following = user.following
   // console.log('User details', user)
   const pin = useSelector(state => state.pins[+pinId])
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
+  const isFollowing = following.find(following => following.id === user?.id)
   const pinOwner = pin?.user.id
   // console.log('Pin owner user id: ', pinOwner)
 
@@ -27,6 +29,9 @@ const PinDetails = () => {
     await dispatch(followThunk(pinOwner))
   }
 
+  const unfollowUser = async () => {
+    await dispatch(unfollowThunk(pinOwner))
+  }
 
   useEffect(() => {
     dispatch(getPinsThunk(+pinId))
@@ -58,7 +63,9 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-div'>
             <h4>{pin?.user.username}</h4>
-            <button className='follow-button' onClick={followUser}>Follow</button>
+            {isFollowing ? (<button className='unfollow-button' onClick={unfollowUser}>Unfollow</button>) : (
+              <button className='follow-button' onClick={followUser}>Follow</button>)}
+
           </div>
           <div className='pin-third-div'>
             <h2>{pin?.title}</h2>

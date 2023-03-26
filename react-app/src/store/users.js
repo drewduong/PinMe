@@ -2,7 +2,7 @@
 
 // const GET_USER_FOLLOWERS = 'users/GET_USER_FOLLOWERS'
 const FOLLOW = 'users/FOLLOW'
-// const UNFOLLOW = 'users/UNFOLLOW'
+const UNFOLLOW = 'users/UNFOLLOW'
 const UPDATE_PROFILE = 'users/UPDATE_PROFILE'
 
 
@@ -25,12 +25,12 @@ const followAction = (user) => {
 }
 
 // Unfollow a user
-// const unfollowAction = (user) => {
-//   return {
-//     type: UNFOLLOW,
-//     user
-//   }
-// }
+const unfollowAction = (user) => {
+  return {
+    type: UNFOLLOW,
+    user
+  }
+}
 
 // Update profile - payload contains updated user details and userId
 const updateProfileAction = (user) => {
@@ -52,16 +52,13 @@ const updateProfileAction = (user) => {
 //   }
 // }
 
-export const followThunk = (followedId) => async (dispatch) => {
-  // console.log('pin owner: ', pinOwner)
-  const url = `/api/users/${followedId}/follow`
-  // console.log('url: ', url)
-  const response = await fetch(url, {
+export const followThunk = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}/follow`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(followedId)
+    body: JSON.stringify(userId)
   })
   if (response.ok) {
     const data = await response.json()
@@ -70,17 +67,17 @@ export const followThunk = (followedId) => async (dispatch) => {
   }
 }
 
-// export const unfollowThunk = (userId) => async (dispatch) => {
-//   const response = await fetch(`/api/follows/${userId}`, {
-//     method: 'DELETE'
-//   })
+export const unfollowThunk = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/follows/${userId}`, {
+    method: 'DELETE'
+  })
 
-//   if (response.ok) {
-//     const data = await response.json()
-//     dispatch(unfollowAction(userId))
-//     return data
-//   }
-// }
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(unfollowAction(userId))
+    return data
+  }
+}
 
 export const updateProfileThunk = (user, userId) => async (dispatch) => {
   // console.log("Update a user input payload (thunk):", userId)
@@ -118,11 +115,11 @@ const userReducer = (state = initialState, action) => {
       newState[action.user.id] = action.user
       return newState
     }
-    // case UNFOLLOW: {
-    //   const newState = { ...state }
-    //   delete newState[action.userId]
-    //   return newState
-    // }
+    case UNFOLLOW: {
+      const newState = { ...state }
+      delete newState[action.userId]
+      return newState
+    }
     case UPDATE_PROFILE: {
       const newState = { ...state }
       newState[action.user.id] = action.user
