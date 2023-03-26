@@ -16,21 +16,22 @@ const PinDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
+  console.log('User details: ', user)
   const following = user.following
-  // console.log('User details', user)
+  console.log('Current session user following list: ', following)
   const pin = useSelector(state => state.pins[+pinId])
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
-  const isFollowing = following.find(following => following.id === user?.id)
-  const pinOwner = pin?.user.id
+  const pinOwner = pin?.user
+  const isFollowing = following.find(following => following === pinOwner?.username)
   // console.log('Pin owner user id: ', pinOwner)
 
   const followUser = async () => {
-    await dispatch(followThunk(pinOwner))
+    await dispatch(followThunk(pinOwner.id))
   }
 
   const unfollowUser = async () => {
-    await dispatch(unfollowThunk(pinOwner))
+    await dispatch(unfollowThunk(pinOwner.id))
   }
 
   useEffect(() => {
