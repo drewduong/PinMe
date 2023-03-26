@@ -39,8 +39,8 @@ class User(db.Model, UserMixin):
     # Secondaryjoin describes the join between the junction table and the right table, aka "Find all rows in the followers table where followed_id is ____"
     # When querying using user.followers, it will find them using the primaryjoin to query the followers table for all rows where followed_id == user.id
     # When querying using user.followed, it will find them using the secondaryjoin to query the followers table for all rows where follower_id == user.id
-    followers = db.relationship(
-        'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), backref=db.backref('following', lazy='dynamic'), lazy='dynamic')
+    followed = db.relationship(
+        'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 
     @property
     def password(self):
@@ -69,6 +69,18 @@ class User(db.Model, UserMixin):
     otherwise Flask converts the dictionary automatically in the frontend
     '''
 
+    # def to_dict_followers(self):
+    #     return {
+    #         'id': self.id,
+    #         'username': self.username,
+    #         'email': self.email,
+    #         'first_name': self.first_name,
+    #         'last_name': self.last_name,
+    #         'about': self.about,
+    #         'boards': [board.name for board in self.boards],
+    #         'pins': [pin.title for pin in self.pins]
+    #     }
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -79,9 +91,10 @@ class User(db.Model, UserMixin):
             'about': self.about,
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
-            # Added following and followers
-            'following': [user.following for user in self.followers],
-            'followers': [user.followers for user in self.followers]
+            # 'following': [following.to_dict_followers() for following in self.followed],
+            # 'followers': [follower.to_dict_followers() for follower in self.followers]
+            'following': [following.username for following in self.followed],
+            'followers': [follower.username for follower in self.followers]
         }
 
 
