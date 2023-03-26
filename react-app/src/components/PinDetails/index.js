@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getPinsThunk } from '../../store/pins';
 import { deletePinThunk } from '../../store/pins';
-import { followThunk } from '../../store/followers';
+import { followThunk } from '../../store/users';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 

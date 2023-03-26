@@ -6,14 +6,12 @@ import session from './session'
 import boardReducer from './boards';
 import pinReducer from './pins';
 import userReducer from './users';
-import followerReducer from './followers';
 
 const rootReducer = combineReducers({
   session,
   boards: boardReducer,
   pins: pinReducer,
   users: userReducer,
-  followers: followerReducer
 });
 
 

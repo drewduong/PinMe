@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User, db
-from ..forms import ProfileForm
+from ..forms import ProfileForm, FollowForm
 from .auth_routes import validation_errors_to_error_messages
 
 
@@ -26,6 +26,30 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/follow', methods=['POST'])
+@login_required
+def follow_user(id):
+    """
+    Initiate following a user
+    """
+    form = FollowForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    follower_id = current_user.id
+    followed_id = User.query.get(id)
+
+    if form.validate_on_submit():
+        new_follower = User()
+        form.populate_obj(new_follower)
+        new_follower.userId = follower_id
+
+        db.session.add(new_follower)
+        db.session.commit()
+
+        return new_follower.to_dict(), 201
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @user_routes.route('/<int:id>', methods=['PUT'])
