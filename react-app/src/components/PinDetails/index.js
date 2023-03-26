@@ -21,9 +21,10 @@ const PinDetails = () => {
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user.id
+  // console.log('Pin owner user id: ', pinOwner)
 
   const followUser = async () => {
-    await dispatch(followThunk(user.id))
+    await dispatch(followThunk(pinOwner))
   }
 
 

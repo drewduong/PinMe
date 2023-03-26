@@ -69,18 +69,6 @@ class User(db.Model, UserMixin):
     otherwise Flask converts the dictionary automatically in the frontend
     '''
 
-    # def to_dict_followers(self):
-    #     return {
-    #         'id': self.id,
-    #         'username': self.username,
-    #         'email': self.email,
-    #         'first_name': self.first_name,
-    #         'last_name': self.last_name,
-    #         'about': self.about,
-    #         'boards': [board.name for board in self.boards],
-    #         'pins': [pin.title for pin in self.pins]
-    #     }
-
     def to_dict(self):
         return {
             'id': self.id,
@@ -91,8 +79,6 @@ class User(db.Model, UserMixin):
             'about': self.about,
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
-            # 'following': [following.to_dict_followers() for following in self.followed],
-            # 'followers': [follower.to_dict_followers() for follower in self.followers]
             'following': [following.username for following in self.followed],
             'followers': [follower.username for follower in self.followers]
         }
