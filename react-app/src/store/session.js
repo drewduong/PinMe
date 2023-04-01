@@ -176,16 +176,19 @@ const initialState = { user: null, users: {} };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload, users: action.payload }
+      return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
-    case FOLLOW:
-      return { ...state, users: action.payload }
-    // case UNFOLLOW: {
-    //   const newState = { ...state }
-    //   delete newState[action.userId]
-    //   return newState
-    // }
+    case FOLLOW: {
+      const newState = { ...state }
+      newState.users[action.user.id] = action.user
+      return newState
+    }
+    case UNFOLLOW: {
+      const newState = { ...state }
+      delete newState[action.userId]
+      return newState
+    }
     case UPDATE_PROFILE: {
       const newState = { ...state }
       newState[action.user.id] = action.user
