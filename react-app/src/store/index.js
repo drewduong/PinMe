@@ -5,13 +5,13 @@ import session from './session'
 // Import reducers here
 import boardReducer from './boards';
 import pinReducer from './pins';
-import userReducer from './users';
+// import userReducer from './users';
 
 const rootReducer = combineReducers({
   session,
   boards: boardReducer,
   pins: pinReducer,
-  users: userReducer,
+  // users: userReducer,
 });
 
 
