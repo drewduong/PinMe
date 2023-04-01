@@ -179,11 +179,8 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
-    case FOLLOW: {
-      const newState = { ...state }
-      newState.users[action.user.id] = action.user
-      return newState
-    }
+    case FOLLOW:
+      return { ...state, user: action.payload }
     case UNFOLLOW: {
       const newState = { ...state }
       delete newState[action.userId]
