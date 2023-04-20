@@ -182,7 +182,7 @@ export default function reducer(state = initialState, action) {
     case FOLLOW:
       return { ...state, user: action.payload }
     case UNFOLLOW:
-      return { ...state.filter(username => username !== action.payload.username) }
+      return { ...state.filter(username => username !== action.payload) }
     case UPDATE_PROFILE: {
       const newState = { ...state }
       newState[action.user.id] = action.user

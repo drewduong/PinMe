@@ -49,7 +49,7 @@ def follow(id):
     return jsonify(current_user.to_dict())
 
 
-@user_routes.route('/<int:id>/unfollow', methods=['DELETE'])
+@user_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def unfollow(id):
     """
