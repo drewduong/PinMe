@@ -1,9 +1,9 @@
 // constants
-// const SET_USER = 'session/SET_USER';
-// const REMOVE_USER = 'session/REMOVE_USER';
-// const FOLLOW = 'session/FOLLOW'
-// const UNFOLLOW = 'session/UNFOLLOW'
-// const UPDATE_PROFILE = 'session/UPDATE_PROFILE'
+const SET_USER = 'session/SET_USER';
+const REMOVE_USER = 'session/REMOVE_USER';
+const FOLLOW = 'session/FOLLOW'
+const UNFOLLOW = 'session/UNFOLLOW'
+const UPDATE_PROFILE = 'session/UPDATE_PROFILE'
 
 const setUser = (user) => ({
   type: SET_USER,

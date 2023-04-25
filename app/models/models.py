@@ -79,8 +79,8 @@ class User(db.Model, UserMixin):
             'about': self.about,
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
-            'following': [following.username for following in self.followed],
-            'followers': [follower.username for follower in self.followers]
+            'following': [{'id': following.id, 'username': following.username} for following in self.followed],
+            'followers': [{'id': follower.id, 'username': follower.username} for follower in self.followers]
         }
 
 
