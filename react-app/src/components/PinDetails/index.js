@@ -14,6 +14,7 @@ const PinDetails = () => {
   const history = useHistory()
   const { pinId } = useParams()
   const [isLoaded, setIsLoaded] = useState(false)
+  // const [hasSubmitted, setHasSubmitted] = useState(false)
 
   const user = useSelector(state => state.session.user)
   console.log('User details: ', user)
@@ -23,15 +24,18 @@ const PinDetails = () => {
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
-  const isFollowing = following.find(following => following === pinOwner?.username)
+  const isFollowing = following?.find(following => following === pinOwner?.username)
   // console.log('Pin owner user id: ', pinOwner)
 
   const followUser = async () => {
     await dispatch(followThunk(pinOwner.id))
+    // setHasSubmitted(!hasSubmitted)
+
   }
 
   const unfollowUser = async () => {
     await dispatch(unfollowThunk(pinOwner.id))
+    // setHasSubmitted(!hasSubmitted)
   }
 
   useEffect(() => {

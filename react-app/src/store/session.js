@@ -16,6 +16,7 @@ const removeUser = () => ({
 
 // Follow a user
 const followAction = (user) => {
+  console.log('follow payload: ', user)
   return {
     type: FOLLOW,
     user
@@ -136,6 +137,7 @@ export const followThunk = (userId) => async (dispatch) => {
   })
   if (response.ok) {
     const data = await response.json()
+    console.log('payload data: ', data)
     dispatch(followAction(data))
     return data
   }
@@ -181,12 +183,12 @@ export default function reducer(state = initialState, action) {
       return { user: null }
     case FOLLOW: {
       const newState = { ...state }
-      newState.users[action.user.id] = action.user
+      newState.user = action.payload
       return newState
     }
     case UNFOLLOW: {
       const newState = { ...state }
-      delete newState[action.userId]
+      newState.user.following = action.payload
       return newState
     }
     case UPDATE_PROFILE: {
