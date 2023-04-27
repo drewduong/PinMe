@@ -18,12 +18,12 @@ const PinDetails = () => {
   const user = useSelector(state => state.session.user)
   // console.log('User details: ', user)
   const following = user.following
-  // console.log('Current session user following list: ', following)
+  console.log('Current session user following list: ', following)
   const pin = useSelector(state => state.pins[+pinId])
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
-  const isFollowing = following.find(following => following === pinOwner?.username)
+  const isFollowing = following.find(following => following.id === pinOwner?.id)
   // console.log('Pin owner user id: ', pinOwner)
 
   const followUser = async () => {
