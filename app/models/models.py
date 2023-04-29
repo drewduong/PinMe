@@ -53,9 +53,9 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def follow(self, user):
-        if not self.is_following(user):
-            self.followed.append(user)
+    def follow(self, userId, username):
+        if not self.is_following(userId):
+            self.followed.append({'id': userId, 'username': username})
 
     def unfollow(self, user):
         if self.is_following(user):
@@ -79,8 +79,18 @@ class User(db.Model, UserMixin):
             'about': self.about,
             'boards': [board.name for board in self.boards],
             'pins': [pin.title for pin in self.pins],
-            'following': [following.username for following in self.followed],
-            'followers': [follower.username for follower in self.followers]
+            'following': [following.to_dict_followers() for following in self.followed],
+            'followers': [follower.to_dict_followers() for follower in self.followers]
+        }
+
+    def to_dict_followers(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'boards': [board.name for board in self.boards],
+            'pins': [pin.title for pin in self.pins],
+            'date_added': self.date_added.strftime('%Y-%m-%d %H:%M:%S')
         }
 
 

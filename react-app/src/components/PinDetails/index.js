@@ -21,10 +21,11 @@ const PinDetails = () => {
   const following = user.following
   console.log('Current session user following list: ', following)
   const pin = useSelector(state => state.pins[+pinId])
+  const followers = useSelector(state => state.session.user.following)
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
-  const isFollowing = following?.find(following => following === pinOwner?.username)
+  const isFollowing = following?.find(following => following.id === pinOwner?.id)
   // console.log('Pin owner user id: ', pinOwner)
 
   const followUser = async () => {
@@ -41,7 +42,7 @@ const PinDetails = () => {
   useEffect(() => {
     dispatch(getPinsThunk(+pinId))
       .then(() => setIsLoaded(true))
-  }, [dispatch, pinId])
+  }, [dispatch, pinId, followers])
 
   return isLoaded && (
     <div className='pin-outter-container'>

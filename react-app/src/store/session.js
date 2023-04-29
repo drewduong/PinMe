@@ -183,12 +183,13 @@ export default function reducer(state = initialState, action) {
       return { user: null }
     case FOLLOW: {
       const newState = { ...state }
-      newState.user = action.payload
+      newState.user.following.push(action.user.following)
       return newState
     }
     case UNFOLLOW: {
       const newState = { ...state }
-      newState.user.following = action.payload
+      newState.user.following = action.user
+      debugger
       return newState
     }
     case UPDATE_PROFILE: {
