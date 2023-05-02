@@ -28,15 +28,20 @@ const PinDetails = () => {
   const isFollowing = following?.find(following => following.id === pinOwner?.id)
   // console.log('Pin owner user id: ', pinOwner)
 
-  const followUser = async () => {
-    await dispatch(followThunk(pinOwner.id))
-    // setHasSubmitted(!hasSubmitted)
+  const followUser = async (e) => {
+    e.preventDefault()
+
+    const newFollower = {
+      follower_id: user?.id,
+      followed_id: pinOwner?.id
+    }
+
+    await dispatch(followThunk(newFollower))
 
   }
 
   const unfollowUser = async () => {
     await dispatch(unfollowThunk(pinOwner.id))
-    // setHasSubmitted(!hasSubmitted)
   }
 
   useEffect(() => {

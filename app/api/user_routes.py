@@ -28,46 +28,66 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/follow', methods=['POST'])
+# @user_routes.route('/<int:id>/follow', methods=['POST'])
+# @login_required
+# def follow(id):
+#     """
+#     Initiate following a user by user id
+#     """
+
+#     follower_id = current_user.id
+#     followed_id = User.query.get(id)
+
+#     if not followed_id:
+#         return {'errors': 'User not found'}, 404
+
+#     if follower_id == followed_id:
+#         return {'errors': 'You cannot follow yourself'}, 400
+
+#     current_user.follow(followed_id)
+#     db.session.commit()
+#     return jsonify(current_user.to_dict())
+
+@user_routes.route('/', methods=['POST'])
 @login_required
-def follow(id):
+def follow():
     """
     Initiate following a user by user id
     """
 
-    follower_id = current_user.id
-    followed_id = User.query.get(id)
+    form = FollowForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
 
-    if not followed_id:
-        return {'errors': 'User not found'}, 404
+        follower_id = User.query.get(form.data['follower_id'])
+        followed_id = User.query.get(form.data['followed_id'])
 
-    if follower_id == followed_id:
-        return {'errors': 'You cannot follow yourself'}, 400
+        # Appending to the followed array within to_dict_follow()
+        current_user.followed.append(followed_id)
+        db.session.commit()
 
-    current_user.follow(followed_id)
-    db.session.commit()
-    return jsonify(current_user.to_dict())
+        return current_user.to_dict_follow()
 
 
-@user_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
-def unfollow(id):
-    """
-    Initiate unfollowing a user by user id
-    """
+# @user_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+# def unfollow(id):
+#     """
+#     Initiate unfollowing a user by user id
+#     """
 
-    follower_id = current_user.id
-    followed_id = User.query.get(id)
+#     follower_id = current_user.id
+#     followed_id = User.query.get(id)
 
-    if not followed_id:
-        return {'errors': 'User not found'}, 404
+#     if not followed_id:
+#         return {'errors': 'User not found'}, 404
 
-    if follower_id == followed_id:
-        return {'errors': 'You cannot unfollow yourself'}, 400
+#     if follower_id == followed_id:
+#         return {'errors': 'You cannot unfollow yourself'}, 400
 
-    current_user.unfollow(followed_id)
-    db.session.commit()
-    return jsonify(current_user.to_dict())
+#     current_user.unfollow(followed_id)
+#     db.session.commit()
+#     return jsonify(current_user.to_dict())
 
 
 @user_routes.route('/<int:id>', methods=['PUT'])

@@ -128,7 +128,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 }
 
 export const followThunk = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${userId}/follow`, {
+  const response = await fetch(`/api/users/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ export const updateProfileThunk = (user, userId) => async (dispatch) => {
   }
 }
 
-const initialState = { user: null, users: {} };
+const initialState = { user: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -181,9 +181,15 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    // case FOLLOW: {
+    //   const newState = { ...state }
+    //   newState.user.following.push(action.user.following)
+    //   return newState 
+    // }
     case FOLLOW: {
       const newState = { ...state }
-      newState.user.following.push(action.user.following)
+      // action.user from our action type above
+      newState.user.following = action.user
       return newState
     }
     case UNFOLLOW: {
