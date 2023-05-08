@@ -5,4 +5,5 @@ from app.models import db, User, Pin
 
 
 class FollowForm(FlaskForm):
-    user_id = IntegerField("User Id", validators=[DataRequired()])
+    follower_id = IntegerField("Follower")
+    followed_id = IntegerField("Following")

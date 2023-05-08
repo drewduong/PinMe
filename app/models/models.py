@@ -53,17 +53,6 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def follow(self, user):
-        if not self.is_following(user):
-            self.followed.append(user)
-
-    def unfollow(self, user):
-        if self.is_following(user):
-            self.followed.remove(user)
-
-    def is_following(self, user):
-        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
-
     '''
     Normally would return a dictionary, but we need to return JSON Object, 
     otherwise Flask converts the dictionary automatically in the frontend
@@ -78,7 +67,11 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'about': self.about,
             'boards': [board.name for board in self.boards],
-            'pins': [pin.title for pin in self.pins],
+            'pins': [pin.title for pin in self.pins]
+        }
+
+    def to_dict_follow(self):
+        return {
             'following': [{'id': following.id, 'username': following.username} for following in self.followed],
             'followers': [{'id': follower.id, 'username': follower.username} for follower in self.followers]
         }

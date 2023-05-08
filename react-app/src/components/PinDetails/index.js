@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getPinsThunk } from '../../store/pins';
 import { deletePinThunk } from '../../store/pins';
-import { followThunk, unfollowThunk } from '../../store/session';
+import { followThunk, unfollowThunk } from '../../store/follows';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
@@ -16,22 +16,34 @@ const PinDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
-  // console.log('User details: ', user)
-  const following = user.following
-  console.log('Current session user following list: ', following)
+
   const pin = useSelector(state => state.pins[+pinId])
   // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
-  const isFollowing = following.find(following => following.id === pinOwner?.id)
+  // const isFollowing = following?.find(following => following.id === pinOwner?.id)
   // console.log('Pin owner user id: ', pinOwner)
 
-  const followUser = async () => {
-    await dispatch(followThunk(pinOwner.id))
+  const handleFollowing = async (e) => {
+    e.preventDefault()
+
+    const newFollower = {
+      follower_id: user?.id,
+      followed_id: pinOwner?.id
+    }
+
+    await dispatch(followThunk(newFollower))
   }
 
-  const unfollowUser = async () => {
-    await dispatch(unfollowThunk(pinOwner.id))
+  const handleUnfollowing = async (e) => {
+    e.preventDefault()
+
+    const removedFollower = {
+      follower_id: user?.id,
+      followed_id: pinOwner?.id
+    }
+
+    await dispatch(unfollowThunk(removedFollower))
   }
 
   useEffect(() => {
@@ -64,8 +76,10 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-div'>
             <h4>{pin?.user.username}</h4>
-            {isFollowing ? (<button className='unfollow-button' onClick={unfollowUser}>Unfollow</button>) : (
-              <button className='follow-button' onClick={followUser}>Follow</button>)}
+            {/* {isFollowing ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
+              <button className='follow-button' onClick={handleFollowing}>Follow</button>)} */}
+            <button className='follow-button' onClick={handleFollowing}>Follow</button>
+            <button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>
 
           </div>
           <div className='pin-third-div'>
