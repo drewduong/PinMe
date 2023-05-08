@@ -20,9 +20,8 @@ const AllPins = () => {
 
   return (
     <div className='discover-container'>
-      <div className='discover-top-div'><h4>Interact With User Pins By Clicking Below</h4></div>
       {pins.map(pin => (
-        <div className='discover-item'>
+        <div key={pin.id} className='discover-item'>
           <NavLink to={`/pins/${pin.id}`}>
             <img className='discover-image'
               onError={e => {

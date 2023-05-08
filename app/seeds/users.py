@@ -6,7 +6,7 @@ from app.models import db, User, environment, SCHEMA
 def seed_users():
 
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='demo', email='demo@aa.io', password='password')
 
     alexis = User(
         username='alexis', email='alexis@aa.io', password='password')

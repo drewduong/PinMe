@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getUserBoardsThunk } from '../../store/boards';
 import { NavLink } from 'react-router-dom';
 import './UserBoards.css';
@@ -9,10 +8,10 @@ const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
 const UserBoards = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
+  // console.log('Current user state (useSelector):', user)
   const boards = useSelector(state => Object.values(state.boards))
   // console.log('Current user boards (useSelector):', boards)
 
@@ -28,6 +27,20 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
+      <div className='user-name'>
+        <h1>{user.first_name} {user.last_name}</h1>
+      </div>
+      <div className='user-username'>
+        @{user.username}
+      </div>
+      <div className='user-about'>
+        {user.about}
+      </div>
+      <div className='user-profile'>
+        <button className='edit-user-profile-button'>
+          <NavLink className='edit-user-navlink' to={`/users/${user.id}/edit`}>Edit Profile</NavLink>
+        </button>
+      </div>
       <div className='boards-new'>
         <button className='new-board-button'>
           <NavLink className='new-board-link' to={'/boards/create'}><i class="fa-solid fa-plus"></i></NavLink>

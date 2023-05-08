@@ -20,6 +20,53 @@
   cursor: pointer
 }
 
+/* ---------USER PROFILE-------*/
+.user-name {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.user-username {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  /* border: 1px solid black; */
+}
+
+.user-about {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  /* border: 1px solid black; */
+}
+
+.user-profile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  /* border: 1px solid black; */
+}
+
+.edit-user-profile-button {
+  border: none;
+  height: 3vw;
+  width: 8vw;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.edit-user-navlink {
+  text-decoration: none;
+  color: black;
+}
+
+
+
 /* ---------BOARD CONTAINER-------*/
 
 .boards-container {

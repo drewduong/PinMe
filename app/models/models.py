@@ -10,6 +10,15 @@ def add_prefix_for_prod(attr):
         return attr
 
 
+followers = db.Table(
+    "followers",
+    db.Column("follower_id", db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("followed_id", db.Integer, db.ForeignKey(
+        add_prefix_for_prod("users.id")), primary_key=True),
+)
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -20,9 +29,18 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    first_name = db.Column(db.String(40))
+    last_name = db.Column(db.String(40))
+    about = db.Column(db.String(255))
 
     boards = db.relationship('Board', back_populates='user')
     pins = db.relationship('Pin', back_populates='user')
+    # Primaryjoin describes the join between the left table and the junction table, aka "Find all rows in the followers table where follower_id is ____"
+    # Secondaryjoin describes the join between the junction table and the right table, aka "Find all rows in the followers table where followed_id is ____"
+    # When querying using user.followers, it will find them using the primaryjoin to query the followers table for all rows where followed_id == user.id
+    # When querying using user.followed, it will find them using the secondaryjoin to query the followers table for all rows where follower_id == user.id
+    followed = db.relationship(
+        'User', secondary=followers, primaryjoin=(followers.c.follower_id == id), secondaryjoin=(followers.c.followed_id == id), backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
 
     @property
     def password(self):
@@ -35,6 +53,17 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+
+    def is_following(self, user):
+        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
+
     '''
     Normally would return a dictionary, but we need to return JSON Object, 
     otherwise Flask converts the dictionary automatically in the frontend
@@ -45,9 +74,13 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            # Add pins and board
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'about': self.about,
             'boards': [board.name for board in self.boards],
-            'pins': [pin.title for pin in self.pins]
+            'pins': [pin.title for pin in self.pins],
+            'following': [{'id': following.id, 'username': following.username} for following in self.followed],
+            'followers': [{'id': follower.id, 'username': follower.username} for follower in self.followers]
         }
 
 

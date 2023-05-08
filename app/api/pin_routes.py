@@ -2,16 +2,37 @@ from flask import Blueprint, jsonify, request, redirect
 from app.models import Pin, db, User
 from flask_login import current_user
 from ..forms import PinForm
+from ..forms import SearchForm
 from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 
 pin_routes = Blueprint('pins', __name__)
 
+# Get all pins
+
 
 @pin_routes.route('/', methods=['GET'])
+@login_required
 def get_pins():
     pins = Pin.query.all()
     return {'pins': [pin.to_dict() for pin in pins]}, 200
+
+
+# Get all pins filtered by search paramter
+# @pin_routes.route('/', methods=['GET', 'PUT'])
+# def get_pins():
+#     form = SearchForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if form.validate_on_submit():
+#         pins = Pin.query.all()
+#         print(
+#             "All pins queried to check why lower() isn't an attribute:", pins)
+#         pins = list(
+#             filter(lambda pin: form.data['filter'].lower() in pin.title.lower(), pins))
+#         return {'pins': [pin.to_dict() for pin in pins]}, 200
+
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @pin_routes.route('/current', methods=['GET'])
@@ -63,6 +84,7 @@ def update_pin(id):
         pin.board_id = form.data['board_id']
         db.session.commit()
         return pin.to_dict(), 201
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import Search from '../Search';
 import './NavBar.css'
 
 
 const NavBar = () => {
+  const location = useLocation()
   const user = useSelector(state => state.session.user)
   return (
     // <nav>
@@ -34,6 +36,9 @@ const NavBar = () => {
             Create
           </NavLink>
         </li>
+      </div>
+      <div className='center-nav'>
+        {user && location.pathname === '/discover' ? (<Search />) : (null)}
       </div>
       <div className='right-nav'>
         <li>
@@ -63,15 +68,13 @@ const NavBar = () => {
             LinkedIn
           </a>
         </li>
-
         <li>
-          <NavLink className='boards-button' to='/boards' exact={true} activeClassName='active'>
-            {/* <i class="fa-solid fa-clipboard"></i> */}
-            Boards
-          </NavLink>
+          {user ? (<NavLink className='profile-button' to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+            <i id='profile' class="fa-solid fa-user"></i>
+          </NavLink>) : (null)}
         </li>
         <li>
-          <LogoutButton />
+          {user ? (<LogoutButton />) : (null)}
         </li>
       </div>
     </ul>

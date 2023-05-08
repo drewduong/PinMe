@@ -3,22 +3,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getPinsThunk } from '../../store/pins';
 import { deletePinThunk } from '../../store/pins';
+import { followThunk, unfollowThunk } from '../../store/session';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
 const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
-const BoardDetails = () => {
+const PinDetails = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const { pinId } = useParams()
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
-  console.log('User details', user)
+  // console.log('User details: ', user)
+  const following = user.following
+  console.log('Current session user following list: ', following)
   const pin = useSelector(state => state.pins[+pinId])
-  console.log('Pin details', pin)
+  // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
+  const pinOwner = pin?.user
+  const isFollowing = following.find(following => following.id === pinOwner?.id)
+  // console.log('Pin owner user id: ', pinOwner)
+
+  const followUser = async () => {
+    await dispatch(followThunk(pinOwner.id))
+  }
+
+  const unfollowUser = async () => {
+    await dispatch(unfollowThunk(pinOwner.id))
+  }
 
   useEffect(() => {
     dispatch(getPinsThunk(+pinId))
@@ -41,17 +55,23 @@ const BoardDetails = () => {
           <div className='pin-first-div'>
             {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
               <i class="fa-solid fa-ellipsis"></i>
-            </NavLink>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to edit</h4>)}
+            </NavLink>) : (null)}
 
             {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
               const deletedPin = await dispatch(deletePinThunk(pinId))
               if (deletedPin) history.push('/discover')
-            }}><i class="fa-solid fa-trash-can"></i></button>) : (<h4 className='errors'><i class="fa-sharp fa-solid fa-circle-exclamation"></i> Unable to delete</h4>)}
+            }}><i class="fa-solid fa-trash-can"></i></button>) : (null)}
           </div>
           <div className='pin-second-div'>
-            <h2>{pin?.title}</h2>
+            <h4>{pin?.user.username}</h4>
+            {isFollowing ? (<button className='unfollow-button' onClick={unfollowUser}>Unfollow</button>) : (
+              <button className='follow-button' onClick={followUser}>Follow</button>)}
+
           </div>
           <div className='pin-third-div'>
+            <h2>{pin?.title}</h2>
+          </div>
+          <div className='pin-fourth-div'>
             <h4>{pin?.description}</h4>
           </div>
         </div>
@@ -76,5 +96,5 @@ const BoardDetails = () => {
   )
 }
 
-export default BoardDetails
+export default PinDetails
 

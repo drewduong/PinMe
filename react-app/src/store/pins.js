@@ -10,21 +10,13 @@ const DELETE_PIN = 'pins/DELETE_PIN'
 
 // Get all pins
 const getPinsAction = (pins) => {
-  console.log('Get all pins (action)', pins)
+  // console.log('Get all pins (action)', pins)
   return {
     type: GET_PINS,
     pins
   }
 }
 
-// Get board's pins
-// const getBoardPinsAction = (pins) => {
-// console.log('Get all board's pins (action)', pins)
-//   return {
-//     type: GET_BOARD_PINS,
-//     pins
-//   }
-// }
 
 // Create a pin
 const createPinAction = (pin) => {
@@ -53,24 +45,30 @@ const deletePinAction = (pinId) => {
 }
 
 /*----------THUNK ACTION CREATORS----------*/
-
 export const getPinsThunk = () => async (dispatch) => {
   const response = await fetch('/api/pins/')
 
   if (response.ok) {
     const data = await response.json()
-    console.log('Get all pins (thunk)', data)
+    // console.log('Get all pins (thunk)', data)
     dispatch(getPinsAction(data))
     return data
   }
 }
 
-// export const getBoardPinsThunk = () => async (dispatch) => {
-//   const response = await fetch('/api/pins/current')
+// export const getPinsThunk = (filter = '') => async (dispatch) => {
+//   const response = await fetch('/api/pins/', {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({ filter })
+//   })
+
 //   if (response.ok) {
 //     const data = await response.json()
-//     // console.log("Get board's pins backend data (thunk):", data)
-//     dispatch(getBoardPinsAction(data))
+//     // console.log('Get all pins (thunk)', data)
+//     dispatch(getPinsAction(data))
 //     return data
 //   }
 // }
@@ -130,20 +128,12 @@ const initialState = {}
 const pinReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PINS: {
-      const newState = { ...state }
+      const newState = {}
       action.pins.pins.forEach(pin => {
         newState[pin.id] = pin
       })
       return newState
     }
-    // case GET_BOARD_PINS: {
-    //   const newState = { ...state }
-    //   action.pins.pins.forEach(pin => {
-    //     newState[pin.id] = pin
-    //   })
-    // console.log('All user boards (reducer):', newState)
-    //   return newState
-    // }
     case CREATE_PIN: {
       const newState = { ...state }
       newState[action.pin.id] = action.pin

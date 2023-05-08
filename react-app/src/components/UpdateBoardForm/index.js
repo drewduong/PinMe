@@ -9,7 +9,7 @@ const UpdateBoardForm = () => {
   const dispatch = useDispatch()
   const { boardId } = useParams()
 
-  const user = useSelector(state => state.session.user)
+  // const user = useSelector(state => state.session.user)
   const board = useSelector(state => state.boards[+boardId])
   // console.log('Current user board (useSelector):', board)
 

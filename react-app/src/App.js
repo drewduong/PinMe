@@ -5,8 +5,8 @@ import LoginForm from './components/auth/LoginFormModal/LoginForm';
 import SignUpForm from './components/auth/SignUpFormModal/SignUpForm';
 import NavBar from './components/NavBar/index';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import UsersList from './components/UsersList';
+// import User from './components/User';
 // Import remaining components
 import UserBoards from './components/UserBoards/index'
 import CreateBoardForm from './components/CreateBoardForm';
@@ -16,6 +16,7 @@ import AllPins from './components/AllPins';
 import CreatePinForm from './components/CreatePinForm'
 import PinDetails from './components/PinDetails'
 import UpdatePinForm from './components/UpdatePinForm'
+import UpdateProfileForm from './components/UpdateProfileForm';
 import LandingPage from './components/LandingPage'
 import { authenticate } from './store/session';
 
@@ -44,20 +45,23 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
+          <User /> */}
+        {/* </ProtectedRoute> */}
         <Route path='/' exact={true} >
           <LandingPage />
         </Route>
         <ProtectedRoute path='/discover' exact={true} >
           <AllPins />
         </ProtectedRoute>
-        <ProtectedRoute path='/boards' exact={true}>
+        <ProtectedRoute path='/users/:userId' exact={true}>
           <UserBoards />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/edit' exact={true}>
+          <UpdateProfileForm />
         </ProtectedRoute>
         <ProtectedRoute path='/boards/create' exact={true}>
           <CreateBoardForm />
