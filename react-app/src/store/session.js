@@ -1,8 +1,8 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
-const FOLLOW = 'session/FOLLOW'
-const UNFOLLOW = 'session/UNFOLLOW'
+// const FOLLOW = 'session/FOLLOW'
+// const UNFOLLOW = 'session/UNFOLLOW'
 const UPDATE_PROFILE = 'session/UPDATE_PROFILE'
 
 const setUser = (user) => ({
@@ -13,23 +13,6 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
-
-// Follow a user
-const followAction = (user) => {
-  console.log('follow payload: ', user)
-  return {
-    type: FOLLOW,
-    user
-  }
-}
-
-// Unfollow a user
-const unfollowAction = (user) => {
-  return {
-    type: UNFOLLOW,
-    user
-  }
-}
 
 // Update profile - payload contains updated user details and userId
 const updateProfileAction = (user) => {
@@ -127,33 +110,33 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
-export const followThunk = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userId)
-  })
-  if (response.ok) {
-    const data = await response.json()
-    console.log('payload data: ', data)
-    dispatch(followAction(data))
-    return data
-  }
-}
+// export const followThunk = (userId) => async (dispatch) => {
+//   const response = await fetch(`/api/users/`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(userId)
+//   })
+//   if (response.ok) {
+//     const data = await response.json()
+//     console.log('payload data: ', data)
+//     dispatch(followAction(data))
+//     return data
+//   }
+// }
 
-export const unfollowThunk = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${userId}`, {
-    method: 'DELETE'
-  })
+// export const unfollowThunk = (userId) => async (dispatch) => {
+//   const response = await fetch(`/api/users/${userId}`, {
+//     method: 'DELETE'
+//   })
 
-  if (response.ok) {
-    const data = await response.json()
-    dispatch(unfollowAction(userId))
-    return data
-  }
-}
+//   if (response.ok) {
+//     const data = await response.json()
+//     dispatch(unfollowAction(userId))
+//     return data
+//   }
+// }
 
 export const updateProfileThunk = (user, userId) => async (dispatch) => {
   // console.log("Update a user input payload (thunk):", userId)
@@ -173,7 +156,7 @@ export const updateProfileThunk = (user, userId) => async (dispatch) => {
   }
 }
 
-const initialState = { user: null };
+const initialState = { user: null, following: {}, followers: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -181,23 +164,6 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
-    // case FOLLOW: {
-    //   const newState = { ...state }
-    //   newState.user.following.push(action.user.following)
-    //   return newState 
-    // }
-    case FOLLOW: {
-      const newState = { ...state }
-      // action.user from our action type above
-      newState.user.following = action.user
-      return newState
-    }
-    case UNFOLLOW: {
-      const newState = { ...state }
-      newState.user.following = action.user
-      debugger
-      return newState
-    }
     case UPDATE_PROFILE: {
       const newState = { ...state }
       newState[action.user.id] = action.user

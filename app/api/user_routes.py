@@ -52,7 +52,7 @@ def user(id):
 @login_required
 def follow():
     """
-    Initiate following a user by user id
+    Initiate following a user
     """
 
     form = FollowForm()
@@ -62,8 +62,28 @@ def follow():
         follower_id = User.query.get(form.data['follower_id'])
         followed_id = User.query.get(form.data['followed_id'])
 
-        # Appending to the followed array within to_dict_follow()
+        # Appending followed_id to the followed array within to_dict_follow()
         current_user.followed.append(followed_id)
+        db.session.commit()
+
+        return current_user.to_dict_follow()
+
+
+@user_routes.route('/', methods=['DELETE'])
+@login_required
+def unfollow():
+    """
+    Initiate unfollowing a user
+    """
+
+    form = FollowForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+
+        follower_id = User.query.get(form.data['follower_id'])
+        followed_id = User.query.get(form.data['followed_id'])
+
+        current_user.followed.remove(followed_id)
         db.session.commit()
 
         return current_user.to_dict_follow()

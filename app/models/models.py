@@ -78,7 +78,9 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'about': self.about,
             'boards': [board.name for board in self.boards],
-            'pins': [pin.title for pin in self.pins]
+            'pins': [pin.title for pin in self.pins],
+            # 'following': [{'id': following.id, 'username': following.username, 'email': following.email} for following in self.followed],
+            # 'followers': [{'id': follower.id, 'username': follower.username, 'email': follower.email} for follower in self.followers]
         }
 
     def to_dict_follow(self):
