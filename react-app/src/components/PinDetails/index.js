@@ -16,13 +16,13 @@ const PinDetails = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
-
   const pin = useSelector(state => state.pins[+pinId])
-  // console.log('Pin details', pin)
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
   // const isFollowing = following?.find(following => following.id === pinOwner?.id)
-  // console.log('Pin owner user id: ', pinOwner)
+  const following = useSelector(state => state.follows.following)
+  const isFollowing = Object.keys(following)
+
 
   const handleFollowing = async (e) => {
     e.preventDefault()
@@ -76,11 +76,8 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-div'>
             <h4>{pin?.user.username}</h4>
-            {/* {isFollowing ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
-              <button className='follow-button' onClick={handleFollowing}>Follow</button>)} */}
-            <button className='follow-button' onClick={handleFollowing}>Follow</button>
-            <button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>
-
+            {isFollowing.includes(pinOwner?.id.toString()) ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
+              <button className='follow-button' onClick={handleFollowing}>Follow</button>)}
           </div>
           <div className='pin-third-div'>
             <h2>{pin?.title}</h2>
