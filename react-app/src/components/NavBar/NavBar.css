@@ -6,12 +6,10 @@
   box-sizing: border-box;
   width: 100%;
   height: 8vh;
-  padding: 0;
-  margin: 0;
+  padding: 15px 15px 35px 15px;
   position: sticky;
-  top: 0;
   /* border: 2px solid black; */
-  /* border-bottom: rgb(230, 230, 230) 1px solid; */
+  border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
 .left-nav {
@@ -36,7 +34,7 @@
 /*-----Navbar Buttons-----*/
 
 .logo {
-  width: 40px;
+  width: 30px;
   padding: 0 1rem;
   /* border: 1px solid red; */
 }
@@ -93,16 +91,18 @@
 .search {
   display: flex;
   align-items: center;
-  width: 60vw;
+  width: 1048px;
 }
 
 #search-box {
-  height: 28px;
-  width: 100%;
+  height: 48px;
+  width: 1030px;
+  min-width: auto;
+  min-height: auto;
   text-indent: 1rem;
   border: none;
-  border-radius: 10px;
-  background-color: rgba(231, 231, 231);
+  border-radius: 24px;
+  background-color: #E8E5E5;
 }
 
 #search-box:focus-visible {

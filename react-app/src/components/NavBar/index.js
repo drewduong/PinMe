@@ -60,12 +60,12 @@ const NavBar = () => {
         </li> */}
         <li>
           <a className='github-button' href='https://github.com/drewduong'>
-            Github
+            <i class="fa-brands fa-github"></i>
           </a>
         </li>
         <li>
           <a className='linkedin-button' href='https://www.linkedin.com/in/andrewrduong'>
-            LinkedIn
+            <i class="fa-brands fa-linkedin-in"></i>
           </a>
         </li>
         <li>
