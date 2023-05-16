@@ -17,15 +17,13 @@
   justify-content: space-between;
   align-items: center;
   width: 15%;
-  padding: 0 1rem;
   /* border: 2px solid black; */
 }
 
 .right-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 0 1rem;
   /* background-color: rgb(196, 226, 227); */
   /* border: 2px solid black; */
   width: 25%;
@@ -35,7 +33,6 @@
 
 .logo {
   width: 30px;
-  padding: 0 1rem;
   /* border: 1px solid red; */
 }
 
@@ -64,27 +61,34 @@
 }
 
 .github-button {
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
+  color: #5F5F5F;
+  font-size: 1.5rem;
+  /* border-radius: 50%; */
+  border: 2px solid black;
+}
+
+.github-button:hover {
+  background: #E8E5E5;
 }
 
 .linkedin-button {
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
+  color: #5F5F5F;
+  /* font-size: 1.5rem; */
+  width: 80px;
+  height: 40px;
+  border-color: black;
+}
+
+.linkedin-button:hover {
+  background-color: #E8E5E5;
 }
 
 #profile {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: smaller;
-  color: black;
-  background-color: rgb(231, 231, 231);
-  border-radius: 14px;
-  width: 2vw;
-  height: 2vw;
+  font-size: 1.5rem;
+  color: #5F5F5F;
 }
 
 /*-----Search-----*/
