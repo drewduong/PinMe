@@ -75,15 +75,15 @@ const PinDetails = () => {
             }}><i class="fa-solid fa-trash-can"></i></button>) : (null)}
           </div>
           <div className='pin-second-div'>
+            <h2>{pin?.title}</h2>
+          </div>
+          <div className='pin-third-div'>
+            <h4>{pin?.description}</h4>
+          </div>
+          <div className='pin-fourth-div'>
             <h4>{pin?.user.username}</h4>
             {isFollowing.includes(pinOwner?.id.toString()) ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
               <button className='follow-button' onClick={handleFollowing}>Follow</button>)}
-          </div>
-          <div className='pin-third-div'>
-            <h2>{pin?.title}</h2>
-          </div>
-          <div className='pin-fourth-div'>
-            <h4>{pin?.description}</h4>
           </div>
         </div>
       </div>

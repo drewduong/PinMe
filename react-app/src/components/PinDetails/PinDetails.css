@@ -41,15 +41,8 @@
   /* border: 1px solid green */
 }
 
-.pin-second-div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid green
-}
 
-.pin-third-div {
+.pin-second-div {
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -61,7 +54,7 @@
   border: 1px solid red;
 }
 
-.pin-fourth-div {
+.pin-third-div {
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -70,6 +63,14 @@
   overflow: auto;
   box-sizing: border-box;
   border: 1px solid black;
+}
+
+.pin-fourth-div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid green
 }
 
 .follow-button {
