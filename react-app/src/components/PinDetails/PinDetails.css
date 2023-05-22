@@ -3,7 +3,8 @@
 .pin-top-container {
   display: flex;
   justify-content: center;
-  /* width: 50%; */
+  min-width: auto;
+  min-height: auto;
   margin: 2rem 20rem;
   border-radius: 10px;
   /* border: 2px solid black; */
