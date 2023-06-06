@@ -65,24 +65,22 @@
   color: #5F5F5F;
   font-size: 1.5rem;
   /* border-radius: 50%; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
-.github-button:hover {
+/* .github-button:hover {
   background: #E8E5E5;
-}
+} */
 
 .linkedin-button {
   color: #5F5F5F;
-  /* font-size: 1.5rem; */
-  width: 80px;
-  height: 40px;
+  font-size: 1.5rem;
   border-color: black;
 }
 
-.linkedin-button:hover {
+/* .linkedin-button:hover {
   background-color: #E8E5E5;
-}
+} */
 
 #profile {
   display: flex;
