@@ -37,9 +37,9 @@ const NavBar = () => {
           </NavLink>
         </li>
       </div>
-      <div className='center-nav'>
+      {/* <div className='center-nav'>
         {user && location.pathname === '/discover' ? (<Search />) : (null)}
-      </div>
+      </div> */}
       <div className='right-nav'>
         <li>
           {user ? (null) : (<NavLink className='login-button' to='/login' exact={true} activeClassName='active'>
@@ -53,11 +53,6 @@ const NavBar = () => {
             Sign Up
           </NavLink>)}
         </li>
-        {/* <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
         <li>
           <a className='github-button' href='https://github.com/drewduong'>
             <i class="fa-brands fa-github"></i>
