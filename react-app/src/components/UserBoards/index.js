@@ -16,6 +16,10 @@ const UserBoards = () => {
   // console.log('Current user state (useSelector):', user)
   const boards = useSelector(state => Object.values(state.boards))
   // console.log('Current user boards (useSelector):', boards)
+  const followersCount = useSelector(state => Object.keys(state.follows.followers).length)
+  const followingCount = useSelector(state => Object.keys(state.follows.following).length)
+  console.log('Current user followers (useSelector):', followersCount)
+  console.log('Current users following (useSelector):', followingCount)
 
   /* Passive data: dispatch within useEffect
   Active data, dispatch within onSubmit */
@@ -42,6 +46,9 @@ const UserBoards = () => {
       </div>
       <div className='user-about'>
         {user.about}
+      </div>
+      <div className='user-follows'>
+        {followersCount} followers · {followingCount} following
       </div>
       <div className='user-profile'>
         <button className='edit-user-profile-button'>
