@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getPinsThunk } from '../../store/pins';
 import { deletePinThunk } from '../../store/pins';
-import { followThunk, unfollowThunk } from '../../store/follows';
+import { followThunk, unfollowThunk, getFollowsThunk } from '../../store/follows';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
@@ -33,6 +33,7 @@ const PinDetails = () => {
     }
 
     await dispatch(followThunk(newFollower))
+    // await dispatch(getFollowsThunk(pinOwner.id))
   }
 
   const handleUnfollowing = async (e) => {
@@ -44,12 +45,17 @@ const PinDetails = () => {
     }
 
     await dispatch(unfollowThunk(removedFollower))
+    // await dispatch(getFollowsThunk(pinOwner.id))
   }
 
   useEffect(() => {
     dispatch(getPinsThunk(+pinId))
       .then(() => setIsLoaded(true))
   }, [dispatch, pinId])
+
+  // useEffect(() => {
+  //   dispatch(getFollowsThunk(pinOwner?.id))
+  // }, [dispatch, pinOwner.id])
 
   return isLoaded && (
     <div className='pin-outter-container'>

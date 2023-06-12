@@ -1,14 +1,15 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import useLocation from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
-import Search from '../Search';
+// import Search from '../Search';
 import './NavBar.css'
 
 
 const NavBar = () => {
-  const location = useLocation()
+  // const location = useLocation()
   const user = useSelector(state => state.session.user)
   return (
     // <nav>

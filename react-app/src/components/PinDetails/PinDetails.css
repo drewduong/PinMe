@@ -51,7 +51,7 @@
   overflow: auto;
   box-sizing: border-box;
   border-bottom: rgb(230, 230, 230) 1px solid;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .pin-third-div {
@@ -62,7 +62,7 @@
   overflow-wrap: scroll;
   overflow: auto;
   box-sizing: border-box;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .pin-fourth-div {
@@ -70,7 +70,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid green
+  /* border: 1px solid green */
 }
 
 .follow-button {

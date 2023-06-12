@@ -28,6 +28,12 @@ def user(id):
     return user.to_dict()
 
 
+@user_routes.route('/followers/<int:id>')
+def user_follows(id):
+    followers = User.query.get(id)
+    return followers.to_dict_follow()
+
+
 @user_routes.route('/', methods=['POST'])
 @login_required
 def follow():

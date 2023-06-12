@@ -35,10 +35,10 @@ const unfollowAction = (user) => {
 /*----------THUNK ACTION CREATORS----------*/
 
 export const getFollowsThunk = (userId) => async (dispatch) => {
-  const response = await fetch(`api/users/${userId}`)
-
+  const response = await fetch(`/api/users/followers/${userId}`)
   if (response.ok) {
     const data = await response.json()
+    console.log('data from payload: ', data)
     dispatch(getFollowsAction(data))
     return data
   }
@@ -92,8 +92,8 @@ const followsReducer = (state = initialState, action) => {
     case GET_FOLLOWS: {
       const newState = {}
 
-      action.user.following.forEach(following => followingList[following.id] = following)
-      action.user.followers.forEach(followers => followersList[followers.id] = followers)
+      action.user.following?.forEach(following => followingList[following.id] = following)
+      action.user.followers?.forEach(followers => followersList[followers.id] = followers)
 
       newState.following = followingList
       newState.followers = followersList
@@ -102,7 +102,7 @@ const followsReducer = (state = initialState, action) => {
     }
     case FOLLOW: {
       const newState = { ...state, following: { ...state.following }, followers: { ...state.followers } }
-      console.log('newState: ', newState)
+      // console.log('newState: ', newState)
       action.user.following.forEach(following => newState.following[following.id] = following)
       action.user.followers.forEach(followers => newState.followers[followers.id] = followers)
       return newState
