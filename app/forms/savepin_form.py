@@ -5,5 +5,6 @@ from app.models import db, User, Pin
 
 
 class SavePinForm(FlaskForm):
-    board_id = IntegerField("Board Id", validators=[DataRequired()])
-    user_id = IntegerField("User Id", validators=[DataRequired()])
+    board_id = IntegerField("Board Id")
+    user_id = IntegerField("User Id")
+    pin_id = IntegerField("Pin Id")

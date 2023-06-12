@@ -51,6 +51,16 @@
   padding-bottom: 0.5rem;
 }
 
+.user-followers-navlink {
+  text-decoration: none;
+  color: black;
+}
+
+.user-following-navlink {
+  text-decoration: none;
+  color: black;
+}
+
 .user-profile {
   display: flex;
   justify-content: center;

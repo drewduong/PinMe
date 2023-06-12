@@ -44,7 +44,7 @@
 
 .pin-second-div {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   word-break: break-all;
   overflow-wrap: scroll;
@@ -71,6 +71,36 @@
   justify-content: space-between;
   align-items: center;
   /* border: 1px solid green */
+}
+
+.select {
+  border: none;
+}
+
+.save-pin-button {
+  color: white;
+  border: none;
+  margin: 1rem;
+  background-color: rgb(255, 44, 44);
+  font-weight: 600;
+  width: 4.5vw;
+  height: 3vw;
+  border-radius: 30px;
+}
+
+.save-pin-button:hover {
+  cursor: pointer;
+  /* background-color: rgb(226, 226, 226); */
+}
+
+.saved-pin-button {
+  color: white;
+  border: none;
+  background-color: rgb(255, 44, 44);
+  font-weight: 600;
+  width: 4.5vw;
+  height: 3vw;
+  border-radius: 30px;
 }
 
 .follow-button {

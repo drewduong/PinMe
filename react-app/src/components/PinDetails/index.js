@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getPinsThunk } from '../../store/pins';
-import { deletePinThunk } from '../../store/pins';
+import { getUserBoardsThunk } from '../../store/boards';
+import { getPinsThunk, deletePinThunk } from '../../store/pins';
 import { followThunk, unfollowThunk, getFollowsThunk } from '../../store/follows';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
@@ -13,17 +13,28 @@ const PinDetails = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const { pinId } = useParams()
-  const [isLoaded, setIsLoaded] = useState(false)
 
   const user = useSelector(state => state.session.user)
   const pin = useSelector(state => state.pins[+pinId])
+  const boards = useSelector(state => Object.values(state.boards))
   const isPinOwner = user?.id === pin?.user.id
   const pinOwner = pin?.user
   // const isFollowing = following?.find(following => following.id === pinOwner?.id)
   const following = useSelector(state => state.follows.following)
   const isFollowing = Object.keys(following)
 
+  const [boardId, setBoardId] = useState(boards[0]?.id)
+  const [isLoaded, setIsLoaded] = useState(false)
 
+  const handleSavingPin = async (e) => {
+    e.preventDefault()
+
+    const newSavedPin = {
+      board_id: boardId,
+      user_id: user?.id,
+      pin_id: pinId
+    }
+  }
   const handleFollowing = async (e) => {
     e.preventDefault()
 
@@ -53,9 +64,17 @@ const PinDetails = () => {
       .then(() => setIsLoaded(true))
   }, [dispatch, pinId])
 
+  useEffect(() => {
+    dispatch(getUserBoardsThunk())
+      .then(() => setIsLoaded(true))
+  }, [dispatch])
+
   // useEffect(() => {
   //   dispatch(getFollowsThunk(pinOwner?.id))
   // }, [dispatch, pinOwner.id])
+
+  if (!boards) return (<h3>Currently no boards</h3>)
+
 
   return isLoaded && (
     <div className='pin-outter-container'>
@@ -82,6 +101,17 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-div'>
             <h2>{pin?.title}</h2>
+            <form handleSavingPin={handleSavingPin}>
+              <select className='select'
+                onChange={e => setBoardId(e.target.value)}
+                value={boardId}
+              >
+                {boards.map(board => (
+                  <option key={board.id} value={board.id}>{board.name}</option>
+                ))}
+              </select>
+              <button className='save-pin-button' type="submit">Save</button>
+            </form>
           </div>
           <div className='pin-third-div'>
             <h4>{pin?.description}</h4>

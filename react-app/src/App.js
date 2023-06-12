@@ -18,6 +18,8 @@ import PinDetails from './components/PinDetails'
 import UpdatePinForm from './components/UpdatePinForm'
 import UpdateProfileForm from './components/UpdateProfileForm';
 import LandingPage from './components/LandingPage'
+import UserFollowers from './components/UserFollowers';
+import UserFollowing from './components/UserFollowing';
 import { authenticate } from './store/session';
 
 function App() {
@@ -80,6 +82,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/pins/:pinId/edit' exact={true}>
           <UpdatePinForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/followers' exact={true}>
+          <UserFollowers />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/following' exact={true}>
+          <UserFollowing />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

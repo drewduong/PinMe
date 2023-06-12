@@ -1,0 +1,21 @@
+.follows-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+}
+
+.follows-item {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* box-sizing: border-box; */
+  /* block-size: fit-content; */
+  width: 400px;
+  margin: 0 0 1rem 0;
+  border-radius: 10px;
+  border: 2px solid rgb(211, 211, 211, 0.4);
+  /* border: 1px solid black; */
+}
