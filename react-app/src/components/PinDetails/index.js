@@ -93,22 +93,6 @@ const PinDetails = () => {
           </div>
         </div>
       </div>
-      {/* <div className='pin-bottom-container'>
-        <div className='pin-bottom-first-div'>
-          <h2>More Projects Like This</h2>
-        </div>
-        <div className='project-item'>
-          <a className='airbnb' href='https://beautifuldestinations.onrender.com/'>
-            <img className='project-image' src='https://webdesignledger.com/wp-content/uploads/2015/09/00-featured-airbnb-pink-logomark.jpg' alt='No Preview' />
-          </a>
-          <a className='github' href='https://github.com/drewduong'>
-            <img className='project-image' src='https://logodownload.org/wp-content/uploads/2019/08/github-logo.png' alt='No Preview' />
-          </a>
-          <a className='stackoverflow' href='https://stack-underflow-x2ou.onrender.com/	'>
-            <img className='project-image' src='https://i.pinimg.com/736x/36/30/9f/36309f22e4c16447b085400be01bbc1e.jpg' alt='No Preview' />
-          </a>
-        </div>
-      </div> */}
     </div>
   )
 }
