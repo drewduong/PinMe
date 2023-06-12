@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getUserBoardsThunk } from '../../store/boards';
-import { getPinsThunk, deletePinThunk } from '../../store/pins';
-import { followThunk, unfollowThunk, getFollowsThunk } from '../../store/follows';
+import { getPinsThunk, deletePinThunk, createPinThunk } from '../../store/pins';
+import { followThunk, unfollowThunk } from '../../store/follows';
 import { NavLink } from 'react-router-dom';
 import './PinDetails.css';
 
@@ -15,10 +15,11 @@ const PinDetails = () => {
   const { pinId } = useParams()
 
   const user = useSelector(state => state.session.user)
-  const pin = useSelector(state => state.pins[+pinId])
+  const pins = useSelector(state => state.pins[+pinId])
+  // console.log('pin details: ', pin)
   const boards = useSelector(state => Object.values(state.boards))
-  const isPinOwner = user?.id === pin?.user.id
-  const pinOwner = pin?.user
+  const isPinOwner = user?.id === pins?.user.id
+  const pinOwner = pins?.user
   // const isFollowing = following?.find(following => following.id === pinOwner?.id)
   const following = useSelector(state => state.follows.following)
   const isFollowing = Object.keys(following)
@@ -29,11 +30,17 @@ const PinDetails = () => {
   const handleSavingPin = async (e) => {
     e.preventDefault()
 
-    const newSavedPin = {
-      board_id: boardId,
+    const pin = {
+      title: pins.title,
+      description: pins.description,
+      pin_image: pins.pin_image,
       user_id: user?.id,
-      pin_id: pinId
+      board_id: pins.board_id,
+      // pin_id: pinId
     }
+
+    await dispatch(createPinThunk(pin))
+    history.push('/discover')
   }
   const handleFollowing = async (e) => {
     e.preventDefault()
@@ -86,7 +93,7 @@ const PinDetails = () => {
               e.target.src = defaultImage
             }
           }}
-          src={pin?.pin_image} alt='None' />
+          src={pins?.pin_image} alt='None' />
         {/* </div> */}
         <div className='pin-description'>
           <div className='pin-first-div'>
@@ -100,7 +107,7 @@ const PinDetails = () => {
             }}><i class="fa-solid fa-trash-can"></i></button>) : (null)}
           </div>
           <div className='pin-second-div'>
-            <h2>{pin?.title}</h2>
+            <h2>{pins?.title}</h2>
             <form handleSavingPin={handleSavingPin}>
               <select className='select'
                 onChange={e => setBoardId(e.target.value)}
@@ -114,10 +121,10 @@ const PinDetails = () => {
             </form>
           </div>
           <div className='pin-third-div'>
-            <h4>{pin?.description}</h4>
+            <h4>{pins?.description}</h4>
           </div>
           <div className='pin-fourth-div'>
-            <h4>{pin?.user.username}</h4>
+            <h4>{pins?.user.username}</h4>
             {isFollowing.includes(pinOwner?.id.toString()) ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
               <button className='follow-button' onClick={handleFollowing}>Follow</button>)}
           </div>
