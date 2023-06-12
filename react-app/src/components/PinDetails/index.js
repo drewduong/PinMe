@@ -93,7 +93,7 @@ const PinDetails = () => {
           </div>
         </div>
       </div>
-      <div className='pin-bottom-container'>
+      {/* <div className='pin-bottom-container'>
         <div className='pin-bottom-first-div'>
           <h2>More Projects Like This</h2>
         </div>
@@ -108,7 +108,7 @@ const PinDetails = () => {
             <img className='project-image' src='https://i.pinimg.com/736x/36/30/9f/36309f22e4c16447b085400be01bbc1e.jpg' alt='No Preview' />
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
