@@ -1,7 +1,7 @@
 .landing-container {
   display: flex;
   justify-content: center;
-  height: 51vw;
+  height: 50vw;
   width: 100%;
   /* border: 1px solid #000000; */
   background-color: #FFF500;
@@ -24,6 +24,7 @@
 
 .landing-right-div {
   display: flex;
+  height: auto;
   width: 50%;
   align-items: center;
   justify-content: center;
@@ -34,9 +35,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  color: red;
+  width: 100%;
+  color: #C31952;
   /* border: 1px solid purple */
+}
+
+.landing-text-title {
+  font-size: 60px;
+  font-weight: 700;
+  /* border: 1px solid red */
+}
+
+.landing-text-description {
+  font-size: 24px;
+  font-weight: 400;
+  padding: 1rem 11rem 1rem 11rem;
 }
 
 .explore-button {
@@ -46,12 +59,12 @@
   align-items: center;
   text-decoration: none;
   color: white;
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.95rem;
   height: 40px;
   margin-top: 1vw;
-  width: 5vw;
-  background-color: red;
-  border-radius: 10px;
+  width: 6vw;
+  background-color: #C31952;
+  border-radius: 20px;
 
 }

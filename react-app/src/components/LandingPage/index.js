@@ -21,8 +21,8 @@ const LandingPage = () => {
       </div>
       <div className="landing-right-div">
         <div className='landing-text-div'>
-          <h1 className='landing-text-title'>Search for an idea</h1>
-          What do you want to try next? Think of something you’re into—like “quick easy recipes”—and see what you find
+          <div className='landing-text-title'>Search for an idea</div>
+          <div className='landing-text-description'>What do you want to try next? Think of something you’re into—like “quick easy recipes”—and see what you find.</div>
           <NavLink className='explore-button' to={'/login'}>Explore</NavLink>
         </div>
       </div>
