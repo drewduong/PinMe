@@ -16,7 +16,7 @@ const LandingPage = () => {
                 e.target.src = defaultImage
               }
             }}
-            src='https://i.pinimg.com/564x/f0/a3/44/f0a344ebcd1af757ab565d94f3a7e8e1.jpg' alt='No Preview' />
+            src='https://i.imgur.com/2KAc9Uy.png' alt='No Preview' />
         </div>
       </div>
       <div className="landing-right-div">
