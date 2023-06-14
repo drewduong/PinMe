@@ -18,15 +18,11 @@ const NavBar = () => {
         <h3>PinMe</h3>
       </div>
       <div className='logged-out-right-nav'>
-        <div className='logged-out-socials'>
-          <a id='socials' href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
-          <a id='socials' href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
-          <a id='socials' href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
-        </div>
-        <div className='logged-out-buttons'>
-          <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink>
-          <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
-        </div>
+        <a id='socials' href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
+        <a id='socials' href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
+        <a id='socials' href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
+        <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink>
+        <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
       </div>
     </ul>
   )

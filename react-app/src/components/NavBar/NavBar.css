@@ -3,13 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
   box-sizing: border-box;
   width: 100%;
   height: 8vh;
-  padding: 40px 15px 35px 15px;
+  padding: 30px 100px 35px 15px;
   margin: 0;
   position: sticky;
+  /* border: 1px solid black; */
   background-color: #FCFE90;
 }
 
@@ -24,24 +24,7 @@
   justify-content: space-around;
   min-width: auto;
   align-items: center;
-  width: 30%;
-}
-
-.logged-out-socials {
-  display: flex;
-  justify-content: space-around;
-  min-width: auto;
-  align-items: center;
-  padding: 0 2rem 0 0;
-  width: 20%;
-}
-
-.logged-out-buttons {
-  display: flex;
-  justify-content: space-around;
-  min-width: auto;
-  align-items: center;
-  width: 10%;
+  width: 236px
 }
 
 /*-----Navbar Buttons-----*/
@@ -76,12 +59,12 @@ h3 {
   min-width: 70px;
   margin: 0 0.5rem 0 0;
   color: #FFFF;
-  background-color: red;
+  background-color: #E60023;
   border-radius: 25px;
 }
 
 .login-button:hover {
-  background-color: #E60023;
+  background-color: #AD0818;
 }
 
 .signup-button {
