@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import './LoginForm.css'
 
-const LoginForm = () => {
+const LoginForm = ({ setShowModal }) => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -30,7 +30,6 @@ const LoginForm = () => {
     if (error.length) return setErrors(error)
 
     const data = await dispatch(login(email, password));
-    // history.push('/discover')
 
     if (data) {
       setErrors(data);
