@@ -49,22 +49,21 @@
 .landing-text-description {
   font-size: 24px;
   font-weight: 400;
-  padding: 1rem 11rem 1rem 11rem;
+  padding: 1rem 9rem 1rem 9rem;
 }
 
+
 .explore-button {
-  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   color: #fcfe90;
   font-weight: 700;
-  font-size: 0.95rem;
-  height: 40px;
+  font-size: 16px;
+  height: 48px;
   margin-top: 1vw;
-  width: 6vw;
+  padding: 0;
+  min-width: 93px;
   background-color: #C31952;
-  border-radius: 20px;
-
+  border-radius: 25px;
 }

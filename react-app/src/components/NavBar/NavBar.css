@@ -1,3 +1,79 @@
+/*-------LOGGED OUT-----------*/
+.logged-out-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 8vh;
+  padding: 15px 15px 35px 15px;
+  margin: 1rem 0 0 0;
+  position: sticky;
+}
+
+.logged-out-left-nav {
+  display: flex;
+  align-items: center;
+  width: 12%;
+}
+
+.logged-out-right-nav {
+  display: flex;
+  justify-content: space-around;
+  min-width: auto;
+  align-items: center;
+  width: 30%;
+}
+
+.logged-out-socials {
+  display: flex;
+  justify-content: space-around;
+  min-width: auto;
+  align-items: center;
+  width: 20%;
+}
+
+.logged-out-buttons {
+  display: flex;
+  justify-content: space-around;
+  min-width: auto;
+  align-items: center;
+  width: 20%;
+}
+
+/*-----Navbar Buttons-----*/
+
+.logged-out-logo {
+  width: 38px;
+  padding: 0 0.2rem 0 1rem;
+}
+
+h3 {
+  color: #CC0000;
+}
+
+a {
+  color: black;
+  padding: 0 1.5rem 0 0;
+  text-decoration: none;
+}
+
+.login-button {
+  width: 68px;
+  padding: 8px 12px 8px 12px;
+  min-width: 60px;
+}
+
+.signup-button {
+  width: 60px;
+  min-width: 60px;
+}
+
+
+
+/*-------LOGGED IN-----------*/
+
 .nav-bar-container {
   display: flex;
   justify-content: space-between;

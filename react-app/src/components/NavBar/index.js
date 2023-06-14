@@ -2,16 +2,36 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-// import useLocation from 'react-router-dom'
+// import {useLocation} from 'react-router-dom'
 import LogoutButton from '../auth/LogoutButton';
 // import Search from '../Search';
 import './NavBar.css'
 
-
 const NavBar = () => {
   // const location = useLocation()
   const user = useSelector(state => state.session.user)
-  return (
+
+  const loggedOut = () => (
+    <ul className='logged-out-container'>
+      <div className='logged-out-left-nav'>
+        <img className='logged-out-logo' src='https://i.imgur.com/gbDA1SY.png' alt='logo' />
+        <h3>PinMe</h3>
+      </div>
+      <div className='logged-out-right-nav'>
+        <div className='logged-out-socials'>
+          <a href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
+          <a href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
+          <a href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
+        </div>
+        <div className='logged-out-buttons'>
+          <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Login</NavLink>
+          <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
+        </div>
+      </div>
+    </ul>
+  )
+
+  const loggedIn = () => (
     // <nav>
     <ul className='nav-bar-container'>
       {/* <li>
@@ -76,6 +96,8 @@ const NavBar = () => {
     </ul>
     // </nav>
   );
+
+  return user ? loggedIn() : loggedOut()
 }
 
 export default NavBar;
