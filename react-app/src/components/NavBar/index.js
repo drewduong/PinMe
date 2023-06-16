@@ -7,7 +7,7 @@ import LogoutButton from '../auth/LogoutButton';
 // import Search from '../Search';
 import './NavBar.css'
 
-const NavBar = () => {
+const NavBar = ({ setShowModal }) => {
   // const location = useLocation()
   const user = useSelector(state => state.session.user)
 
@@ -21,8 +21,11 @@ const NavBar = () => {
         <a id='socials' href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
         <a id='socials' href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
         <a id='socials' href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
-        <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink>
-        <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
+        <button className='login-button' onClick={() => {
+          setShowModal(true)
+        }}>Log in</button>
+        {/* <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink> */}
+        {/* <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink> */}
       </div>
     </ul>
   )

@@ -29,12 +29,21 @@ const LoginForm = ({ setShowModal }) => {
     if (!email.includes('@')) error.push('Valid email is required')
     if (error.length) return setErrors(error)
 
+    // return dispatch(login(email, password))
+    //   .then(() => setShowModal(false))
+    //   .catch(
+    //     async (res) => {
+    //       const data = await res.json();
+    //       if (data) setErrors(error)
+    //     }
+    //   )
     const data = await dispatch(login(email, password));
 
     if (data) {
       setErrors(data);
     }
     return data
+      .then(() => setShowModal(false))
   };
 
   const demoUser = async (e) => {
