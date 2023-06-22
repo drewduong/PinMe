@@ -43,7 +43,6 @@ export function ModalProvider({ children }) {
 }
 
 export function Modal() {
-  const modalNode = useContext(ModalContext);
   const { modalRef, modalContent, closeModal } = useContext(ModalContext)
   // If there is no div referenced by the modalRef or onModalOpen
   if (!modalRef || !modalRef.current || !modalContent) return null;
@@ -58,3 +57,5 @@ export function Modal() {
     modalRef.current
   );
 }
+
+export const useModal = () => useContext(ModalContext)
