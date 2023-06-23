@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import {useLocation} from 'react-router-dom'
+import LoginFormModal from '../auth/LoginFormModal/LoginFormModal';
 import LogoutButton from '../auth/LogoutButton';
 // import Search from '../Search';
 import './NavBar.css'
@@ -21,11 +22,8 @@ const NavBar = ({ setShowModal }) => {
         <a id='socials' href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
         <a id='socials' href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
         <a id='socials' href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
-        <button className='login-button' onClick={() => {
-          setShowModal(true)
-        }}>Log in</button>
-        {/* <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink> */}
-        {/* <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink> */}
+        <NavLink className='login-button' to='/login' exact={true} activeClassName='active'>Log in</NavLink>
+        <NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
       </div>
     </ul>
   )

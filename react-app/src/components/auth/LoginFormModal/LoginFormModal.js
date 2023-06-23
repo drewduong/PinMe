@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../../store/session';
 import './LoginForm.css'
 
-const LoginForm = ({ setShowModal }) => {
+const LoginFormModal = () => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -13,37 +13,13 @@ const LoginForm = ({ setShowModal }) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  const error = []
-  // const onLogin = async (e) => {
-  //   e.preventDefault();
-  //   const data = await dispatch(login(email, password));
-  //   if (data) {
-  //     setErrors(data);
-  //   }
-  //   history.push('/discover')
-  // };
-
-  // Handling login modal logic
   const onLogin = async (e) => {
     e.preventDefault();
-    if (!email.includes('@')) error.push('Valid email is required')
-    if (error.length) return setErrors(error)
-
-    // return dispatch(login(email, password))
-    //   .then(() => setShowModal(false))
-    //   .catch(
-    //     async (res) => {
-    //       const data = await res.json();
-    //       if (data) setErrors(error)
-    //     }
-    //   )
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password))
 
     if (data) {
       setErrors(data);
     }
-    return data
-      .then(() => setShowModal(false))
   };
 
   const demoUser = async (e) => {
@@ -96,4 +72,4 @@ const LoginForm = ({ setShowModal }) => {
   );
 };
 
-export default LoginForm;
+export default LoginFormModal;

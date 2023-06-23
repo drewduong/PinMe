@@ -1,40 +1,20 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
-// Setting up context for modal
 const ModalContext = React.createContext();
 
 export function ModalProvider({ children }) {
-  // Using useRef instead of useState to prevent constant re-renders
   const modalRef = useRef();
+  const [value, setValue] = useState();
 
-  // Two component state variables
-  const [modalContent, setModalContent] = useState(null);
-  const [onModalClose, setOnModalClose] = useState(null);
-
-  const closeModal = () => {
-    setModalContent(null); // Clear the modal contents
-
-    // If callback function is truthy, call the callback function and reset it to null
-    if (typeof onModalClose === 'function') {
-      setOnModalClose(null)
-      onModalClose()
-    }
-
-  }
-
-
-  const contextValue = {
-    modalRef, // Reference to modal div
-    modalContent, // React component to render inside modal
-    setModalContent, // Function to set the React component to render inside modal
-    setOnModalClose, // Function to set the callback function to be called when modal is closing
-  }
+  useEffect(() => {
+    setValue(modalRef.current);
+  }, [])
 
   return (
     <>
-      <ModalContext.Provider value={contextValue}>
+      <ModalContext.Provider value={value}>
         {children}
       </ModalContext.Provider>
       <div ref={modalRef} />
@@ -42,20 +22,17 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal() {
-  const { modalRef, modalContent, closeModal } = useContext(ModalContext)
-  // If there is no div referenced by the modalRef or onModalOpen
-  if (!modalRef || !modalRef.current || !modalContent) return null;
+export function Modal({ onClose, children }) {
+  const modalNode = useContext(ModalContext);
+  if (!modalNode) return null;
 
   return ReactDOM.createPortal(
     <div id="modal">
-      <div id="modal-background" onClick={closeModal} />
+      <div id="modal-background" onClick={onClose} />
       <div id="modal-content">
-        {modalContent}
+        {children}
       </div>
     </div>,
-    modalRef.current
+    modalNode
   );
 }
-
-export const useModal = () => useContext(ModalContext)
