@@ -3,12 +3,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import {useLocation} from 'react-router-dom'
+import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import LogoutButton from '../auth/LogoutButton';
 // import Search from '../Search';
 import './NavBar.css'
 
-const NavBar = ({ setShowModal }) => {
+const NavBar = () => {
   // const location = useLocation()
   const user = useSelector(state => state.session.user)
 
@@ -22,6 +23,7 @@ const NavBar = ({ setShowModal }) => {
         <a id='socials' href='https://drewduong.github.io/' target='_blank' rel='noreferrer'>Portfolio</a>
         <a id='socials' href='https://github.com/drewduong' target='_blank' rel='noreferrer'>Github</a>
         <a id='socials' href='https://www.linkedin.com/in/andrewrduong' target='_blank' rel='noreferrer'>LinkedIn</a>
+        <LoginForm />
         <SignUpForm />
       </div>
     </ul>

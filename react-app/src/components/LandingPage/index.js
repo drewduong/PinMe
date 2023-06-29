@@ -1,10 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink, Redirect } from 'react-router-dom';
 import './LandingPage.css';
 
 const defaultImage = 'https://cdn-icons-png.flaticon.com/512/1201/1201519.png'
 
 const LandingPage = () => {
+  const user = useSelector(state => state.session.user);
+
+  if (user) {
+    return <Redirect to='/discover' />;
+  }
 
   return (
     <div className="landing-container">

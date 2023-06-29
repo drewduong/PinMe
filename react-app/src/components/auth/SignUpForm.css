@@ -24,6 +24,7 @@
   display: flex;
   justify-content: center;
   font-size: 32px;
+  padding-top: 10px;
 }
 
 #modal-header-2 {
@@ -52,12 +53,13 @@
 
 .signup-item button {
   color: white;
+  font-size: 14px;
   font-weight: 700;
-  height: 43px;
+  height: 40px;
   width: 272px;
   margin-bottom: 15px;
   background-color: #E60023;
-  border-radius: 18px;
+  border-radius: 20px;
   border: none;
 }
 
