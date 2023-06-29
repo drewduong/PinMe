@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../../store/session';
+import { signUp } from '../../store/session';
+import { Modal } from '../../context/Modal'
 import './SignUpForm.css'
 
 
@@ -11,6 +12,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [showModal, setShowModal] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -59,48 +61,57 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className='signup-container'>
-      <form onSubmit={onSignUp}>
-        <div className='signup-item'>
-          <h2>Sign Up</h2>
-          <ul className='errors'>
-            {errors.map((error, ind) => (
-              <div key={ind}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</div>
-            ))}
-          </ul>
-          <input
-            type='text'
-            name='username'
-            placeholder='Username'
-            onChange={updateUsername}
-            value={username}
-          />
-          <input
-            type='text'
-            name='email'
-            placeholder='Email'
-            onChange={updateEmail}
-            value={email}
-          />
-          <input
-            type='password'
-            name='password'
-            placeholder='Password'
-            onChange={updatePassword}
-            value={password}
-          />
-          <input
-            type='password'
-            name='repeat_password'
-            placeholder='Repeat Password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          />
-          <button type='submit'>Sign Up</button>
-        </div>
-      </form>
-    </div>
+    <>
+      <button className='signup-button' onClick={() => { setShowModal(true) }}>Log in</button>
+      {showModal && (
+        <Modal id='border-modal' onClose={() => {
+          setShowModal(false)
+        }}>
+          <div className='signup-container'>
+            <form onSubmit={onSignUp}>
+              <div className='signup-item'>
+                <h2>Sign Up</h2>
+                <ul className='errors'>
+                  {errors.map((error, ind) => (
+                    <div key={ind}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</div>
+                  ))}
+                </ul>
+                <input
+                  type='text'
+                  name='username'
+                  placeholder='Username'
+                  onChange={updateUsername}
+                  value={username}
+                />
+                <input
+                  type='text'
+                  name='email'
+                  placeholder='Email'
+                  onChange={updateEmail}
+                  value={email}
+                />
+                <input
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                  onChange={updatePassword}
+                  value={password}
+                />
+                <input
+                  type='password'
+                  name='repeat_password'
+                  placeholder='Repeat Password'
+                  onChange={updateRepeatPassword}
+                  value={repeatPassword}
+                  required={true}
+                />
+                <button type='submit'>Sign Up</button>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      )}
+    </>
   );
 };
 
