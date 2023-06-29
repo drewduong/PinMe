@@ -62,7 +62,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <button className='signup-button' onClick={() => { setShowModal(true) }}>Log in</button>
+      <button className='signup-button' onClick={() => { setShowModal(true) }}>Sign Up</button>
       {showModal && (
         <Modal id='border-modal' onClose={() => {
           setShowModal(false)
@@ -70,42 +70,56 @@ const SignUpForm = () => {
           <div className='signup-container'>
             <form onSubmit={onSignUp}>
               <div className='signup-item'>
-                <h2>Sign Up</h2>
+                <img className='logged-out-logo' src='https://i.imgur.com/gbDA1SY.png' alt='logo' />
+                <div id='modal-header'>Welcome to PinMe</div>
+                <div id='modal-header-2'>Find new ideas to try</div>
                 <ul className='errors'>
                   {errors.map((error, ind) => (
                     <div key={ind}><i class="fa-sharp fa-solid fa-circle-exclamation"></i> {error}</div>
                   ))}
                 </ul>
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Username'
-                  onChange={updateUsername}
-                  value={username}
-                />
-                <input
-                  type='text'
-                  name='email'
-                  placeholder='Email'
-                  onChange={updateEmail}
-                  value={email}
-                />
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                  onChange={updatePassword}
-                  value={password}
-                />
-                <input
-                  type='password'
-                  name='repeat_password'
-                  placeholder='Repeat Password'
-                  onChange={updateRepeatPassword}
-                  value={repeatPassword}
-                  required={true}
-                />
-                <button type='submit'>Sign Up</button>
+                <label>
+                  Username
+                  <input
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    onChange={updateUsername}
+                    value={username}
+                  />
+                </label>
+                <label>
+                  Email
+                  <input
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                    onChange={updateEmail}
+                    value={email}
+                  />
+                </label>
+                <label>
+                  Password
+                  <input
+                    type='password'
+                    name='password'
+                    placeholder='Create a password'
+                    onChange={updatePassword}
+                    value={password}
+                  />
+                </label>
+                <label>
+                  Confirm Password
+                  <input
+                    type='password'
+                    name='repeat_password'
+                    placeholder='Repeat Password'
+                    onChange={updateRepeatPassword}
+                    value={repeatPassword}
+                    required={true}
+                  />
+                </label>
+                <button type='submit'>Continue</button>
               </div>
             </form>
           </div>

@@ -1,46 +1,68 @@
+#modal-content {
+  border-radius: 25px;
+}
+
 .signup-container {
   display: flex;
   justify-content: center;
-  height: auto;
-  width: auto;
+  height: 550px;
+  width: 484px;
+  padding: 20px 10px 20px 10px;
   /* border: 1px solid red; */
 }
 
 .signup-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 400px;
   border-radius: 10px;
   /* border: 1px solid green; */
 }
 
-.signup-item h2 {
+#modal-header {
   display: flex;
   justify-content: center;
-  padding: 1rem;
-  border-bottom: rgb(230, 230, 230) 1px solid;
+  font-size: 32px;
+}
+
+#modal-header-2 {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .signup-item input {
-  height: 35px;
-  width: 394px;
+  height: 40px;
+  width: 270px;
   text-indent: 1rem;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  margin-bottom: 10px;
+  border-radius: 16px;
   border-color: rgb(211, 211, 211, 0.4)
+}
+
+.signup-item label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .signup-item button {
   color: white;
-  font-weight: 600;
-  height: 40px;
-  width: 401px;
+  font-weight: 700;
+  height: 43px;
+  width: 272px;
   margin-bottom: 15px;
-  background-color: rgb(255, 44, 44);
-  border-radius: 8px;
+  background-color: #E60023;
+  border-radius: 18px;
   border: none;
 }
 
 .signup-item button:hover {
   cursor: pointer;
+  background-color: #D50C22;
 }
 
 .errors {
