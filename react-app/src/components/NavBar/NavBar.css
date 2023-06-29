@@ -67,26 +67,6 @@ h3 {
   background-color: #AD0818;
 }
 
-.signup-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  height: 40px;
-  min-height: 40px;
-  width: 80px;
-  min-width: 80px;
-  padding: 8px 12px 8px 12px;
-  color: #000000;
-  background-color: #EFEFEF;
-  border-radius: 25px;
-  padding: 0;
-}
-
-.signup-button:hover {
-  background-color: #E2E2E2;
-}
-
 
 
 /*-------LOGGED IN-----------*/
