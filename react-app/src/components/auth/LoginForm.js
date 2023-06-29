@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css'
 
-const LoginFormModal = () => {
+const LoginForm = () => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -72,4 +72,4 @@ const LoginFormModal = () => {
   );
 };
 
-export default LoginFormModal;
+export default LoginForm;

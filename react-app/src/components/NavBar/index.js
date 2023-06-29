@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // import {useLocation} from 'react-router-dom'
-import LoginFormModal from '../auth/LoginForm';
+import LoginForm from '../auth/LoginForm';
 import LogoutButton from '../auth/LogoutButton';
 // import Search from '../Search';
 import './NavBar.css'
