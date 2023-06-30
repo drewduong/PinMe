@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 import { signUp } from '../../store/session';
 import { Modal } from '../../context/Modal'
 import './SignUpForm.css'
@@ -48,7 +47,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <button className='signup-button' onClick={() => { setShowModal(true) }}>Sign Up</button>
+      <button className='signup-button' onClick={() => { setShowModal(true) }}>Sign up</button>
       {showModal && (
         <Modal id='border-modal' onClose={() => {
           setShowModal(false)
