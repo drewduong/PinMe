@@ -13,7 +13,6 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [showModal, setShowModal] = useState(false)
-  const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const error = []

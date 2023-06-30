@@ -61,18 +61,6 @@ const NavBar = () => {
       </div> */}
       <div className='right-nav'>
         <li>
-          {user ? (null) : (<NavLink className='login-button' to='/login' exact={true} activeClassName='active'>
-            {/* <i class="fa-solid fa-user"></i> */}
-            Login
-          </NavLink>)}
-        </li>
-        <li>
-          {user ? (null) : (<NavLink className='signup-button' to='/sign-up' exact={true} activeClassName='active'>
-            {/* <i class="fa-solid fa-user-plus"></i> */}
-            Sign Up
-          </NavLink>)}
-        </li>
-        <li>
           <a className='github-button' href='https://github.com/drewduong'>
             <i class="fa-brands fa-github"></i>
           </a>
@@ -83,12 +71,12 @@ const NavBar = () => {
           </a>
         </li>
         <li>
-          {user ? (<NavLink className='profile-button' to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+          <NavLink className='profile-button' to={`/users/${user?.id}`} exact={true} activeClassName='active'>
             <i id='profile' class="fa-solid fa-user"></i>
-          </NavLink>) : (null)}
+          </NavLink>
         </li>
         <li>
-          {user ? (<LogoutButton />) : (null)}
+          <LogoutButton />
         </li>
       </div>
     </ul>
