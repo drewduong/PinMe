@@ -38,17 +38,11 @@ const UserBoards = () => {
 
   return isLoaded && (
     <div className='boards-container'>
-      <div className='user-name'>
-        <h1>{user.first_name} {user.last_name}</h1>
-      </div>
-      <div className='user-username'>
-        @{user.username}
-      </div>
-      <div className='user-about'>
-        {user.about}
-      </div>
+      <div className='user-name'>{user.first_name} {user.last_name}</div>
+      <div className='user-username'>@{user.username}</div>
+      <div className='user-about'>{user.about}</div>
       <div className='user-follows'>
-        <NavLink className='user-followers-navlink' to={`/users/${user.id}/followers`}>{followersCount} followers</NavLink>-
+        <NavLink className='user-followers-navlink' to={`/users/${user.id}/followers`}>{followersCount} followers</NavLink><div>·</div>
         <NavLink className='user-following-navlink' to={`/users/${user.id}/following`}>{followingCount} following</NavLink>
       </div>
       <div className='user-profile'>

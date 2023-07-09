@@ -25,6 +25,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  font-size: 36px;
+  padding-bottom: 1rem;
   /* border: 1px solid black; */
 }
 
@@ -32,7 +34,10 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  font-size: 14px;
+  color: #5F5F5F;
+  font-weight: 400;
   /* border: 1px solid black; */
 }
 
@@ -40,7 +45,10 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  font-size: 16px;
+  color: #111111;
+  font-weight: 400;
   /* border: 1px solid black; */
 }
 
@@ -48,17 +56,19 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 }
 
 .user-followers-navlink {
   text-decoration: none;
   color: black;
+  padding-right: 0.5rem;
 }
 
 .user-following-navlink {
   text-decoration: none;
   color: black;
+  padding-left: 0.5rem;
 }
 
 .user-profile {
@@ -73,9 +83,16 @@
   border: none;
   height: 3vw;
   width: 8vw;
-  border-radius: 15px;
+  border-radius: 24px;
   font-size: 1rem;
+  background-color: #EFEFEF;
 }
+
+.edit-user-profile-button:hover {
+  cursor: pointer;
+  background-color: #E2E2E2;
+}
+
 
 .edit-user-navlink {
   text-decoration: none;

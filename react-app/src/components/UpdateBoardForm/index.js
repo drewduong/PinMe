@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { updateBoardThunk } from '../../store/boards';
-import './UpdateBoardForm.css';
 
 const UpdateBoardForm = () => {
   const history = useHistory()
@@ -54,9 +53,9 @@ const UpdateBoardForm = () => {
   if (!board) return (<div>Board Not Found</div>)
 
   return (
-    <div className="boarding-container">
+    <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
-        <div className="boarding-item">
+        <div className="pinning-item">
           <h2>Update Board</h2>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (
