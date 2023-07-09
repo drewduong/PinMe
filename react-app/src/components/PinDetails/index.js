@@ -98,13 +98,13 @@ const PinDetails = () => {
         <div className='pin-description'>
           <div className='pin-first-div'>
             {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
-              <i class="fa-solid fa-ellipsis"></i>
+              <i className="fa-solid fa-ellipsis"></i>
             </NavLink>) : (null)}
 
             {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
               const deletedPin = await dispatch(deletePinThunk(pinId))
               if (deletedPin) history.push('/discover')
-            }}><i class="fa-solid fa-trash-can"></i></button>) : (null)}
+            }}><i className="fa-solid fa-trash-can"></i></button>) : (null)}
           </div>
           <div className='pin-second-div'>
             <h2>{pins?.title}</h2>
