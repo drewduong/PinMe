@@ -40,32 +40,29 @@
   /* border: 1px solid green */
 }
 
-.edit-delete-button-div {
-  display: flex;
-  justify-self: space-between;
-}
-
 .fa-ellipsis {
   font-size: 22px;
+  padding-right: 1rem;
 }
 
 .fa-trash-can {
   font-size: 20px;
+  padding-right: 1rem;
 }
 
 
-.pin-second-div {
+.pin-second-row {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   word-break: break-all;
   overflow-wrap: scroll;
   overflow: auto;
   box-sizing: border-box;
+  font-size: 32px;
   /* border: 1px solid red; */
 }
 
-.pin-third-div {
+.pin-third-row {
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -73,6 +70,8 @@
   overflow-wrap: scroll;
   overflow: auto;
   box-sizing: border-box;
+  padding-top: 1rem;
+  font-weight: 400;
   /* border: 1px solid black; */
 }
 

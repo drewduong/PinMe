@@ -119,10 +119,8 @@ const PinDetails = () => {
               <button className='save-pin-button' type="submit">Save</button>
             </form>
           </div>
-          <div className='pin-third-div'>
-            <h2>{pins?.title}</h2>
-            <h4>{pins?.description}</h4>
-          </div>
+          <div className='pin-second-row'>{pins?.title}</div>
+          <div className='pin-third-row'>{pins?.description}</div>
           <div className='pin-fourth-div'>
             <h4>{pins?.user.username}</h4>
             {isFollowing.includes(pinOwner?.id.toString()) ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
