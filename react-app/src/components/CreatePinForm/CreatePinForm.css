@@ -16,7 +16,6 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
-  border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
 .pinning-item select {
@@ -30,11 +29,11 @@
 }
 
 .pinning-item input {
-  height: 35px;
+  height: 40px;
   width: 394px;
   text-indent: 1rem;
-  margin-bottom: 15px;
-  border-radius: 8px;
+  margin-bottom: 10px;
+  border-radius: 16px;
   border-color: rgb(211, 211, 211, 0.4);
   text-indent: 1rem;
   word-break: break-all;
@@ -45,17 +44,19 @@
 
 .pinning-item button {
   color: white;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   height: 40px;
-  width: 401px;
+  width: 395px;
   margin-bottom: 15px;
-  background-color: rgb(255, 44, 44);
-  border-radius: 8px;
+  background-color: #E60023;
+  border-radius: 20px;
   border: none;
 }
 
 .pinning-item button:hover {
   cursor: pointer;
+  background-color: #D50C22;
 }
 
 .errors {

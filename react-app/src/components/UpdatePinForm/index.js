@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getUserBoardsThunk } from '../../store/boards'
 import { updatePinThunk } from '../../store/pins';
-import './UpdatePinForm.css';
 
 const UpdatePinForm = () => {
   const history = useHistory()
