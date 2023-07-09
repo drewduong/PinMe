@@ -9,7 +9,7 @@
   border-radius: 10px;
   /* border: 2px solid black; */
   box-shadow: 0px 10px 10px 0px rgb(0, 0, 0, 0.1);
-  border-radius: 12px;
+  border-radius: 24px;
   border-top: 1px rgba(245, 245, 245) solid;
   border: 1px solid rgb(245, 245, 245);
   background-color: white;
@@ -18,7 +18,8 @@
 .pin-image {
   height: 100%;
   width: 30vw;
-  border-radius: 12px;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
   /* border: 2px solid black; */
 }
 
@@ -30,6 +31,8 @@
   width: 100%;
   /* border: 1px solid red */
 }
+
+/*---------FIRST ROW-----------*/
 
 .pin-first-row {
   display: flex;
@@ -48,44 +51,6 @@
 .fa-trash-can {
   font-size: 20px;
   padding-right: 1rem;
-}
-
-
-.pin-second-row {
-  display: flex;
-  width: 100%;
-  word-break: break-all;
-  overflow-wrap: scroll;
-  overflow: auto;
-  box-sizing: border-box;
-  font-size: 32px;
-  /* border: 1px solid red; */
-}
-
-.pin-third-row {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  word-break: break-all;
-  overflow-wrap: scroll;
-  overflow: auto;
-  box-sizing: border-box;
-  padding-top: 1rem;
-  font-weight: 400;
-  /* border: 1px solid black; */
-}
-
-.pin-fourth-div {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  /* border: 1px solid green */
-}
-
-.select {
-  border: none;
-  font-size: 16px;
 }
 
 .save-pin-button {
@@ -108,12 +73,60 @@
 .saved-pin-button {
   color: white;
   border: none;
+  margin: 1rem 0 1rem 1rem;
   background-color: rgb(255, 44, 44);
   font-weight: 600;
   width: 4.5vw;
   height: 3vw;
   border-radius: 30px;
 }
+
+/*---------SECOND ROW-----------*/
+
+
+.pin-second-row {
+  display: flex;
+  width: 100%;
+  word-break: break-all;
+  overflow-wrap: scroll;
+  overflow: auto;
+  box-sizing: border-box;
+  font-size: 32px;
+  /* border: 1px solid red; */
+}
+
+/*---------THIRD ROW-----------*/
+
+.pin-third-row {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  word-break: break-all;
+  overflow-wrap: scroll;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: 1rem;
+  font-weight: 400;
+  /* border: 1px solid black; */
+}
+
+/*---------FOURTH ROW-----------*/
+
+
+.pin-fourth-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  /* border: 1px solid green */
+}
+
+.select {
+  border: none;
+  font-size: 16px;
+}
+
 
 .follow-button {
   display: flex;

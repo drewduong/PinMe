@@ -40,7 +40,7 @@ const NavBar = () => {
       <div className='left-nav'>
         <li>
           <NavLink to='/discover' exact={true} activeClassName='active'>
-            <img className='logo' src='https://i.pinimg.com/originals/1b/76/01/1b7601e035a83c13c208b4ec905ee6d9.png' alt='logo' />
+            <img className='logged-in-logo' src='https://i.imgur.com/gbDA1SY.png' alt='logo' />
           </NavLink>
         </li>
         <li>

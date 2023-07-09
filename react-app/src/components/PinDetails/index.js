@@ -121,7 +121,7 @@ const PinDetails = () => {
           </div>
           <div className='pin-second-row'>{pins?.title}</div>
           <div className='pin-third-row'>{pins?.description}</div>
-          <div className='pin-fourth-div'>
+          <div className='pin-fourth-row'>
             <h4>{pins?.user.username}</h4>
             {isFollowing.includes(pinOwner?.id.toString()) ? (<button className='unfollow-button' onClick={handleUnfollowing}>Unfollow</button>) : (
               <button className='follow-button' onClick={handleFollowing}>Follow</button>)}
