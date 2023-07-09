@@ -96,18 +96,17 @@ const PinDetails = () => {
           src={pins?.pin_image} alt='None' />
         {/* </div> */}
         <div className='pin-description'>
-          <div className='pin-first-div'>
-            {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
-              <i className="fa-solid fa-ellipsis"></i>
-            </NavLink>) : (null)}
+          <div className='pin-first-row'>
+            <div className='edit-delete-button-div'>
+              {isPinOwner ? (<NavLink className='edit-board-button' to={`/pins/${pinId}/edit`}>
+                <i className="fa-solid fa-ellipsis"></i>
+              </NavLink>) : (null)}
 
-            {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
-              const deletedPin = await dispatch(deletePinThunk(pinId))
-              if (deletedPin) history.push('/discover')
-            }}><i className="fa-solid fa-trash-can"></i></button>) : (null)}
-          </div>
-          <div className='pin-second-div'>
-            <h2>{pins?.title}</h2>
+              {isPinOwner ? (<button className='delete-board-button' onClick={async () => {
+                const deletedPin = await dispatch(deletePinThunk(pinId))
+                if (deletedPin) history.push('/discover')
+              }}><i className="fa-solid fa-trash-can"></i></button>) : (null)}
+            </div>
             <form handleSavingPin={handleSavingPin}>
               <select className='select'
                 onChange={e => setBoardId(e.target.value)}
@@ -121,6 +120,7 @@ const PinDetails = () => {
             </form>
           </div>
           <div className='pin-third-div'>
+            <h2>{pins?.title}</h2>
             <h4>{pins?.description}</h4>
           </div>
           <div className='pin-fourth-div'>

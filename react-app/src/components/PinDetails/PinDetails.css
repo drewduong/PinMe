@@ -25,20 +25,24 @@
 .pin-description {
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   width: 100%;
   /* border: 1px solid red */
 }
 
-.pin-first-div {
+.pin-first-row {
   display: flex;
   width: 100%;
   margin-top: 1rem;
   justify-content: space-between;
   align-items: center;
-  /* flex-direction: row; */
   /* border: 1px solid green */
+}
+
+.edit-delete-button-div {
+  display: flex;
+  justify-self: space-between;
 }
 
 .fa-ellipsis {
@@ -50,7 +54,6 @@
 }
 
 
-
 .pin-second-div {
   display: flex;
   justify-content: space-between;
@@ -59,7 +62,6 @@
   overflow-wrap: scroll;
   overflow: auto;
   box-sizing: border-box;
-  border-bottom: rgb(230, 230, 230) 1px solid;
   /* border: 1px solid red; */
 }
 
@@ -90,7 +92,7 @@
 .save-pin-button {
   color: white;
   border: none;
-  margin: 1rem;
+  margin: 1rem 0 1rem 1rem;
   background-color: #E60023;
   font-size: 16px;
   font-weight: 600;
@@ -115,13 +117,21 @@
 }
 
 .follow-button {
-  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  height: 50px;
+  min-height: 40px;
+  width: 80px;
+  min-width: 80px;
+  padding: 8px 12px 8px 12px;
+  color: #000000;
+  background-color: #EFEFEF;
   border: none;
-  background-color: rgb(231, 231, 231);
-  font-weight: 600;
-  width: 4.5vw;
-  height: 3vw;
-  border-radius: 30px;
+  border-radius: 25px;
+  padding: 0;
 }
 
 .follow-button:hover {
