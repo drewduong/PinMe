@@ -75,13 +75,15 @@
 
 .select {
   border: none;
+  font-size: 16px;
 }
 
 .save-pin-button {
   color: white;
   border: none;
   margin: 1rem;
-  background-color: rgb(255, 44, 44);
+  background-color: #E60023;
+  font-size: 16px;
   font-weight: 600;
   width: 4.5vw;
   height: 3vw;
@@ -90,7 +92,7 @@
 
 .save-pin-button:hover {
   cursor: pointer;
-  /* background-color: rgb(226, 226, 226); */
+  background-color: #AD081B;
 }
 
 .saved-pin-button {
