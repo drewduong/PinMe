@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { updateProfileThunk } from '../../store/session';
-import './UpdateProfileForm.css';
 
 const UpdateProfileForm = () => {
   const history = useHistory()
@@ -57,9 +56,9 @@ const UpdateProfileForm = () => {
   if (!user) return (<h3>Currently no user logged in</h3>)
 
   return (
-    <div className="profile-container">
+    <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
-        <div className="profile-item">
+        <div className="pinning-item">
           <h2>Public profile</h2>
           <h4>People visiting your profile will see the following info</h4>
           <ul className="errors">

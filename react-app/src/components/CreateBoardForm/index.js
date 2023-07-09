@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createBoardThunk } from '../../store/boards';
-import './CreateBoardForm.css';
 
 const CreateBoardForm = () => {
   const history = useHistory()
@@ -47,9 +46,9 @@ const CreateBoardForm = () => {
   }
 
   return (
-    <div className="boarding-container">
+    <div className="pinning-container">
       <form onSubmit={onSubmit} hasSubmitted={hasSubmitted}>
-        <div className="boarding-item">
+        <div className="pinning-item">
           <h2>Create Board</h2>
           <ul className="errors">
             {hasSubmitted && validationErrors.length > 0 && validationErrors.map((error, idx) => (
