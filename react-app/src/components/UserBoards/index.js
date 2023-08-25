@@ -42,7 +42,7 @@ const UserBoards = () => {
       <div className='user-username'>@{user.username}</div>
       <div className='user-about'>{user.about}</div>
       <div className='user-follows'>
-        <NavLink className='user-followers-navlink' to={`/users/${user.id}/followers`}>{followersCount} followers</NavLink><div>·</div>
+        <NavLink className='user-followers-navlink' to={`/users/${user.id}/followers`}>{followersCount} followers</NavLink>·
         <NavLink className='user-following-navlink' to={`/users/${user.id}/following`}>{followingCount} following</NavLink>
       </div>
       <div className='user-profile'>
